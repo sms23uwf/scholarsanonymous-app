@@ -4,5 +4,6 @@ import AppRouter from './routers/AppRouter';
 import 'normalize.css/normalize.css';
 import  './styles/styles.scss';
 
+console.log("expensify");
 
 ReactDOM.render(<AppRouter />, document.getElementById('app'));
