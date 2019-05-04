@@ -11,30 +11,8 @@ import  './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import './firebase/firebase';
 
-console.log("Scholacity");
-
 const store = configureStore();
 
-// addExpense -> Water bill
-// addExpense -> Gas bill
-// setTextFilter -> bill (2 items) -> water (1 item)
-// getVisibleExpenses -> print visibles to screen
-
-store.dispatch(addExpense({ description: 'Water bill', amount: 4500}));
-store.dispatch(addExpense({ description: 'Gas bill', createdAt: 1000}));
-store.dispatch(addExpense({ description: 'WRent', amount: 109500}));
-store.dispatch(setTextFilter('Water'));
-
-
-setTimeout(() => {
-    store.dispatch(setTextFilter('bill'));
-}, 3000)
-const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-
-console.log(visibleExpenses);
-
-// this allows all components to have access to the store
 const jsx = (
     <Provider store={store}>
         <AppRouter />
