@@ -21,9 +21,9 @@ var config = {
 
 firebase.initializeApp(config);
 
-firebase.database().ref().set({
-  name: 'steve'
-});
+//firebase.database().ref().set({
+//  name: 'steve'
+//});
 
 const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
