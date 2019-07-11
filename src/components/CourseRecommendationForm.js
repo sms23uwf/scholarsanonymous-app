@@ -1,16 +1,15 @@
 import React from 'react';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
 
-export default class ExpenseForm extends React.Component {
+export default class CourseRecommendationForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      description: props.expense ? props.expense.description : '',
-      note: props.expense ? props.expense.note : '',
-      amount: props.expense ? (props.expense.amount / 100).toString() : '',
-      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      description: props.courserecommendation ? props.courserecommendation.description : '',
+      note: props.courserecommendation ? props.courserecommendation.note : '',
+      knowledgearea: props.courserecommendation ? props.courserecommendation.knowledgearea : '',
+      createdAt: props.courserecommendation ? moment(props.courserecommendation.createdAt) : moment(),
       calendarFocused: false,
       error: ''
     };
@@ -23,12 +22,9 @@ export default class ExpenseForm extends React.Component {
     const note = e.target.value;
     this.setState(() => ({ note }));
   };
-  onAmountChange = (e) => {
-    const amount = e.target.value;
-
-    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
-      this.setState(() => ({ amount }));
-    }
+  onKnowledgeAreaChange = (e) => {
+    const knowledgearea = e.target.value;
+    this.setState(() => ({ knowledgearea }));
   };
   onDateChange = (createdAt) => {
     if (createdAt) {
@@ -41,13 +37,13 @@ export default class ExpenseForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    if (!this.state.description || !this.state.amount) {
-      this.setState(() => ({ error: 'Please provide description and amount.' }));
+    if (!this.state.description || !this.state.knowledgearea) {
+      this.setState(() => ({ error: 'Please provide course name and knowledgearea.' }));
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({
         description: this.state.description,
-        amount: parseFloat(this.state.amount, 10) * 100,
+        knowledgearea: this.state.knowledgearea,
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
       });
@@ -67,28 +63,28 @@ export default class ExpenseForm extends React.Component {
         />
         <input
           type="text"
-          placeholder="Amount"
+          placeholder="KnowledgeArea"
           className="text-input"
-          value={this.state.amount}
-          onChange={this.onAmountChange}
+          value={this.state.knowledgearea}
+          onChange={this.onKnowledgeAreaChange}
         />
-        <SingleDatePicker
-          date={this.state.createdAt}
-          onDateChange={this.onDateChange}
-          focused={this.state.calendarFocused}
-          onFocusChange={this.onFocusChange}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
-        />
+         <SingleDatePicker
+           date={this.state.createdAt}
+           onDateChange={this.onDateChange}
+           focused={this.state.calendarFocused}
+           onFocusChange={this.onFocusChange}
+           numberOfMonths={1}
+           isOutsideRange={() => false}
+         />
         <textarea
-          placeholder="Add a note for your expense (optional)"
+          placeholder="Add a note for your recommendation (optional)"
           className="textarea"
           value={this.state.note}
           onChange={this.onNoteChange}
         >
         </textarea>
         <div>
-          <button className="button">Save Expense</button>
+          <button className="button">Save Course Recommendation</button>
         </div>
       </form>
     )

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';
 
-export class ExpenseListFilters extends React.Component {
+export class CourseRecommendationListFilters extends React.Component {
   state = {
     calendarFocused: null
   };
@@ -20,7 +20,7 @@ export class ExpenseListFilters extends React.Component {
   onSortChange = (e) => {
     if (e.target.value === 'date') {
       this.props.sortByDate();
-    } else if (e.target.value === 'amount') {
+    } else if (e.target.value === 'domain') {
       this.props.sortByAmount();
     }
   };
@@ -32,7 +32,7 @@ export class ExpenseListFilters extends React.Component {
             <input
               type="text"
               className="text-input"
-              placeholder="Search expenses"
+              placeholder="Search Course Recommendations"
               value={this.props.filters.text}
               onChange={this.onTextChange}
             />
@@ -44,7 +44,7 @@ export class ExpenseListFilters extends React.Component {
               onChange={this.onSortChange}
             >
               <option value="date">Date</option>
-              <option value="amount">Amount</option>
+              <option value="amount">domain</option>
             </select>
           </div>
           <div className="input-group__item">
@@ -77,4 +77,4 @@ const mapDispatchToProps = (dispatch) => ({
   setEndDate: (endDate) => dispatch(setEndDate(endDate))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);
+export default connect(mapStateToProps, mapDispatchToProps)(CourseRecommendationListFilters);
