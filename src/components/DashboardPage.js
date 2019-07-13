@@ -6,12 +6,12 @@ import KnowledgeAreaSummary from './KnowledgeAreaSummary';
 import LearningObjectiveList from './LearningObjectiveList';
 import LearningObjectiveListFilters from './LearningObjectiveListFilters';
 import LearningObjectiveSummary from './LearningObjectiveSummary';
+import LearningObjectivesCollapsible from './LearningObjectivesCollapsible';
 
 const DashboardPage = () => (
   <div>
     <LearningObjectiveSummary />
-    <LearningObjectiveListFilters />
-    <LearningObjectiveList />
+    <LearningObjectivesCollapsible />
   </div>
 );
 
