@@ -16,19 +16,160 @@ const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 export { firebase, googleAuthProvider, database as default };
 
-  //  database.ref('usercourserecommendation').push({
-  //    userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
-  //    counter: 1,
-  //    course: {
-  //      content: `McGuire's Irish Pub & Brewery Tour`,
-  //      knowledgearea: 'Culture, Travel, and Tours'
-  //     }
-  //  }).then(() => {
-  //    console.log('ucr1 added.');
-  //  })
-  //  .catch((e) => {
-  //    console.log('ucr1 failed.',e);
-  //  })
+    //  database.ref('courserecommendation').push({
+    //    userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
+    //    counter: 1,
+    //    course: {
+    //      content: `Does Art Matter in Extreme Rural Settings?`,
+    //      knowledgearea: 'Arts and Literature'
+    //     },
+    //     disposition: 'recommended',
+    //     learningobjectives: {
+    //       learrningobjective: {
+    //         content: `Describe how a specific work of art relates to commonly acknowledged ethical principles and personal responsibility, considering both contemporary social norms and those of the time and place where the work of art was produced.`,
+    //         knowledgearea: 'Arts and Literature'
+    //       },
+    //       learningobjective: {
+    //         content: `Analyze how specific works of art reflect diverse cultural experiences and perspectives.`,
+    //         knowledgearea: 'Arts and Literature'
+    //       },
+    //       learningobjective: {
+    //         content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
+    //         knowledgearea: 'Arts and Literature'
+    //       }
+    //     }
+    //     }).then(() => {
+    //       console.log('ucr1 added.');
+    //     })
+    //     .catch((e) => {
+    //       console.log('ucr1 failed.',e);
+    //     })
+
+    //  database.ref('courserecommendation').push({
+    //    userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
+    //    counter: 1,
+    //    course: {
+    //      content: `Bon Voyage! Lessons in Foreign Travel`,
+    //      knowledgearea: 'Culture, Travel and Tours'
+    //    },
+    //    disposition: 'completed',
+    //    learningobjectives: {
+    //     learningobjective: {
+    //       content: `Analyze how specific works of art reflect diverse cultural experiences and perspectives.`,
+    //       knowledgearea: 'Arts and Literature'
+    //     },
+    //     learningobjective: {
+    //       content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
+    //       knowledgearea: 'Arts and Literature'
+    //     }
+    //   }
+    //   }).then(() => {
+    //     console.log('ucr2 added.');
+    //   })
+    //   .catch((e) => {
+    //     console.log('ucr2 failed.',e);
+    //   })
+
+    //  database.ref('courserecommendation').push({
+    //    userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
+    //    counter: 1,
+    //    course: {
+    //      content: `Stranger than Fiction: Telling Real News from Fake`,
+    //      knowledgearea: 'History and Current Affairs'
+    //    },
+    //    disposition: 'recommended',
+    //    learningobjectives: {
+    //     learrningobjective: {
+    //       content: `Demonstrate an ability to determine reliability, accuracy, validity, authority, timeliness, and point of view or bias of information found.`,
+    //       knowledgearea: 'History and Current Affairs'
+    //     },
+    //     learningobjective: {
+    //       content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
+    //       knowledgearea: 'Arts and Literature'
+    //     }
+    //   }
+    //   }).then(() => {
+    //     console.log('ucr3 added.');
+    //   })
+    //   .catch((e) => {
+    //     console.log('ucr3 failed.',e);
+    //   })
+
+    // database.ref('courserecommendation').push({
+    //   userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
+    //   counter: 1,
+    //   course: {
+    //     content: `American Civil War: The Battle of Gettysburg`,
+    //     knowledgearea: 'History and Current Affairs'
+    //   },
+    //   disposition: 'registered',
+    //   learningobjectives: {
+    //     learrningobjective: {
+    //       content: `Describe Robert E. Lee's plan for invading the North.`,
+    //       knowledgearea: 'History and Current Affairs'
+    //     },
+    //     learningobjective: {
+    //       content: `Recognize the importance of the battle of Gettysburg on the international front and at home.`,
+    //       knowledgearea: 'History and Current Affairs'
+    //     }
+    //   }
+    //   }).then(() => {
+    //     console.log('ucr4 added.');
+    //   })
+    //   .catch((e) => {
+    //     console.log('ucr4 failed.',e);
+    //   })
+
+    // database.ref('courserecommendation').push({
+    //   userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
+    //   counter: 1,
+    //   course: {
+    //     content: `Web Page Design`,
+    //     knowledgearea: 'Business, Finance and Technology'
+    //   },
+    //   disposition: 'recommended',
+    //   learningobjectives: {
+    //     learrningobjective: {
+    //       content: `Demonstrate competency in the use of common HTML code.`,
+    //       knowledgearea: 'Business, Finance and Technology'
+    //     },
+    //     learningobjective: {
+    //       content: `Understand how cascading style sheets (CSS) will affect web page creation.`,
+    //       knowledgearea: 'Business, Finance and Technology'
+    //     }
+    //   }
+    //   }).then(() => {
+    //     console.log('ucr5 added.');
+    //   })
+    //   .catch((e) => {
+    //     console.log('ucr5 failed.',e);
+    //   })
+
+    // database.ref('courserecommendation').push({
+    //   userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
+    //   counter: 1,
+    //   course: {
+    //     content: `Information Literacy`,
+    //     knowledgearea: 'Business, Finance and Technology'
+    //   },
+    //   disposition: 'recommended',
+    //   learningobjectives: {
+    //     learrningobjective: {
+    //       content: `Demonstrate an ability to determine reliability, accuracy, validity, authority, timeliness, and point of view or bias of information found.`,
+    //       knowledgearea: 'History and Current Affairs'
+    //     },
+    //     learningobjective: {
+    //       content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
+    //       knowledgearea: 'Arts and Literature'
+    //     }
+    //   }
+    //   }).then(() => {
+    //     console.log('ucr6 added.');
+    //   })
+    //   .catch((e) => {
+    //     console.log('ucr6 failed.',e);
+    //   })
+
 
     // database.ref('learningobjective').push({
     //   content: `Prepare a written business report that is clear, logical, concise, grammatically correct, and clear to the target audience.`,

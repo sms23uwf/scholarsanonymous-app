@@ -37,28 +37,6 @@ export class CourseRecommendationListFilters extends React.Component {
               onChange={this.onTextChange}
             />
           </div>
-          <div className="input-group__item">
-            <select
-              className="select"
-              value={this.props.filters.sortBy}
-              onChange={this.onSortChange}
-            >
-              <option value="date">Date</option>
-              <option value="amount">domain</option>
-            </select>
-          </div>
-          <div className="input-group__item">
-            <DateRangePicker
-              startDate={this.props.filters.startDate}
-              endDate={this.props.filters.endDate}
-              onDatesChange={this.onDatesChange}
-              focusedInput={this.state.calendarFocused}
-              onFocusChange={this.onFocusChange}
-              showClearDates={true}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
-            />
-          </div>
         </div>
       </div>
     );

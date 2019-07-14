@@ -36,6 +36,7 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
+    store.dispatch(startSetCourseRecommendations());
     store.dispatch(startSetLearningObjectives());
     store.dispatch(startSetKnowledgeAreas()).then(() => {
       renderApp();

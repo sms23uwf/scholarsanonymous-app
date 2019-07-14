@@ -34,7 +34,7 @@ export const removeCourseRecommendation = ({ id } = {}) => ({
 export const startRemoveCourseRecommendation = ({ id } = {}) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database.ref(`usercourserecommendation/${id}`).remove().then(() => {
+    return database.ref(`courserecommendation/${id}`).remove().then(() => {
       dispatch(removeCourseRecommendation({ id }));
     });
   };
@@ -50,7 +50,7 @@ export const editCourseRecommendation = (id, updates) => ({
 export const startEditCourseRecommendation = (id, updates) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database.ref(`usercourserecommendation/${id}`).update(updates).then(() => {
+    return database.ref(`courserecommendation/${id}`).update(updates).then(() => {
       dispatch(editCourseRecommendation(id, updates));
     });
   };
@@ -65,7 +65,7 @@ export const setCourseRecommendations = (courserecommendations) => ({
 export const startSetCourseRecommendations = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database.ref(`usercourserecommendation`).once('value').then((snapshot) => {
+    return database.ref(`courserecommendation`).once('value').then((snapshot) => {
         const courserecommendations = [];
 
         console.log("here is the number of course recommendations in startSetCourseRecommendations");

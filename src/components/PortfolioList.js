@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import CourseRecommendationListItem from './CourseRecommendationListItem';
 import selectCourseRecommendations from '../selectors/courserecommendations';
 
-export const CourseRecommendationsList = (props) => (
+export const PortfolioList = (props) => (
   <div className="content-container">
     <div className="list-header">
-      <div className="show-for-mobile">Course Recommendations</div>
+      <div className="show-for-mobile">Course Completions</div>
       <div className="show-for-desktop">Knowledge Area</div>
       <div className="show-for-desktop">Course</div>
     </div>
@@ -14,7 +14,7 @@ export const CourseRecommendationsList = (props) => (
       {
         props.courserecommendations.length === 0 ? (
           <div className="list-item list-item--message">
-            <span>No Course Recommendations</span>
+            <span>No Courses Completed</span>
           </div>
         ) : (
             props.courserecommendations.map((courserecommendation) => {
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(CourseRecommendationsList);
+export default connect(mapStateToProps)(PortfolioList);

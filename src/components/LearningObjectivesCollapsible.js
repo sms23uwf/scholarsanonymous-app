@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { connect } from 'react-redux';
 import ListGroupCollapse from './ListGroupCollapse';
 import Collapsible from './Collapsible';
-import { setTextFilter } from '../actions/filters';
 import LearningObjectiveListItem from './LearningObjectiveListItem';
 import selectKnowledgeAreas from '../selectors/knowledgeareas';
 import selectLearningObjectives from '../selectors/learningobjectives';
@@ -31,7 +30,8 @@ const handleChange = (e) => {
                         <div className="show-for-desktop">Learning Outcome</div>
                     </div>
                     <div className="list-body">
-                    {props.learningobjectives.forEach(lo => {
+
+                     {props.learningobjectives.forEach(lo => {
                         if (lo.knowledgearea === item.content)
                         {
                             <span className="list-item" key={lo.id}>
@@ -41,6 +41,7 @@ const handleChange = (e) => {
                             </span>    
                         }
                     })}
+
                     </div>
                 </Collapsible>
             </div>

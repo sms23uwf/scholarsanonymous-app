@@ -11,6 +11,9 @@ import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { LearningObjectiveList } from '../components/LearningObjectiveList';
+import CurriculumSelectorDashboard from '../components/CurriculumSelectorDashboard';
+import RecommendationsDashboard from '../components/RecommendationsDashboard';
+import PortfolioDashboard from '../components/PortfolioDashboard';
 
 export const history = createHistory();
 
@@ -20,6 +23,9 @@ const AppRouter = () => (
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
+        <PrivateRoute path="/curriculumSelectorDashboard" component={CurriculumSelectorDashboard}/>
+        <PrivateRoute path="/recommendationsDashboard" component={RecommendationsDashboard}/>
+        <PrivateRoute path="/portfolioDashboard" component={PortfolioDashboard}/>
         <PrivateRoute path="/create" component={AddCourseRecommendationPage} />
         <PrivateRoute path="/edit/:id" component={EditCourseRecommendationPage} />
         <PrivateRoute path="/viewAssocLearningObjectives/:content" component={ViewLearningObjectivesPage} />

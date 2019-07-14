@@ -5,14 +5,14 @@ import numeral from 'numeral';
 import selectCourseRecommendations from '../selectors/courserecommendations';
 import selectCourseRecommendationsTotal from '../selectors/courserecommendations-total';
 
-export const CourseRecommendationsSummary = ({ courseRecommendationCount, courseRecommendationTotal }) => {
-  const courseRecommendationWord = courseRecommendationCount === 1 ? 'course recommendation' : 'course recommendations';
+export const PortfolioSummary = ({ courseRecommendationCount, courseRecommendationTotal }) => {
+  const courseRecommendationWord = courseRecommendationCount === 1 ? 'course completion' : 'course completions';
   const formattedCourseRecommendationsTotal = 1;
 
   return (
     <div className="page-header">
       <div className="content-container">
-        <h1 className="page-header__title">Course Recommendations</h1>
+        <h1 className="page-header__title">Course Completions</h1>
       </div>
     </div>
   );
@@ -27,4 +27,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(CourseRecommendationsSummary);
+export default connect(mapStateToProps)(PortfolioSummary);
