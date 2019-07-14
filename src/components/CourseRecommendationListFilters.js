@@ -1,15 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';
+import { setTextFilter, sortByKnowledgeArea, sortByContent } from '../actions/filters';
 
 export class CourseRecommendationListFilters extends React.Component {
   state = {
     calendarFocused: null
-  };
-  onDatesChange = ({ startDate, endDate }) => {
-    this.props.setStartDate(startDate);
-    this.props.setEndDate(endDate);
   };
   onFocusChange = (calendarFocused) => {
     this.setState(() => ({ calendarFocused }));
@@ -18,10 +14,10 @@ export class CourseRecommendationListFilters extends React.Component {
     this.props.setTextFilter(e.target.value);
   };
   onSortChange = (e) => {
-    if (e.target.value === 'date') {
-      this.props.sortByDate();
-    } else if (e.target.value === 'domain') {
-      this.props.sortByAmount();
+    if (e.target.value === 'knowledgearea') {
+      this.props.sortByKnowledgeArea();
+    } else if (e.target.value === 'content') {
+      this.props.sortByContent();
     }
   };
   render() {
@@ -49,10 +45,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setTextFilter: (text) => dispatch(setTextFilter(text)),
-  sortByDate: () => dispatch(sortByDate()),
-  sortByAmount: () => dispatch(sortByAmount()),
-  setStartDate: (startDate) => dispatch(setStartDate(startDate)),
-  setEndDate: (endDate) => dispatch(setEndDate(endDate))
+  sortByContent: () => dispatch(sortByContent()),
+  sortByKnowledgeArea: () => dispatch(sortByKnowledgeArea()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CourseRecommendationListFilters);

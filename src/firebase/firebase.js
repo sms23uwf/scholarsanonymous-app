@@ -21,6 +21,7 @@ export { firebase, googleAuthProvider, database as default };
     //    counter: 1,
     //    course: {
     //      content: `Does Art Matter in Extreme Rural Settings?`,
+    //      description: `It's just art. Why does it matter?" Often spoken by parents and occasionally staff, Jean Waldenfound this to be one of many challenges as an art teacher in a rural settings. Walden quickly learned that students attending school in this extreme rural setting do not have much access to arts education, nor was there a lot of support for art programs. Join Jean as she discusses the challenges and successes of making art matter.`,
     //      knowledgearea: 'Arts and Literature'
     //     },
     //     disposition: 'recommended',
@@ -37,7 +38,8 @@ export { firebase, googleAuthProvider, database as default };
     //         content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
     //         knowledgearea: 'Arts and Literature'
     //       }
-    //     }
+    //     },
+    //     registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
     //     }).then(() => {
     //       console.log('ucr1 added.');
     //     })
@@ -50,6 +52,7 @@ export { firebase, googleAuthProvider, database as default };
     //    counter: 1,
     //    course: {
     //      content: `Bon Voyage! Lessons in Foreign Travel`,
+    //      description: `Interested in foreign travel and cruises? Learn when to travel, how to plan, how to pack and many other lessons learned in more than 30 years of adventures. Eugene Ray has been on 28 cruises and at least 10 overseas land tours. He has traveled to China, Russia, Canada, most of the Carribean Islands to include Cuba, Cosa Rica, Mexico, Brazil, Argentina, Italy, France, Spain, Germany, Switzerland, Amsterdam, Belgium, Poland, Hungary, Austria, Turkey, Greece, Australia, Venezuela, United Kingdom, Ireland, UAE, India, Oman, Singapore, Thailand, Egypt and all 50 states. There's a lot of value in his experience. Join us for a great discussion.`,
     //      knowledgearea: 'Culture, Travel and Tours'
     //    },
     //    disposition: 'completed',
@@ -62,7 +65,8 @@ export { firebase, googleAuthProvider, database as default };
     //       content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
     //       knowledgearea: 'Arts and Literature'
     //     }
-    //   }
+    //   },
+    //   registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
     //   }).then(() => {
     //     console.log('ucr2 added.');
     //   })
@@ -75,6 +79,7 @@ export { firebase, googleAuthProvider, database as default };
     //    counter: 1,
     //    course: {
     //      content: `Stranger than Fiction: Telling Real News from Fake`,
+    //      description: `Do you know how to spot fake news? This interactive workshop will help you learnhow to do your own sleuthing so you are able to sort fiction from reality. Learn tips, resources, and criteria for investigating and fact-checking news claims to be sure you'r ereceiving credible information. Detecting misleading and biased information will also be discussed.`,
     //      knowledgearea: 'History and Current Affairs'
     //    },
     //    disposition: 'recommended',
@@ -87,7 +92,8 @@ export { firebase, googleAuthProvider, database as default };
     //       content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
     //       knowledgearea: 'Arts and Literature'
     //     }
-    //   }
+    //   },
+    //   registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
     //   }).then(() => {
     //     console.log('ucr3 added.');
     //   })
@@ -100,6 +106,7 @@ export { firebase, googleAuthProvider, database as default };
     //   counter: 1,
     //   course: {
     //     content: `American Civil War: The Battle of Gettysburg`,
+    //     description: `Join us for an interesting talk on the Battle of Gettysburg with George Peeterse. Peeterse retired from the National Park service in April of 2016. He enjoyed seven years serving as a park guide at the Richmond National Battlefield Park, located in Richmond Virginia. During his time, he presented educational programs, conducted tours and engaged visitors on a variety of Civil War topics at the Gaines Mill, Glendale, Cold Harbor and Malvern Hill battlefield sites as well as the Tredegar Ironworks and the Chimborazo Hospital sites.`,
     //     knowledgearea: 'History and Current Affairs'
     //   },
     //   disposition: 'registered',
@@ -112,7 +119,8 @@ export { firebase, googleAuthProvider, database as default };
     //       content: `Recognize the importance of the battle of Gettysburg on the international front and at home.`,
     //       knowledgearea: 'History and Current Affairs'
     //     }
-    //   }
+    //   },
+    //   registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
     //   }).then(() => {
     //     console.log('ucr4 added.');
     //   })
@@ -125,6 +133,7 @@ export { firebase, googleAuthProvider, database as default };
     //   counter: 1,
     //   course: {
     //     content: `Web Page Design`,
+    //     description: `Learn the basics of developing and styling an interactive Web page and publishing it to the internet.`,
     //     knowledgearea: 'Business, Finance and Technology'
     //   },
     //   disposition: 'recommended',
@@ -137,7 +146,8 @@ export { firebase, googleAuthProvider, database as default };
     //       content: `Understand how cascading style sheets (CSS) will affect web page creation.`,
     //       knowledgearea: 'Business, Finance and Technology'
     //     }
-    //   }
+    //   },
+    //   registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
     //   }).then(() => {
     //     console.log('ucr5 added.');
     //   })
@@ -150,6 +160,7 @@ export { firebase, googleAuthProvider, database as default };
     //   counter: 1,
     //   course: {
     //     content: `Information Literacy`,
+    //     description: `An introduction to the principles, concepts, and practices of information literacy, including the critical thinking skills necessary to identify, evaluate, and use diverse information sources effectively.`,
     //     knowledgearea: 'Business, Finance and Technology'
     //   },
     //   disposition: 'recommended',
@@ -162,7 +173,8 @@ export { firebase, googleAuthProvider, database as default };
     //       content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
     //       knowledgearea: 'Arts and Literature'
     //     }
-    //   }
+    //   },
+    //   registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
     //   }).then(() => {
     //     console.log('ucr6 added.');
     //   })

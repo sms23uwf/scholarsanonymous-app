@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import ReactDOM from "react-dom";
 import { connect } from 'react-redux';
 import ListGroupCollapse from './ListGroupCollapse';
@@ -21,6 +21,8 @@ const handleChange = (e) => {
   
 
  export const LearningObjectivesCollapsible = (props) => (
+    //let strLo = `wwww`;
+
     props.knowledgeareas.map(item => {
         return (
             <div className="content-container">
@@ -31,17 +33,27 @@ const handleChange = (e) => {
                     </div>
                     <div className="list-body">
 
-                     {props.learningobjectives.forEach(lo => {
-                        if (lo.knowledgearea === item.content)
-                        {
-                            <span className="list-item" key={lo.id}>
-                                <div>
-                                    <span className="list-item__data">{lo.content}</span>
-                                </div>
-                            </span>    
-                        }
-                    })}
+                        {( () => {  
+                             var strLo = ``;
+                             props.learningobjectives.forEach(lo => 
+                                {
+                                    if (lo.knowledgearea === item.content)
+                                    {
+                                        console.log(`here I am with cccc ${lo.content}`);
+                                        strLo += `<div className="list-item" key=${lo.id}>
+                                             <span className="list-item__data">${lo.content}</span>
+                                        </div>`;
+                                    }
+                                }
+                            )
 
+                            return (<Fragment>{strLo}</Fragment>);
+ 
+                        
+                        })()};
+
+     
+ 
                     </div>
                 </Collapsible>
             </div>

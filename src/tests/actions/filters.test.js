@@ -3,8 +3,8 @@ import {
   setStartDate,
   setEndDate,
   setTextFilter,
-  sortByAmount,
-  sortByDate
+  sortByKnowledgeArea,
+  sortByContent
 } from '../../actions/filters';
 
 test('should generate set start date action object', () => {
@@ -41,9 +41,9 @@ test('should generate set text filter object with default', () => {
 });
 
 test('should generate action object for sort by date', () => {
-  expect(sortByDate()).toEqual({ type: 'SORT_BY_DATE' });
+  expect(sortByContent()).toEqual({ type: 'SORT_BY_CONTENT' });
 });
 
 test('should generate action object for sort by amount', () => {
-  expect(sortByAmount()).toEqual({ type: 'SORT_BY_AMOUNT' });
+  expect(sortByKnowledgeArea()).toEqual({ type: 'SORT_BY_KNOWLEDGE_AREA' });
 });

@@ -4,20 +4,20 @@ import moment from 'moment';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
 import { filters, altFilters } from '../fixtures/filters';
 
-let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
+let setTextFilter, sortByContent, sortByKnowledgeArea, setStartDate, setEndDate, wrapper;
 
 beforeEach(() => {
   setTextFilter = jest.fn();
-  sortByDate = jest.fn();
-  sortByAmount = jest.fn();
+  sortByContent = jest.fn();
+  sortByKnowledgeArea = jest.fn();
   setStartDate = jest.fn();
   setEndDate = jest.fn();
   wrapper = shallow(
     <ExpenseListFilters
       filters={filters}
       setTextFilter={setTextFilter}
-      sortByDate={sortByDate}
-      sortByAmount={sortByAmount}
+      sortByContent={sortByContent}
+      sortByAKnowledgeArea={sortByKnowledgeArea}
       setStartDate={setStartDate}
       setEndDate={setEndDate}
     />
@@ -54,12 +54,12 @@ test('should sort by date', () => {
   expect(sortByDate).toHaveBeenCalled();
 });
 
-test('should sort by amount', () => {
-  const value = 'amount';
+test('should sort by knowledge area', () => {
+  const value = 'knowledge area';
   wrapper.find('select').simulate('change', {
     target: { value }
   });
-  expect(sortByAmount).toHaveBeenCalled();
+  expect(sortByKnowledgeArea).toHaveBeenCalled();
 });
 
 test('should handle date changes', () => {
