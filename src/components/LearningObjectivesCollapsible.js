@@ -33,24 +33,31 @@ const handleChange = (e) => {
                     </div>
                     <div className="list-body">
 
-                        {( () => {  
-                             var strLo = ``;
-                             props.learningobjectives.forEach(lo => 
+
+                        {
+                            //( () => {  
+                             //var arrLo = [];
+                             
+                             props.learningobjectives.map(lo => 
                                 {
-                                    if (lo.knowledgearea === item.content)
-                                    {
-                                        console.log(`here I am with cccc ${lo.content}`);
-                                        strLo += `<div className="list-item" key=${lo.id}>
-                                             <span className="list-item__data">${lo.content}</span>
-                                        </div>`;
-                                    }
+                                    <div className="list-item" key={lo.id}> 
+                                        hello world
+                                    </div>
+                                    //console.log(`here i am with ${item.content} and ${lo.content}`);
+                                    // if (lo.knowledgearea === item.content)
+                                    // {
+                                    //     <div className="list-item" key={lo.id}>
+                                    //          <span className="list-item__data">{lo.content}</span>
+                                    //     </div>
+                                    // }
                                 }
                             )
 
-                            return (<Fragment>{strLo}</Fragment>);
+                            //return (<Fragment>{arrLo}</Fragment>);
  
                         
-                        })()};
+                           // })()
+                        }
 
      
  

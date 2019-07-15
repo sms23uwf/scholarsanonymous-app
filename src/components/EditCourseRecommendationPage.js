@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CourseRecommendationForm from './CourseRecommendationForm';
 import { startEditCourseRecommendation, startRemoveCourseRecommendation } from '../actions/courserecommendations';
+import { Redirect } from 'react-router';
 
 export class EditCourseRecommendationPage extends React.Component {
   onSubmit = (courserecommendation) => {
@@ -17,7 +18,7 @@ export class EditCourseRecommendationPage extends React.Component {
       <div>
         <div className="page-header">
           <div className="content-container">
-            <h1 className="page-header__title">Edit Course Recommendation</h1>
+            <h1 className="page-header__title">Course Details</h1>
           </div>
         </div>
         <div className="content-container">
@@ -25,7 +26,6 @@ export class EditCourseRecommendationPage extends React.Component {
             courserecommendation={this.props.courserecommendation}
             onSubmit={this.onSubmit}
           />
-          <button className="button button--secondary" onClick={this.onRemove}>Remove Course Recommendation</button>
         </div>
       </div>
     );
