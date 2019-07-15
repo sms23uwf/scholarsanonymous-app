@@ -1,9 +1,12 @@
 {
   "name": "scholacity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "author": "Steve Satterfield",
   "license": "UWF",
+  "engines": {
+    "node": "11.7.0"
+  },
   "scripts": {
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
@@ -84,11 +87,11 @@
   "description": "git init - Create a new git repo git status - View the changes to your project code git add - Add files to staging area git commit - Creates a new commit with files from staging area git log - View recent commits",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sms23uwf/react-course-2-expensify-app.git"
+    "url": "git+https://github.com/sms23uwf/scholacity-recommender.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/sms23uwf/react-course-2-expensify-app/issues"
+    "url": "https://github.com/sms23uwf/scholacity-recommender/issues"
   },
-  "homepage": "https://github.com/sms23uwf/react-course-2-expensify-app#readme"
+  "homepage": "https://github.com/sms23uwf/scholacity-recommender#readme"
 }

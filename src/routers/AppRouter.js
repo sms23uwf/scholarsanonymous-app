@@ -2,7 +2,6 @@ import React from 'react';
 import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/DashboardPage';
-import AddCourseRecommendationPage from '../components/AddCourseRecommendationPage';
 import EditCourseRecommendationPage from '../components/EditCourseRecommendationPage';
 import ViewLearningObjectivesPage from '../components/ViewLearningObjectivesPage';
 import NotFoundPage from '../components/NotFoundPage';
@@ -26,7 +25,6 @@ const AppRouter = () => (
         <PrivateRoute path="/curriculumSelectorDashboard" component={CurriculumSelectorDashboard}/>
         <PrivateRoute path="/recommendationsDashboard" component={RecommendationsDashboard}/>
         <PrivateRoute path="/portfolioDashboard" component={PortfolioDashboard}/>
-        <PrivateRoute path="/create" component={AddCourseRecommendationPage} />
         <PrivateRoute path="/edit/:id" component={EditCourseRecommendationPage} />
         <PrivateRoute path="/viewAssocLearningObjectives/:content" component={ViewLearningObjectivesPage} />
         <Route component={NotFoundPage} />
