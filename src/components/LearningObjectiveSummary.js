@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import selectLearningObjectives from '../selectors/learningobjectives';
 import selectLearningObjectivesTotal from '../selectors/learningobjectives-total';
 

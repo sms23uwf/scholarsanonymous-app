@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CourseRecommendationForm from './CourseRecommendationForm';
 import { startEditCourseRecommendation, startRemoveCourseRecommendation } from '../actions/courserecommendations';
-import { Redirect } from 'react-router';
 
 export class EditCourseRecommendationPage extends React.Component {
   onSubmit = (courserecommendation) => {

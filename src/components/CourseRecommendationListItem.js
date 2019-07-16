@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 
 const CourseRecommendationListItem = ({ id, counter, course, userid }) => (
   <Link className="list-item" to={`/edit/${id}`}>

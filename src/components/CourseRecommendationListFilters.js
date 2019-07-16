@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { DateRangePicker } from 'react-dates';
 import { setTextFilter, sortByKnowledgeArea, sortByContent } from '../actions/filters';
 
 export class CourseRecommendationListFilters extends React.Component {

@@ -4,8 +4,6 @@ import Collapsible from './Collapsible';
 import selectKnowledgeAreas from '../selectors/knowledgeareas';
 import selectLearningObjectives from '../selectors/learningobjectives';
 
-const uniqueKnowledgeAreas = [];
-
 const handleChange = (e) => {
     console.log('handle change');
     console.log(`handleChange with ${e}`);
@@ -28,24 +26,29 @@ const handleChange = (e) => {
                         <div className="show-for-desktop">Learning Outcome</div>
                     </div>
                     <div className="list-body">
-
-
                         {
                             //( () => {  
                              //var arrLo = [];
                              
                              props.learningobjectives.map(lo => 
                                 {
-                                    <div className="list-item" key={lo.id}> 
-                                        hello world
-                                    </div>
-                                    //console.log(`here i am with ${item.content} and ${lo.content}`);
-                                    // if (lo.knowledgearea === item.content)
-                                    // {
-                                    //     <div className="list-item" key={lo.id}>
-                                    //          <span className="list-item__data">{lo.content}</span>
-                                    //     </div>
-                                    // }
+                                    if (lo.knowledgearea === item.content)
+                                    {
+                                        <div className="list-item" key={lo.id}> 
+                                            <div className="field" width="0.10">
+                                                <div className="col-sm-12">
+                                                    <input
+                                                        name="checkbox"
+                                                        type="checkbox"
+                                                        onChange={handleChange}
+                                                    />  
+                                                </div>
+                                            </div>
+                                            <div className="list-item" key={lo.id}>
+                                                <span className="list-item__data">{lo.content}</span>
+                                            </div>
+                                        </div>
+                                    }
                                 }
                             )
 
