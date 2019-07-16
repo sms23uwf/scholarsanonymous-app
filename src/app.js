@@ -11,7 +11,6 @@ import getVisibleCourseRecommendations from './selectors/courserecommendations';
 import getVisibleLearningObjectives from './selectors/learningobjectives';
 import getVisibleKnowledgeAreas from './selectors/knowledgeareas';
 import 'normalize.css/normalize.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
