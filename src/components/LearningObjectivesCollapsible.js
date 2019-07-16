@@ -1,13 +1,8 @@
 import React, {Fragment} from 'react';
-import ReactDOM from "react-dom";
 import { connect } from 'react-redux';
-import ListGroupCollapse from './ListGroupCollapse';
 import Collapsible from './Collapsible';
-import LearningObjectiveListItem from './LearningObjectiveListItem';
 import selectKnowledgeAreas from '../selectors/knowledgeareas';
 import selectLearningObjectives from '../selectors/learningobjectives';
-import { Link } from 'react-router-dom';
-import { Container } from 'reactstrap';
 
 const uniqueKnowledgeAreas = [];
 
@@ -29,6 +24,7 @@ const handleChange = (e) => {
                 <Collapsible key={item.id} title={item.content}>
 
                     <div className="list-header">
+                        <div className="show-for-mobile">Learning Outcome</div>
                         <div className="show-for-desktop">Learning Outcome</div>
                     </div>
                     <div className="list-body">

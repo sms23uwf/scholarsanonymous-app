@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setTextFilter } from '../actions/filters';
 import selectKnowledgeAreas from '../selectors/knowledgeareas';
-import { Select } from 'react-dropdown-select';
 
 let rows = [];
 

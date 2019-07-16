@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LearningObjectiveGrid from './LearningObjectiveGrid';
 import LearningObjectiveListFiltersByKnowledgeArea from './LearningObjectiveListFiltersByKnowledgeArea';
 import LearningObjectiveSummary from './LearningObjectiveByKnowledgeAreaSummary';
 import { startSelectLearningObjectives } from '../actions/learningObjectives';
@@ -27,7 +26,6 @@ export class ViewLearningObjectivesPage extends React.Component {
     return (
       <div>
         <LearningObjectiveSummary />
-        <LearningObjectiveGrid />
       </div>
     );
   }
@@ -47,7 +45,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(ViewLearningObjectiv
 // const ViewLearningObjectivesPage = () => (
 //   <div>
 //     <LearningObjectiveSummary />
-//     <LearningObjectiveGrid />
 //   </div>
 // );
 
