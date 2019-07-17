@@ -10,9 +10,9 @@ export const Header = ({ startLogout }) => (
         <Link className="header__title" to="/dashboard">
           <h1>Scholacity</h1>
         </Link>
-        <button className="button button--link" to="/curriculumSelectorDashboard" activeClassName="is-active" exact={true}>Curriculum Selector</button>
-        <button className="button button--link" to="/recommendationsDashboard" activeClassName="is-active">Recommendations</button>
-        <button className="button button--link" to="/portfolioDashboard" activeClassName="is-active" exact={true}>Portfolio</button>
+        <Link className="button button--link" to="/curriculumSelectorDashboard" activeClassName="is-active">Planner</Link>
+        <Link className="button button--link" to="/recommendationsDashboard" activeClassName="is-active">Recommendations</Link>
+        <Link className="button button--link" to="/portfolioDashboard" activeClassName="is-active" >Portfolio</Link>
         <button className="button button--link" onClick={startLogout}>Logout</button>
       </div>
     </div>
