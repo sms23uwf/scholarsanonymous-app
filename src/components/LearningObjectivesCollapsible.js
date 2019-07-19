@@ -112,7 +112,8 @@ const handleChange = (e) => {
   const mapStateToProps = (state) => {
     return {
       learningobjectives: selectLearningObjectives(state.learningobjectives, state.filters),
-      knowledgeareas: selectKnowledgeAreas(state.knowledgeareas, state.filters)
+      knowledgeareas: selectKnowledgeAreas(state.knowledgeareas, state.filters),
+      checkboxChecked: false
     };
   };
   
