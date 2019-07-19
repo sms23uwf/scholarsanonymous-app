@@ -11,7 +11,6 @@ export default class Collapsible extends React.Component {
 
     togglePanel(e){
         this.setState({open: !this.state.open})
-        this.state.open ? this.props.setTextFilter(e.target.value) : null
     }
 
     componentDidUpdate(){
@@ -30,6 +29,6 @@ export default class Collapsible extends React.Component {
                 </div>
                 ) : null}
         </div>
-        );
+        )
     }
   } 

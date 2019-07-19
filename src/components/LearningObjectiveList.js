@@ -19,7 +19,10 @@ export const LearningObjectiveList = (props) => (
           </div>
         ) : (
             props.learningobjectives.map((learningobjective) => {
-              return <LearningObjectiveListItem key={learningobjective.id} {...learningobjective} />;
+              if(props.content === learningobjective.knowledgearea)
+                {
+                    return <LearningObjectiveListItem key={learningobjective.id} {...learningobjective} />;
+                }
             })
           )
       }
