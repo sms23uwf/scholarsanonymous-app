@@ -6,6 +6,6 @@ export default (knowledgeareas, { text }) => {
   
       return textMatch;
     }).sort((a, b) => {
-        return a.content < b.content ? 1 : -1;
+        return a.content > b.content ? 1 : -1;
     });
   };
