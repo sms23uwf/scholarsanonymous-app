@@ -6,7 +6,6 @@ import CourseRecommendationsList from './CourseRecommendationList';
 const RecommendationsDashboard = () => (
   <div>
     <CourseRecommendationsSummary />
-    <CourseRecommendationListFilters />
     <CourseRecommendationsList />
   </div>
 );

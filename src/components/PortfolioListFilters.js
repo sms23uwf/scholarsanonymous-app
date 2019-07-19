@@ -27,7 +27,7 @@ export class PortfolioListFilters extends React.Component {
             <input
               type="text"
               className="text-input"
-              placeholder="Search Course Recommendations"
+              placeholder="Search Portfolio"
               value={this.props.filters.text}
               onChange={this.onTextChange}
             />
