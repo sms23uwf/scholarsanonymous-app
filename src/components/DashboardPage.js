@@ -49,7 +49,7 @@ class DashboardPage extends React.Component {
           >
             <React.Fragment>
               <h2>Scholacity</h2>
-              <p>Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelon Learning. No information about the logged-in user will be captured from Google. The only data we shall capture is the learning objectives and courses you choose, tied simply to a user ID number with no Personally Identifying Information (PII). This data shall be used for research purposes only.</p>
+              <p>Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning. No Personally Identifying Information (PII) will be captured or stored about the logged-in user. The only data this application captures is related to the learning objectives and courses that you view and choose, tied simply to a user ID number. This data shall be used for educational research purposes only.</p>
             </React.Fragment>
           </Modal>
         />
