@@ -1,7 +1,16 @@
-.list-header {
-  background: $off-white;
+.list-collapsible-container {
+  background: #cccccc;
   border: 1px solid darken($off-white, 7%);
-  color: $grey;
+  color: $dark-grey;
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size $m-size;
+}
+
+.list-header {
+  background: #dddddd;
+  border: 1px solid darken($off-white, 7%);
+  color: #000000;
   display: flex;
   justify-content: space-between;
   padding: $s-size $m-size;
@@ -15,6 +24,7 @@
 }
 
 .list-item {
+  background: #eeeeee;
   border: 1px solid darken($off-white, 7%);
   border-top: none;
   color: $dark-grey;

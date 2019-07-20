@@ -20,7 +20,7 @@ export default class Collapsible extends React.Component {
     render() {
       return (
         <div>
-            <div onClick={(e)=>this.togglePanel(e)} className='panel-header'>
+            <div onClick={(e)=>this.togglePanel(e)} className='panel-header' className="list-collapsible-container">
                 {this.props.title}
             </div>
             {this.state.open ? (

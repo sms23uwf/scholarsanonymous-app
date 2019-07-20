@@ -4,7 +4,6 @@ import Collapsible from './Collapsible';
 import selectKnowledgeAreas from '../selectors/knowledgeareas';
 import selectLearningObjectives from '../selectors/learningobjectives';
 import LearningObjectiveList from './LearningObjectiveList';
-import { setTextFilter } from '../actions/filters';
 
 const handleChange = (e) => {
     console.log('handle change');
