@@ -4,8 +4,6 @@ const learningobjectivesReducerDefaultState = [];
 
 export default (state = learningobjectivesReducerDefaultState, action) => {
 
-  console.log(`action.type is ${action.type}`);
-
   switch (action.type) {
     case 'ADD_LEARNING_OBJECTIVE':
       return [

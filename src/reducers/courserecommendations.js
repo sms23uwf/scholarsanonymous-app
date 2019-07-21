@@ -4,8 +4,6 @@ const courserecommendationsReducerDefaultState = [];
 
 export default (state = courserecommendationsReducerDefaultState, action) => {
 
-  console.log(`action.type is ${action.type}`);
-
   switch (action.type) {
     case 'ADD_COURSE_RECOMMENDATION':
       return [

@@ -4,8 +4,6 @@ const knowledgeAreasReducerDefaultState = [];
 
 export default (state = knowledgeAreasReducerDefaultState, action) => {
 
-  console.log(`action.type is ${action.type}`);
-
   switch (action.type) {
     case 'ADD_KNOWLEDGE_AREA':
       return [

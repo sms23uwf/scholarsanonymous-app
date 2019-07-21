@@ -12,32 +12,19 @@ export class LearningObjectiveListFilters extends React.Component {
    state = {
      selectedOption: [{id: 1, label: "Arts and Literature"}]
    };
-
-  //   let options = [];
-  //   props.knowledgeareas.forEach(item => {
-  //       options.push({'value': item.id, 'label': item.content});
-  //   });
-
       rows = this.props.knowledgeareas.map(item => {
         return item = {'value': item.id, 'label': item.content};
      });
 
-  //   console.log(`options are: ${options}`);
-  // }
-
   handleChange = selectedOption => {
       let selectedLabel = '';
       selectedOption.forEach(knowledearea => {
-        console.log(`knowledgearea `, knowledearea);
         selectedLabel = knowledearea.label;
       })
 
-      console.log('selectedOpins isArray? ', Array.isArray(selectedOption));
       this.setState({ selectedOption });
       var first = selectedOption[0];
       this.props.setTextFilter(selectedLabel);
-      console.log(`Option selected:`, selectedOption);
-      console.log(`Option first element:`, selectedLabel);
   };
 
   onFocusChange = (calendarFocused) => {

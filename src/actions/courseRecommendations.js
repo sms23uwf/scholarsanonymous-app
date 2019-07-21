@@ -68,23 +68,12 @@ export const startSetCourseRecommendations = () => {
     return database.ref(`courserecommendation`).once('value').then((snapshot) => {
         const courserecommendations = [];
 
-        console.log("here is the number of course recommendations in startSetCourseRecommendations");
-        console.log(getState().courserecommendations.length);
-      
-        console.log(`here is the current user id: ${uid}`);
-        console.log(snapshot.val());
-
       snapshot.forEach((childSnapshot) => {
         courserecommendations.push({
           id: childSnapshot.key,
           ...childSnapshot.val()
         });
       });
-
-      console.log('here is the course recommendations array');
-      console.log(courserecommendations);
-
-
       dispatch(setCourseRecommendations(courserecommendations));
     });
   };

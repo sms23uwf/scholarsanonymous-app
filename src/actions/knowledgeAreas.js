@@ -67,22 +67,12 @@ export const startSetKnowledgeAreas = () => {
     return database.ref(`knowledgearea`).once('value').then((snapshot) => {
         const knowledgeareas = [];
 
-     
-        console.log(`here is the current user id: ${uid}`);
-        console.log(snapshot.val());
-
       snapshot.forEach((childSnapshot) => {
         knowledgeareas.push({
           id: childSnapshot.key,
           ...childSnapshot.val()
         });
       });
-
-      console.log("here is the number of knowledge areas in startSetKnowledgeAreas");
-      console.log(knowledgeareas.length);
-
-      console.log('here is the knowledge areas array');
-      console.log(knowledgeareas);
 
       dispatch(setKnowledgeAreas(knowledgeareas));
     });

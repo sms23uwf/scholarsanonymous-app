@@ -6,11 +6,7 @@ import selectLearningObjectives from '../selectors/learningobjectives';
 import LearningObjectiveList from './LearningObjectiveList';
 
 const handleChange = (e) => {
-    console.log('handle change');
-    console.log(`handleChange with ${e}`);
-    console.log(e);
     checkboxChecked = !checkboxChecked;
-    console.log(`checkboxChecked = ${checkboxChecked}`);
  };
   
 

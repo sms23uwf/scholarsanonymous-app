@@ -4,8 +4,11 @@ import { setTextFilter, sortByKnowledgeArea, sortByContent } from '../actions/fi
 
 export class CourseRecommendationListFilters extends React.Component {
   state = {
-    calendarFocused: null
+    text: null
   };
+  componentDidMount() {
+    this.props.setTextFilter('');
+  }
   onFocusChange = (calendarFocused) => {
     this.setState(() => ({ calendarFocused }));
   }
@@ -23,15 +26,6 @@ export class CourseRecommendationListFilters extends React.Component {
     return (
       <div className="content-container">
         <div className="input-group">
-          <div className="input-group__item">
-            <input
-              type="text"
-              className="text-input"
-              placeholder="Search Course Recommendations"
-              value={this.props.filters.text}
-              onChange={this.onTextChange}
-            />
-          </div>
         </div>
       </div>
     );

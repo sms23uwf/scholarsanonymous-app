@@ -67,12 +67,6 @@ export const startSelectLearningObjectives = (knowledgearea) => {
     return database.ref(`learningobjective/${knowledgearea}`).once('value').then((snapshot) => {
         const learningobjectives = [];
 
-        console.log("here is the number of learning objectives in startSetLearningObjectives");
-        console.log(getState().learningobjectives.length);
-      
-        console.log(`here is the current user id: ${uid}`);
-        console.log(snapshot.val());
-
       snapshot.forEach((childSnapshot) => {
         learningobjectives.push({
           id: childSnapshot.key,
@@ -98,12 +92,6 @@ export const startSetLearningObjectives = () => {
     return database.ref(`learningobjective`).once('value').then((snapshot) => {
         const learningobjectives = [];
 
-        console.log("here is the number of learning objectives in startSetLearningObjectives");
-        console.log(getState().learningobjectives.length);
-      
-        console.log(`here is the current user id: ${uid}`);
-        console.log(snapshot.val());
-
       snapshot.forEach((childSnapshot) => {
         learningobjectives.push({
           id: childSnapshot.key,
@@ -111,9 +99,6 @@ export const startSetLearningObjectives = () => {
         });
       });
 
-      console.log('here is the learning objectives array');
-      console.log(learningobjectives);
-      
       dispatch(setLearningObjectives(learningobjectives));
     });
   };

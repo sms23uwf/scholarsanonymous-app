@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CourseRecommendationListItem from './CourseRecommendationListItem';
 import selectCourseRecommendations from '../selectors/courserecommendations';
+import { setTextFilter } from '../actions/filters';
 
 export const PortfolioList = (props) => (
+
   <div className="content-container">
     <div className="list-header">
       <div className="show-for-mobile">Course Completions</div>

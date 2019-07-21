@@ -6,6 +6,7 @@ import PortfolioList from './PortfolioList';
 const PortfolioDashboard = () => (
   <div>
   <PortfolioSummary />
+  <PortfolioListFilters />
   <PortfolioList />
 </div>
 );

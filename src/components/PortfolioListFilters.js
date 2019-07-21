@@ -6,6 +6,9 @@ export class PortfolioListFilters extends React.Component {
   state = {
     text: 'completed'
   };
+  componentDidMount() {
+    this.props.setTextFilter('completed');
+  }
   onFocusChange = (calendarFocused) => {
     this.setState(() => ({ calendarFocused }));
   }
@@ -23,15 +26,6 @@ export class PortfolioListFilters extends React.Component {
     return (
       <div className="content-container">
         <div className="input-group">
-          <div className="input-group__item">
-            <input
-              type="text"
-              className="text-input"
-              placeholder="Search Portfolio"
-              value={this.props.filters.text}
-              onChange={this.onTextChange}
-            />
-          </div>
         </div>
       </div>
     );
@@ -43,7 +37,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setTextFilter: (text) => dispatch(setTextFilter('text')),
+  setTextFilter: (text) => dispatch(setTextFilter(text)),
   sortByContent: () => dispatch(sortByContent()),
   sortByKnowledgeArea: () => dispatch(sortByKnowledgeArea()),
 });
