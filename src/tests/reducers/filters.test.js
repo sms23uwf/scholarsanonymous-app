@@ -38,6 +38,16 @@ test('should set text filter', () => {
   expect(state.text).toBe(text);
 });
 
+test('should set disposition filter', () => {
+  const disposition = 'This is my filter';
+  const action = {
+    type: 'SET_DISPOSITION_FILTER',
+    disposition
+  };
+  const state = filtersReducer(undefined, action);
+  expect(state.disposition).toBe(disposition);
+});
+
 test('should set startDate filter', () => {
   const startDate = moment();
   const action = {

@@ -32,11 +32,28 @@ test('should generate set text filter object with text value', () => {
   });
 });
 
+test('should generate set text filter object with disposition value', () => {
+  const disposition = 'Something in';
+  const action = setDispositionFilter(disposition);
+  expect(action).toEqual({
+    type: 'SET_DISPOSITION_FILTER',
+    disposition
+  });
+});
+
 test('should generate set text filter object with default', () => {
   const action = setTextFilter();
   expect(action).toEqual({
     type: 'SET_TEXT_FILTER',
     text: ''
+  });
+});
+
+test('should generate set disposition filter object with default', () => {
+  const action = setDispositionFilter();
+  expect(action).toEqual({
+    type: 'SET_DISPOSITION_FILTER',
+    disposition: ''
   });
 });
 

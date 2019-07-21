@@ -4,6 +4,12 @@ export const setTextFilter = (text = '') => ({
   text
 });
 
+// SET_DISPOSITION_FILTER
+export const setDispositionFilter = (disposition = '') => ({
+  type: 'SET_DISPOSITION_FILTER',
+  disposition
+});
+
 // SORT_BY_DATE
 export const sortByDate = () => ({
   type: 'SORT_BY_DATE'

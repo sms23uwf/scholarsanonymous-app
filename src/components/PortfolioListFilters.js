@@ -1,20 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter, sortByKnowledgeArea, sortByContent } from '../actions/filters';
+import { setDispositionFilter, sortByKnowledgeArea, sortByContent } from '../actions/filters';
 
 export class PortfolioListFilters extends React.Component {
-  state = {
-    text: 'completed'
-  };
-  componentDidMount() {
-    this.props.setTextFilter('completed');
+  constructor(props) {
+    super(props);
+    this.props.setDispositionFilter('completed');
   }
+
+  state = {
+    disposition: 'completed'
+  };
   onFocusChange = (calendarFocused) => {
     this.setState(() => ({ calendarFocused }));
   }
-  onTextChange = (e) => {
-    this.props.setTextFilter(e.target.value);
-  };
   onSortChange = (e) => {
     if (e.target.value === 'knowledgearea') {
       this.props.sortByKnowledgeArea();
@@ -37,7 +36,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setTextFilter: (text) => dispatch(setTextFilter(text)),
+  setDispositionFilter: (disposition) => dispatch(setDispositionFilter(disposition)),
   sortByContent: () => dispatch(sortByContent()),
   sortByKnowledgeArea: () => dispatch(sortByKnowledgeArea()),
 });

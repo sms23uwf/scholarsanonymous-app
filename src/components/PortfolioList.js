@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CourseRecommendationListItem from './CourseRecommendationListItem';
-import selectCourseRecommendations from '../selectors/courserecommendations';
-import { setTextFilter } from '../actions/filters';
+import selectCourseRecommendations from '../selectors/coursecompletions';
 
 export const PortfolioList = (props) => (
 
