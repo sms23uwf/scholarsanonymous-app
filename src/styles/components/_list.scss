@@ -5,6 +5,10 @@
   display: flex;
   justify-content: space-between;
   padding: $s-size $m-size;
+  font-weight: 600;
+  span {
+    font-weight: 700;
+  }
 }
 
 .list-header {
@@ -29,6 +33,28 @@
   border-top: none;
   color: $dark-grey;
   display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background .3s ease;
+  &:hover {
+    background: $off-white;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+  }
+}
+
+.list-item--inline {
+  background: #eeeeee;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  color: $dark-grey;
+  display: inline-block;
   flex-direction: column;
   padding: $s-size;
   text-decoration: none;

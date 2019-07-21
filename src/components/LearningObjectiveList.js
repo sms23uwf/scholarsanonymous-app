@@ -8,8 +8,8 @@ export const LearningObjectiveList = (props) => (
     <div className="list-header">
       <div className="show-for-mobile"></div>
       <div className="show-for-mobile">Learning Outcome</div>
-      <div className="show-for-desktop" className="list-item__title" className="center"></div>
-      <div className="show-for-desktop" className="list-item__title" className="center">Knowledge Outcome</div>
+      <div className="show-for-desktop"></div>
+      <div className="show-for-desktop">Knowledge Outcome</div>
     </div>
     <div className="list-body">
       {

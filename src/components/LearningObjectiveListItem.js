@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import Checkbox from './Checkbox';
+import Checkbox from './Checkbox';
 
 var checkboxChecked;
 
@@ -14,21 +14,12 @@ const handleChange = (e) => {
 
 const LearningObjectiveListItem = ({ id, knowledgearea, content, selected }) => (
   <div>
-    <span className="list-item">
-      <div className="field" width="0.10">
-        <div className="col-sm-12">
-          <input
-            name="checkbox"
-            type="checkbox"
-            onChange={handleChange}
-          />  
+    <span>
+      <fieldset>
+        <div className="list-item" width="1.0" key={id}>
+          <Checkbox type="checkbox" id={id} label={content} isSelected={checkboxChecked} onCheckboxChange={handleChange}/>
         </div>
-      </div>
-      <Link className="list-item" to={`/edit/${id}`}>
-          <div width="0.70">
-            <span className="list-item__data">{content}</span>
-          </div>
-      </Link>
+      </fieldset>
     </span>
   </div>
 );

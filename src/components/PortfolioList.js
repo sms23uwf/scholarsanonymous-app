@@ -18,7 +18,7 @@ export const PortfolioList = (props) => (
           </div>
         ) : (
             props.courserecommendations.map((courserecommendation) => {
-              return <CourseRecommendationListItem key={courserecommendation.id} {...courserecommendation} />;
+              return <CourseRecommendationListItem key={courserecommendation.id} id={courserecommendation.id} {...courserecommendation} />;
             })
           )
       }

@@ -28,3 +28,16 @@ button:disabled {
 .white, .white a {
   color: #fff;
 }
+
+.label {
+  display: inline-block;
+  margin-left: 10px;
+  align-content: left;
+}
+
+.inline-field input,
+.inline-field label {
+  display: inline-block;
+  margin-bottom: 0; /* I added this after I posted my reply */
+  vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
+}

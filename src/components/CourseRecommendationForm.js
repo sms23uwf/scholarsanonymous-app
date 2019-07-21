@@ -35,10 +35,6 @@ export default class CourseRecommendationForm extends React.Component {
         <label>{this.state.description}</label>
 
         <label>{this.state.disposition}</label>
-
-        <div>
-          <button className="button">Return</button>
-        </div>
       </form>
     )
   }
