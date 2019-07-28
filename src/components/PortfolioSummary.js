@@ -10,7 +10,7 @@ export const PortfolioSummary = ({ courseRecommendationCount, courseRecommendati
   return (
     <div className="page-header">
       <div className="content-container">
-        <h1 className="page-header__title">Course Completions</h1>
+        <h1 className="page-header__title">Portfolio of Completed Courses</h1>
       </div>
     </div>
   );

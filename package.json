@@ -1,5 +1,5 @@
 {
-  "name": "scholacity",
+  "name": "scholacity-org",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Steve Satterfield",
@@ -13,7 +13,9 @@
     "dev-server": "webpack-dev-server",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
     "start": "node server/server.js",
-    "heroku-postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod",
+    "predeploy": "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
@@ -56,6 +58,7 @@
     "dotenv": "4.0.0",
     "enzyme": "2.9.1",
     "enzyme-to-json": "1.5.1",
+    "gh-pages": "^2.0.1",
     "jest": "20.0.4",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
