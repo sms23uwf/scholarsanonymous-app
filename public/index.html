@@ -3,9 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name=apple-mobile-web-app-status-bar-style content=black>
   <title>Scholacity Recommender</title>
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link rel="icon" type="image/png" href="/images/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="/dist/styles.css" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" media="all">
   <link rel=”shortcut icon” href=”%PUBLIC_URL%/images/favicon.ico” type="image/png/ico">
@@ -18,6 +21,26 @@
 
 <body>
   <div id="app"></div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAu84rXzn-daVbgXZWBJZagfoFzNIAzzbI",
+    authDomain: "scholacity-org.firebaseapp.com",
+    databaseURL: "https://scholacity-org.firebaseio.com",
+    projectId: "scholacity-org",
+    storageBucket: "scholacity-org.appspot.com",
+    messagingSenderId: "109651803662",
+    appId: "1:109651803662:web:5fde4dd1dc0ecb94"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>  
   <script src="/dist/bundle.js"></script>
 </body>
 

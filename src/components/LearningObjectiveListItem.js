@@ -14,7 +14,7 @@ const LearningObjectiveListItem = ({ id, knowledgearea, content, selected }) => 
     <span>
       <fieldset>
         <div className="list-item" width="1.0" key={id}>
-          <Checkbox type="checkbox" id={id} name={id} label={shim + content} onCheckboxChange={handleChange}/>
+          <Checkbox type="checkbox" id={id} name={id} label={content} onCheckboxChange={handleChange}/>
         </div>
       </fieldset>
     </span>

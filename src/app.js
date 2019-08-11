@@ -28,6 +28,7 @@ const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById('app'));
     hasRendered = true;
+    document.documentElement.requestFullscreen;
   }
 };
 
