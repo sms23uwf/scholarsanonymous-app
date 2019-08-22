@@ -1,0 +1,254 @@
+[debug] [2019-08-17T18:10:18.764Z] ----------------------------------------------------------------------
+[debug] [2019-08-17T18:10:18.766Z] Command:       /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/node /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/firebase serve --only functions
+[debug] [2019-08-17T18:10:18.767Z] CLI Version:   6.12.0
+[debug] [2019-08-17T18:10:18.767Z] Platform:      darwin
+[debug] [2019-08-17T18:10:18.767Z] Node Version:  v12.7.0
+[debug] [2019-08-17T18:10:18.768Z] Time:          Sat Aug 17 2019 13:10:18 GMT-0500 (Central Daylight Time)
+[debug] [2019-08-17T18:10:18.768Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-17T18:10:18.778Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-17T18:10:18.778Z] > authorizing via signed-in user
+[debug] [2019-08-17T18:10:18.778Z] [iam] checking project scholacity-org for permissions ["firebase.projects.get"]
+[debug] [2019-08-17T18:10:18.780Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org:testIamPermissions  
+
+[debug] [2019-08-17T18:10:19.013Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T18:10:19.015Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org  
+ 
+[debug] [2019-08-17T18:10:19.220Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[debug] [2019-08-17T18:10:19.231Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/109651803662:getServerAppConfig  
+ 
+[debug] [2019-08-17T18:10:19.510Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/claudiasatterfield/react-course-projects/scholacity-recommender/functions" for Cloud Functions...
+[debug] [2019-08-17T18:10:19.877Z] Functions runtime initialized.
+[debug] [2019-08-17T18:10:19.877Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-functions-test" to be installed as a development dependency. To fix this, run "npm install --save-dev firebase-functions-test" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)
+[debug] [2019-08-17T18:14:02.160Z] Accepted request GET /scholacity-recommender/us-central1/getCourses --> getCourses
+[debug] [2019-08-17T18:14:02.491Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "getCourses"
+[debug] [2019-08-17T18:14:02.492Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-functions-test" to be installed as a development dependency. To fix this, run "npm install --save-dev firebase-functions-test" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)
+[debug] [2019-08-17T18:15:11.173Z] ----------------------------------------------------------------------
+[debug] [2019-08-17T18:15:11.175Z] Command:       /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/node /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/firebase serve --only functions
+[debug] [2019-08-17T18:15:11.175Z] CLI Version:   6.12.0
+[debug] [2019-08-17T18:15:11.175Z] Platform:      darwin
+[debug] [2019-08-17T18:15:11.175Z] Node Version:  v12.7.0
+[debug] [2019-08-17T18:15:11.176Z] Time:          Sat Aug 17 2019 13:15:11 GMT-0500 (Central Daylight Time)
+[debug] [2019-08-17T18:15:11.176Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-17T18:15:11.186Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-17T18:15:11.186Z] > authorizing via signed-in user
+[debug] [2019-08-17T18:15:11.186Z] [iam] checking project scholacity-org for permissions ["firebase.projects.get"]
+[debug] [2019-08-17T18:15:11.188Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org:testIamPermissions  
+
+[debug] [2019-08-17T18:15:11.477Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T18:15:11.480Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org  
+ 
+[debug] [2019-08-17T18:15:11.699Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[debug] [2019-08-17T18:15:11.711Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/109651803662:getServerAppConfig  
+ 
+[debug] [2019-08-17T18:15:11.946Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/claudiasatterfield/react-course-projects/scholacity-recommender/functions" for Cloud Functions...
+[debug] [2019-08-17T18:15:12.274Z] Functions runtime initialized.
+[debug] [2019-08-17T18:15:12.274Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''
+    at Module.require (internal/modules/cjs/loader.js:678:11)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at InitializeFirebaseAdminStubs (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:231:18)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:461:9
+    at Generator.next (<anonymous>)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at main (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:431:12)
+    at Object.<anonymous> (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:521:5)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-08-17T18:15:12.730Z] Accepted request GET /scholacity-recommender/us-central1/getCourses --> getCourses
+[debug] [2019-08-17T18:15:13.066Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "getCourses"
+[debug] [2019-08-17T18:15:13.067Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''
+    at Module.require (internal/modules/cjs/loader.js:678:11)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at InitializeFirebaseAdminStubs (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:231:18)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:461:9
+    at Generator.next (<anonymous>)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at main (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:431:12)
+    at Object.<anonymous> (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:521:5)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-08-17T19:42:47.908Z] ----------------------------------------------------------------------
+[debug] [2019-08-17T19:42:47.910Z] Command:       /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/node /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/firebase serve --only functions
+[debug] [2019-08-17T19:42:47.911Z] CLI Version:   6.12.0
+[debug] [2019-08-17T19:42:47.911Z] Platform:      darwin
+[debug] [2019-08-17T19:42:47.911Z] Node Version:  v12.7.0
+[debug] [2019-08-17T19:42:47.912Z] Time:          Sat Aug 17 2019 14:42:47 GMT-0500 (Central Daylight Time)
+[debug] [2019-08-17T19:42:47.912Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-17T19:42:47.922Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-17T19:42:47.922Z] > authorizing via signed-in user
+[debug] [2019-08-17T19:42:47.922Z] [iam] checking project scholacity-org for permissions ["firebase.projects.get"]
+[debug] [2019-08-17T19:42:47.924Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-08-17T19:42:47.924Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-08-17T19:42:48.171Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T19:42:48.284Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org:testIamPermissions  
+
+[debug] [2019-08-17T19:42:48.559Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T19:42:48.561Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org  
+ 
+[debug] [2019-08-17T19:42:48.765Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[debug] [2019-08-17T19:42:48.777Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/109651803662:getServerAppConfig  
+ 
+[debug] [2019-08-17T19:42:49.077Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/claudiasatterfield/react-course-projects/scholacity-recommender/functions" for Cloud Functions...
+[debug] [2019-08-17T19:42:49.418Z] Functions runtime initialized.
+[debug] [2019-08-17T19:42:49.418Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''
+    at Module.require (internal/modules/cjs/loader.js:678:11)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at InitializeFirebaseAdminStubs (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:231:18)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:461:9
+    at Generator.next (<anonymous>)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at main (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:431:12)
+    at Object.<anonymous> (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:521:5)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-08-17T19:53:43.953Z] ----------------------------------------------------------------------
+[debug] [2019-08-17T19:53:43.955Z] Command:       /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/node /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/firebase serve --only functions
+[debug] [2019-08-17T19:53:43.955Z] CLI Version:   6.12.0
+[debug] [2019-08-17T19:53:43.955Z] Platform:      darwin
+[debug] [2019-08-17T19:53:43.955Z] Node Version:  v12.7.0
+[debug] [2019-08-17T19:53:43.956Z] Time:          Sat Aug 17 2019 14:53:43 GMT-0500 (Central Daylight Time)
+[debug] [2019-08-17T19:53:43.957Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-17T19:53:43.967Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-17T19:53:43.967Z] > authorizing via signed-in user
+[debug] [2019-08-17T19:53:43.967Z] [iam] checking project scholacity-org for permissions ["firebase.projects.get"]
+[debug] [2019-08-17T19:53:43.969Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org:testIamPermissions  
+
+[debug] [2019-08-17T19:53:44.255Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T19:53:44.258Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org  
+ 
+[debug] [2019-08-17T19:53:44.461Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[debug] [2019-08-17T19:53:44.472Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/109651803662:getServerAppConfig  
+ 
+[debug] [2019-08-17T19:53:44.656Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/claudiasatterfield/react-course-projects/scholacity-recommender/functions" for Cloud Functions...
+[debug] [2019-08-17T19:53:45.012Z] Functions runtime initialized.
+[debug] [2019-08-17T19:53:45.012Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''
+    at Module.require (internal/modules/cjs/loader.js:678:11)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at InitializeFirebaseAdminStubs (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:231:18)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:461:9
+    at Generator.next (<anonymous>)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at main (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:431:12)
+    at Object.<anonymous> (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:521:5)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-08-17T20:07:02.018Z] ----------------------------------------------------------------------
+[debug] [2019-08-17T20:07:02.020Z] Command:       /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/node /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/firebase serve --only functions
+[debug] [2019-08-17T20:07:02.021Z] CLI Version:   6.12.0
+[debug] [2019-08-17T20:07:02.021Z] Platform:      darwin
+[debug] [2019-08-17T20:07:02.021Z] Node Version:  v12.7.0
+[debug] [2019-08-17T20:07:02.022Z] Time:          Sat Aug 17 2019 15:07:02 GMT-0500 (Central Daylight Time)
+[debug] [2019-08-17T20:07:02.022Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-17T20:07:02.032Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-17T20:07:02.033Z] > authorizing via signed-in user
+[debug] [2019-08-17T20:07:02.033Z] [iam] checking project scholacity-org for permissions ["firebase.projects.get"]
+[debug] [2019-08-17T20:07:02.035Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org:testIamPermissions  
+
+[debug] [2019-08-17T20:07:02.320Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T20:07:02.323Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org  
+ 
+[debug] [2019-08-17T20:07:02.513Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[debug] [2019-08-17T20:07:02.524Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/109651803662:getServerAppConfig  
+ 
+[debug] [2019-08-17T20:07:02.699Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/claudiasatterfield/react-course-projects/scholacity-recommender/functions" for Cloud Functions...
+[debug] [2019-08-17T20:07:03.070Z] Functions runtime initialized.
+[debug] [2019-08-17T20:07:03.070Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''
+    at Module.require (internal/modules/cjs/loader.js:678:11)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at InitializeFirebaseAdminStubs (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:231:18)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:461:9
+    at Generator.next (<anonymous>)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at main (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:431:12)
+    at Object.<anonymous> (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:521:5)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-08-17T20:08:28.277Z] ----------------------------------------------------------------------
+[debug] [2019-08-17T20:08:28.279Z] Command:       /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/node /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/firebase serve --only functions
+[debug] [2019-08-17T20:08:28.280Z] CLI Version:   6.12.0
+[debug] [2019-08-17T20:08:28.280Z] Platform:      darwin
+[debug] [2019-08-17T20:08:28.280Z] Node Version:  v12.7.0
+[debug] [2019-08-17T20:08:28.281Z] Time:          Sat Aug 17 2019 15:08:28 GMT-0500 (Central Daylight Time)
+[debug] [2019-08-17T20:08:28.281Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-17T20:08:28.291Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-17T20:08:28.291Z] > authorizing via signed-in user
+[debug] [2019-08-17T20:08:28.291Z] [iam] checking project scholacity-org for permissions ["firebase.projects.get"]
+[debug] [2019-08-17T20:08:28.293Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org:testIamPermissions  
+
+[debug] [2019-08-17T20:08:28.538Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T20:08:28.541Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org  
+ 
+[debug] [2019-08-17T20:08:28.759Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[debug] [2019-08-17T20:08:28.771Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/109651803662:getServerAppConfig  
+ 
+[debug] [2019-08-17T20:08:29.005Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/claudiasatterfield/react-course-projects/scholacity-recommender/functions" for Cloud Functions...
+[debug] [2019-08-17T20:08:29.361Z] Functions runtime initialized.
+[debug] [2019-08-17T20:08:29.361Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''
+    at Module.require (internal/modules/cjs/loader.js:678:11)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at InitializeFirebaseAdminStubs (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:231:18)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:461:9
+    at Generator.next (<anonymous>)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at main (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:431:12)
+    at Object.<anonymous> (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:521:5)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-08-17T20:14:08.558Z] File /Users/claudiasatterfield/react-course-projects/scholacity-recommender/functions/src/init.ts changed, reloading triggers
+[debug] [2019-08-17T20:14:08.559Z] File /Users/claudiasatterfield/react-course-projects/scholacity-recommender/functions/lib/init.js changed, reloading triggers
+[debug] [2019-08-17T20:14:09.902Z] Functions runtime initialized.
+[debug] [2019-08-17T20:14:09.903Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''
+    at Module.require (internal/modules/cjs/loader.js:678:11)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at InitializeFirebaseAdminStubs (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:231:18)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:461:9
+    at Generator.next (<anonymous>)
+    at /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+    at main (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:431:12)
+    at Object.<anonymous> (/Users/claudiasatterfield/.nvm/versions/node/v12.7.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:521:5)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
