@@ -6,13 +6,13 @@ import Modal from './Modal';
 
 require('bootstrap/dist/css/bootstrap.css');
 
-class DashboardPage extends React.Component {
+class AboutPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
   state = {
-    showModal: false
+    showModal: true
   }
 
   toggleModal = () => {
@@ -33,8 +33,8 @@ class DashboardPage extends React.Component {
 
   render() {
     return (
-        <div className="box-layout_dashboard">
-          <Modal
+      <div className="box-layout_dashboard">
+        <Modal
           show={this.state.showModal}
           closeCallback={this.toggleModal}
           customClass="custom_modal_class"
@@ -49,4 +49,4 @@ class DashboardPage extends React.Component {
   }
 };
 
-export default DashboardPage;
+export default AboutPage;

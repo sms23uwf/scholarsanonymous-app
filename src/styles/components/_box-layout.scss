@@ -20,3 +20,12 @@
   margin: 0 0 $m-size 0;
   line-height: 1;
 }
+.box-layout_dashboard {
+  align-items: center;
+  background: url('/images/Scholacity_Logo.jpg');
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}

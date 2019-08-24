@@ -20,7 +20,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import routes from '../routers/sidebarrouter';
-import Modal from './Modal';
 
 const drawerWidth = 240;
 
@@ -157,19 +156,7 @@ export function PersistentDrawerLeft() {
           );
         })}
       </MenuList>
-  </Drawer>
-
-    <Modal
-        show={showModal}
-        closeCallback={toggleModal}
-        customClass="custom_modal_class"
-    >
-        <React.Fragment>
-        <h2>Scholacity</h2>
-        <p>Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning. No Personally Identifying Information (PII) will be captured or stored about the logged-in user. The only data this application captures is related to the learning objectives and courses that you view and choose, tied simply to a user ID number. This data shall be used for educational research purposes only.</p>
-        </React.Fragment>
-    </Modal>
-
+    </Drawer>
   </div>
   );
 }

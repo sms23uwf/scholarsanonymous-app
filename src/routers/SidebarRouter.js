@@ -1,14 +1,10 @@
 import { Home, ContentPaste, Notifications, AccountCircle, Info, WorkOutline, Work, Assessment } from '@material-ui/icons';
 
 import DashboardPage from '../components/DashboardPage';
-import NotFoundPage from '../components/NotFoundPage';
-import LoginPage from '../components/LoginPage';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
 import PlannerDashboard from '../components/PlannerDashboard';
 import RecommendationsDashboard from '../components/RecommendationsDashboard';
 import PortfolioDashboard from '../components/PortfolioDashboard';
-import Modal from '../components/Modal';
+import AboutPage from '../components/AboutPage';
 
 const SidebarRouter = [
   {
@@ -16,7 +12,8 @@ const SidebarRouter = [
     sidebarName: 'Home',
     navbarName: 'Home',
     icon: Home,
-    component: DashboardPage
+    component: DashboardPage,
+    showModal: false
   },
   {
     path: '/plannerDashboard',
@@ -40,11 +37,12 @@ const SidebarRouter = [
     component: PortfolioDashboard
   },
   {
-    path:'toggleModal',
+    path:'/aboutPage',
     sidebarName: 'About Scholacity',
     navbarName: 'About Scholacity',
     icon: Info,
-    component: Modal
+    component: AboutPage,
+    showModal:true
   }
   
 ];
