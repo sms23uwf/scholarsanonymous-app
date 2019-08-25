@@ -33,8 +33,12 @@ class AboutPage extends React.Component {
 
   render() {
     return (
-      <div className="box-layout_dashboard">
-        <Modal
+      <div className="content-container-dashboard">
+      <span id="image">
+        <span id="image-inner">
+        </span>
+      </span>
+      <Modal
           show={this.state.showModal}
           closeCallback={this.toggleModal}
           customClass="custom_modal_class"

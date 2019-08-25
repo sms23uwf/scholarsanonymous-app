@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Router, browserHistory } from 'react-router';
 import Modal from './Modal';
+import { startLogout } from '../actions/auth';
 
 require('bootstrap/dist/css/bootstrap.css');
 
@@ -33,7 +34,13 @@ class DashboardPage extends React.Component {
 
   render() {
     return (
-        <div className="box-layout_dashboard">
+
+        <div className="content-container-dashboard">
+          <span id="image">
+            <span id="image-inner">
+              <button className="button button--link" onClick={startLogout}>Logout</button>
+            </span>
+          </span>
           <Modal
           show={this.state.showModal}
           closeCallback={this.toggleModal}

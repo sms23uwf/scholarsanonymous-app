@@ -41,3 +41,21 @@ button:disabled {
   margin-bottom: 0; /* I added this after I posted my reply */
   vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
 }
+
+#image {
+  display: inline-block;
+  width: 100%;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle;
+  background-size: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-image: url('/images/Scholacity_Logo.jpg'); 
+}
+
+#image-inner {
+  display: block;
+  height: 0;
+  padding-top: 63.3%;
+}
