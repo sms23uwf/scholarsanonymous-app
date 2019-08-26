@@ -37,9 +37,7 @@ class DashboardPage extends React.Component {
 
         <div className="content-container-dashboard">
           <span id="image">
-            <span id="image-inner">
-              <button className="button button--link" onClick={startLogout}>Logout</button>
-            </span>
+            <span id="image-inner" />
           </span>
           <Modal
           show={this.state.showModal}

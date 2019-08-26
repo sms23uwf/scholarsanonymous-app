@@ -1,29 +1,30 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MenuList, MenuItem } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import routes from '../routers/SidebarRouter';
+import Grid from '@material-ui/core/Grid';
+import { ExitToApp } from '@material-ui/icons';
+import { startLogout } from '../actions/auth';
 
 const drawerWidth = 240;
 
 const showModal = false;
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -113,18 +114,34 @@ export function PersistentDrawerLeft() {
         })}
       >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+
+          <Grid
+          justify="space-between" 
+          container 
+          spacing={0}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h3" noWrap>
-            Scholacity
-          </Typography>
+            <Grid item>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, open && classes.hide)}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Grid>
+      
+            <Grid item>
+              <Typography variant="h3" noWrap align="left">
+                Scholacity
+              </Typography>
+            </Grid>
+            <Grid item>
+              <button className="button button--link" onClick={startLogout}>Logout</button>
+            </Grid>
+          </Grid>
+
         </Toolbar>
       </AppBar>
       <Drawer
