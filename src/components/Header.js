@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 import { PersistentDrawerLeft } from './PersistentDrawerLeft';
 
-//require('bootstrap/dist/css/bootstrap.css');
-
 export const Header = ({ startLogout }) => (
   <header className="header">
     <div className="content-container">

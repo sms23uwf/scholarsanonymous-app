@@ -1,0 +1,254 @@
+[debug] [2019-08-26T03:13:48.561Z] ----------------------------------------------------------------------
+[debug] [2019-08-26T03:13:48.566Z] Command:       /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/node /Users/claudiasatterfield/.nvm/versions/node/v12.7.0/bin/firebase deploy --debug
+[debug] [2019-08-26T03:13:48.566Z] CLI Version:   7.2.4
+[debug] [2019-08-26T03:13:48.567Z] Platform:      darwin
+[debug] [2019-08-26T03:13:48.567Z] Node Version:  v12.7.0
+[debug] [2019-08-26T03:13:48.568Z] Time:          Sun Aug 25 2019 22:13:48 GMT-0500 (Central Daylight Time)
+[debug] [2019-08-26T03:13:48.568Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-26T03:13:48.594Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-26T03:13:48.595Z] > authorizing via signed-in user
+[debug] [2019-08-26T03:13:48.595Z] [iam] checking project scholacity-org for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-08-26T03:13:48.597Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-08-26T03:13:48.597Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-08-26T03:13:49.023Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:13:49.120Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/scholacity-org:testIamPermissions  
+
+[debug] [2019-08-26T03:13:49.336Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:13:49.339Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/scholacity-org  
+ 
+[debug] [2019-08-26T03:13:49.551Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'scholacity-org'...
+[info] 
+[info] i  deploying database, storage, firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script.
+[info] i  database: checking rules syntax...
+[debug] [2019-08-26T03:14:08.116Z] >>> HTTP REQUEST PUT https://scholacity-org.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+[debug] [2019-08-26T03:14:09.869Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database scholacity-org is valid
+[debug] [2019-08-26T03:14:09.871Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/scholacity-org  
+ 
+[debug] [2019-08-26T03:14:10.307Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2019-08-26T03:14:10.309Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/scholacity-org:test  
+
+[debug] [2019-08-26T03:14:10.515Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-08-26T03:14:10.518Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/scholacity-org:test  
+
+[debug] [2019-08-26T03:14:10.669Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-08-26T03:14:10.672Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.1.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.1.6",
+    "tslint": "^5.12.0",
+    "typescript": "^3.3.3"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-08-26T03:14:10.674Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/scholacity-org/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2019-08-26T03:14:10.674Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/scholacity-org/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2019-08-26T03:14:10.937Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:11.133Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2019-08-26T03:14:11.135Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/scholacity-org/adminSdkConfig  
+ 
+[debug] [2019-08-26T03:14:11.293Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:11.295Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/scholacity-org/versions  
+
+[debug] [2019-08-26T03:14:12.202Z] <<< HTTP RESPONSE 200
+[info] i  storage: uploading rules storage.rules...
+[debug] [2019-08-26T03:14:12.204Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/scholacity-org/rulesets  
+
+[debug] [2019-08-26T03:14:12.564Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:12.565Z] [rules] created ruleset projects/scholacity-org/rulesets/04941329-2242-4fea-9be1-37f823109450
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2019-08-26T03:14:12.567Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/scholacity-org/rulesets  
+
+[debug] [2019-08-26T03:14:12.568Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/scholacity-org/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2019-08-26T03:14:12.901Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:12.902Z] [rules] created ruleset projects/scholacity-org/rulesets/7dea1c07-a02b-4128-af35-14c9f959085c
+[debug] [2019-08-26T03:14:13.684Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:13.685Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/scholacity-org/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2019-08-26T03:14:13.933Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: deployed indexes in firestore.indexes.json successfully
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2019-08-26T03:14:13.937Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/scholacity-org/configs  
+ 
+[debug] [2019-08-26T03:14:14.250Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (30.92 KB) for uploading
+[debug] [2019-08-26T03:14:15.786Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/scholacity-org/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2019-08-26T03:14:16.679Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:16.680Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-11eb8371-5dc4-4e0b-b038-9a958b2fe7f6/9f342d2d-d5c6-4fe8-bc95-aa7159e51b7e.zip?GoogleAccessId=service-109651803662@gcf-admin-robot.iam.gserviceaccount.com&Expires=1566791056&Signature=qZhyf3zTBomrcUVczz3yy8dBDVG%2FWFa5rf%2Bic5HSU6sq8Yn3ZEBqhIr5y4hfWsuyGaSn5doJO1cGN3U%2FzX68QfkK2iDCczAESwXvk6P9aVs1LRQ5HruLAAJIkunvihLbRpMur4yQLUeK2zdYgyAPMugoiv%2BU3WAbR6ZW0g1%2Bm0BPEbavrdZqmGeEY6cj9EGunnwwlMCaT7L%2FWcjeoB13WvMHLw2xMf1pwaYV%2BeUkFNgzBeOQyDqSNL23kIruI5V5mlODqfR124KIx%2FwFJIAA7PluRd495MfSVjj3S6dDOgSHlGTkdx1El9yA%2FFLWze7AZE5WPJXvuKlc2UXcHbu2Yg%3D%3D  
+ <request body omitted>
+[debug] [2019-08-26T03:14:17.095Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: functions folder uploaded successfully
+[info] i  hosting[scholacity-org]: beginning deploy...
+[info] i  hosting[scholacity-org]: found 11 files in public
+[debug] [2019-08-26T03:14:17.107Z] [hosting] hash cache [cHVibGlj] load error: lines is not defined
+[debug] [2019-08-26T03:14:17.772Z] [hosting] hash cache [cHVibGlj] stored for 11 files
+[debug] [2019-08-26T03:14:17.773Z] [hosting][hash queue][FINAL]
+[debug] [2019-08-26T03:14:17.773Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/scholacity-org/versions/2654a46ef0893f5d:populateFiles  
+ <request body omitted>
+[debug] [2019-08-26T03:14:18.913Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:18.918Z] [hosting][populate queue][FINAL]
+[debug] [2019-08-26T03:14:18.918Z] [hosting] uploads queued: 4
+[info] i  hosting: uploading new files [0/4] (0%)
+[info] i  hosting: uploading new files [2/4] (50%)
+[info] i  hosting: uploading new files [2/4] (50%)
+[info] i  hosting: uploading new files [3/4] (75%)
+[debug] [2019-08-26T03:14:26.613Z] [hosting][upload queue][FINAL]
+[info] ✔  hosting[scholacity-org]: file upload complete
+[debug] [2019-08-26T03:14:26.614Z] [hosting] deploy completed after 9518ms
+[info] i  database: releasing rules...
+[debug] [2019-08-26T03:14:26.770Z] >>> HTTP REQUEST PUT https://scholacity-org.firebaseio.com/.settings/rules.json  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+[debug] [2019-08-26T03:14:27.138Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules for database scholacity-org released successfully
+[debug] [2019-08-26T03:14:27.140Z] [rules] releasing firebase.storage/scholacity-org.appspot.com with ruleset projects/scholacity-org/rulesets/04941329-2242-4fea-9be1-37f823109450
+[debug] [2019-08-26T03:14:27.140Z] >>> HTTP REQUEST PATCH https://firebaserules.googleapis.com/v1/projects/scholacity-org/releases/firebase.storage/scholacity-org.appspot.com  
+
+[debug] [2019-08-26T03:14:27.477Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:27.477Z] [rules] updated release projects/scholacity-org/releases/firebase.storage/scholacity-org.appspot.com
+[info] ✔  storage: released rules storage.rules to firebase.storage/scholacity-org.appspot.com
+[debug] [2019-08-26T03:14:27.478Z] [rules] releasing cloud.firestore with ruleset projects/scholacity-org/rulesets/7dea1c07-a02b-4128-af35-14c9f959085c
+[debug] [2019-08-26T03:14:27.479Z] >>> HTTP REQUEST PATCH https://firebaserules.googleapis.com/v1/projects/scholacity-org/releases/cloud.firestore  
+
+[debug] [2019-08-26T03:14:27.824Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:27.825Z] [rules] updated release projects/scholacity-org/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore
+[debug] [2019-08-26T03:14:27.827Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/scholacity-org/locations/-/functions  
+ 
+[debug] [2019-08-26T03:14:28.276Z] <<< HTTP RESPONSE 200
+[info] i  functions: updating Node.js 8 function getCourses(us-central1)...
+[debug] [2019-08-26T03:14:28.281Z] Trigger is:  {"httpsTrigger":{}}
+[debug] [2019-08-26T03:14:28.283Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/scholacity-org/services/cloudscheduler.googleapis.com  
+ 
+[debug] [2019-08-26T03:14:28.528Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:28.530Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/scholacity-org/locations/us-central1/functions/getCourses {"updateMask":"sourceUploadUrl,name,labels,runtime,httpsTrigger"} 
+
+[debug] [2019-08-26T03:14:28.947Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:28.950Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/scholacity-org/locations/-/functions  
+ 
+[debug] [2019-08-26T03:14:29.418Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:29.420Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:29.713Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:31.718Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:32.000Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:34.001Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:34.271Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:36.274Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:36.562Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:38.567Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:38.863Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:40.864Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:41.143Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:43.149Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:43.510Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:45.511Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:45.790Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:47.793Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:48.055Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:50.058Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:50.338Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:52.339Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:52.643Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:54.649Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:54.917Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:56.919Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:57.195Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:14:59.203Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:14:59.463Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:15:01.469Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/c2Nob2xhY2l0eS1vcmcvdXMtY2VudHJhbDEvZ2V0Q291cnNlcy9Yd0k1Q3dtR0t5Yw  
+ 
+[debug] [2019-08-26T03:15:01.749Z] <<< HTTP RESPONSE 200
+[info] ✔  functions[getCourses(us-central1)]: Successful update operation. 
+[debug] [2019-08-26T03:15:01.753Z] [
+  {
+    "config": {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "site": "scholacity-org"
+    },
+    "site": "scholacity-org",
+    "version": "sites/scholacity-org/versions/2654a46ef0893f5d"
+  }
+]
+[info] i  hosting[scholacity-org]: finalizing version...
+[debug] [2019-08-26T03:15:01.753Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/scholacity-org/versions/2654a46ef0893f5d?updateMask=status  
+
+[debug] [2019-08-26T03:15:02.333Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:15:02.334Z] [hosting] finalized version for scholacity-org:
+[info] ✔  hosting[scholacity-org]: version finalized
+[info] i  hosting[scholacity-org]: releasing new version...
+[debug] [2019-08-26T03:15:02.335Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/scholacity-org/releases?version_name=sites/scholacity-org/versions/2654a46ef0893f5d  
+
+[debug] [2019-08-26T03:15:02.736Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-26T03:15:02.737Z] [hosting] release:
+[info] ✔  hosting[scholacity-org]: release complete
+[info] 
+[info] ✔  Deploy complete!
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/scholacity-org/overview
+[info] Hosting URL: https://scholacity-org.firebaseapp.com

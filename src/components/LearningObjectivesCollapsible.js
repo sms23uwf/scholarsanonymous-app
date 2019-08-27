@@ -11,9 +11,9 @@ const handleChange = (e) => {
   
 
  export const LearningObjectivesCollapsible = (props) => (
-    props.knowledgeareas.map(knowledgearea => {
+    props.knowledgeareas.map((knowledgearea, key) => {
         return (
-            <div className="content-container">
+            <div key={key} className="content-container">
                 <Collapsible key={knowledgearea.id} title={knowledgearea.content}>
                     <LearningObjectiveList key={knowledgearea.id} {...knowledgearea} />
                 </Collapsible>

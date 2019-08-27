@@ -24,6 +24,7 @@
     "contentful": "^7.9.1",
     "core-js": "^3.1.4",
     "express": "^4.17.1",
+    "file-loader": "^4.2.0",
     "firebase": "4.2.0",
     "heroku": "^7.26.2",
     "history": "4.7.2",
@@ -45,6 +46,7 @@
     "redux-thunk": "2.2.0",
     "style-loader": "0.18.2",
     "textract": "^2.5.0",
+    "url-loader": "^2.1.0",
     "uuid": "3.1.0",
     "validator": "8.0.0"
   },

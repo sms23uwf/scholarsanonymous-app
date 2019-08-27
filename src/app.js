@@ -12,10 +12,11 @@ import getVisibleLearningObjectives from './selectors/learningobjectives';
 import getVisibleKnowledgeAreas from './selectors/knowledgeareas';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import './styles/base/_custom.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
+
+require ('../public/images/favicon.ico');
 
 const store = configureStore();
 const jsx = (

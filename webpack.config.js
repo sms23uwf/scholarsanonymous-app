@@ -38,7 +38,12 @@ module.exports = (env) => {
           },
           'css-loader',
           'sass-loader',
-        ]}
+        ]},
+        {
+          test: /\.(jpg|jpeg|gif|png|ico)$/,
+          exclude: /node_modules/,
+          loader:'file-loader?name=img/[path][name].[ext]&context=./app/images'
+       }        
       ]
     },
     plugins: [

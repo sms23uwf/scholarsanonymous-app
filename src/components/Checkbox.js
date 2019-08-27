@@ -1,5 +1,7 @@
 import React from "react";
 
+require('bootstrap/dist/css/bootstrap.css');
+
 const Checkbox = ({ id, label, onCheckboxChange }) => (
   <div className="form-check">
     <label>
