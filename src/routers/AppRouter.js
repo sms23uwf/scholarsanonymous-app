@@ -10,8 +10,6 @@ import PlannerDashboard from '../components/PlannerDashboard';
 import RecommendationsDashboard from '../components/RecommendationsDashboard';
 import PortfolioDashboard from '../components/PortfolioDashboard';
 import AboutPage from '../components/AboutPage';
-import Logout from '../components/Logout';
-
 
 export const history = createHistory();
 
@@ -25,7 +23,6 @@ const AppRouter = () => (
         <PrivateRoute path="/recommendationsDashboard" component={RecommendationsDashboard}/>
         <PrivateRoute path="/portfolioDashboard" component={PortfolioDashboard}/>
         <PrivateRoute path="/aboutPage" component={AboutPage} />
-        <PrivateRoute path="/logout" component={Logout} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

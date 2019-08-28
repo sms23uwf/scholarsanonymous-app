@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { PowerOff } from '@material-ui/icons';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -138,7 +139,15 @@ export function PersistentDrawerLeft() {
               </Typography>
             </Grid>
             <Grid item>
-              <button className="button button--link" onClick={startLogout}>Logout</button>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={startLogout}
+                edge="start"
+                className={clsx(classes.menuButton, open && classes.hide)}
+              >
+              <PowerOff/>
+              </IconButton>
             </Grid>
           </Grid>
 

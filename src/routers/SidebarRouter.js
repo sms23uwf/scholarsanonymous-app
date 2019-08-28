@@ -1,11 +1,10 @@
-import { Home, ContentPaste, Notifications, AccountCircle, Info, WorkOutline, Work, Assessment, PowerOff, ShoppingCart, PlaylistAddCheck } from '@material-ui/icons';
+import { Home, ContentPaste, Notifications, AccountCircle, Info, WorkOutline, Work, Assessment, ShoppingCart, PlaylistAddCheck } from '@material-ui/icons';
 
 import DashboardPage from '../components/DashboardPage';
 import PlannerDashboard from '../components/PlannerDashboard';
 import RecommendationsDashboard from '../components/RecommendationsDashboard';
 import PortfolioDashboard from '../components/PortfolioDashboard';
 import AboutPage from '../components/AboutPage';
-import Logout from '../components/Logout';
 
 const SidebarRouter = [
   {
@@ -44,13 +43,6 @@ const SidebarRouter = [
     icon: Info,
     component: AboutPage,
     showModal:true
-  },
-  {
-    path: '/logout',
-    sidebarName: 'Logout',
-    navbarName: 'Logout',
-    icon: PowerOff,
-    component: Logout
   }
   
 ];
