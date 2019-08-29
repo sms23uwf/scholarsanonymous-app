@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MenuList, MenuItem } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -18,7 +19,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import routes from '../routers/SidebarRouter';
 import Grid from '@material-ui/core/Grid';
-import { ExitToApp } from '@material-ui/icons';
 import { startLogout } from '../actions/auth';
 
 const drawerWidth = 240;
@@ -88,7 +88,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function PersistentDrawerLeft() {
+export function PersistentDrawerLeft({ handleLogout }) {
+  
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -134,7 +135,7 @@ export function PersistentDrawerLeft() {
             </Grid>
       
             <Grid item>
-              <Typography variant="h3" noWrap align="left">
+              <Typography variant="h3" noWrap align="left" edge="start">
                 Scholacity
               </Typography>
             </Grid>
@@ -142,9 +143,8 @@ export function PersistentDrawerLeft() {
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
-                onClick={startLogout}
-                edge="start"
-                className={clsx(classes.menuButton, open && classes.hide)}
+                onClick={handleLogout}
+                edge="end"
               >
               <PowerOff/>
               </IconButton>

@@ -1,9 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Router, browserHistory } from 'react-router';
 import Modal from './Modal';
-import { startLogout } from '../actions/auth';
 
 require('bootstrap/dist/css/bootstrap.css');
 
@@ -16,7 +13,7 @@ class DashboardPage extends React.Component {
     showModal: false
   }
 
-  toggleModal = () => {
+    toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal
     });
