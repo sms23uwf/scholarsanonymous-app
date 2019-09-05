@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import courseRecommendationsReducer from '../reducers/courserecommendations';
 import learningObjectivesReducer from '../reducers/learningobjectives';
 import knowledgeAreasReducer from '../reducers/knowledgeareas.js';
+import usersReducer from '../reducers/users.js';
 import filtersReducer from '../reducers/filters';
 import authReducer from '../reducers/auth';
 
@@ -14,6 +15,7 @@ export default () => {
       courserecommendations: courseRecommendationsReducer,
       learningobjectives: learningObjectivesReducer,
       knowledgeareas: knowledgeAreasReducer,
+      users: usersReducer,
       filters: filtersReducer,
       auth: authReducer
     }),

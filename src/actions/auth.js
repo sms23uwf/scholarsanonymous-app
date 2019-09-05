@@ -20,3 +20,9 @@ export const startLogout = () => {
     return firebase.auth().signOut();
   };
 };
+
+export const cancelLogin = () => {
+  return () => {
+    return firebase.auth().signOut().then(firebase.auth().currentUser.refreshToken);
+  };
+};

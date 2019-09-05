@@ -10,6 +10,12 @@ export const setDispositionFilter = (disposition = '') => ({
   disposition
 });
 
+// SET_UUID_FILTER
+export const setUUIDFilter = (userId = '') => ({
+  type: 'SET_UUID_FILTER',
+  userId
+});
+
 // SORT_BY_DATE
 export const sortByDate = () => ({
   type: 'SORT_BY_DATE'

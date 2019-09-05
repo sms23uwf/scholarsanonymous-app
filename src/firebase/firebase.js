@@ -16,73 +16,82 @@ const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 export { firebase, googleAuthProvider, database as default };
 
-    
-      // database.ref('courses').push({
-      //   id: 1,
-      //   counter: 1,
-      //   titles: {
-      //     description: `An American Icon: Irving Berlin`,
-      //     longdescription: `He could not read or write music, he could only play the piano in the key of F Sharp Major. But, he gave us such hits as “Alexander’s Ragtime Band,” “White Christmas,” “God Bless America” and hundreds more! Composer Jerome Kern said ‘’He has no place in American music. He IS American music.’’ Join Judy DeBolt as she presents the life of Irving Berlin, who was the most successful and most representative songwriter for the first half of the 20th Century.`
-      //    },
-      //    knowledgearea: 'Arts and Literature',
-      //    fee: `$12`,
-      //    Instructor: 'Judy DeBolt',
-      //    When: `22-Nov | Fri 1:00 PM - 2:00 PM`,
-      //    Where: `UWF Building 86, Room 121`,
-      //    registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
-      //    }).then(() => {
-      //      console.log('course1 added.');
-      //    })
-      //    .catch((e) => {
-      //      console.log('course1 failed.',e);
-      //    });
+      // database.ref('user').push({
+      //   userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
+      //   informedConsent: true
+      // }).then(() => {
+      //   console.log('user1 added.');
+      // })
+      // .catch((e) => {
+      //   console.log('user1 failed.',e);
+      // })
 
-      //    database.ref('courses').push({
-      //     id: 2,
-      //     counter: 1,
-      //     titles: {
-      //       description: `Bach and Beyond: Intriguing World of 18th Century Harpsichord Music`,
-      //       longdescription: `Dr. Hedi Salanki-Rubardt earned her Doctorate in harpsichord from Julliard School of Music. She is one of today’s foremost performers of a repertoire of solo music for piano and harpsichord. UWF is fortunate to have this distinguished University Professor as Director of the Piano Program and Chamber Music. Dr. Salanki is also a friend of Leisure Learning and will share the history           of the harpsichord and harpsichord music in the 18th century. Enjoy the music and interesting information as Dr. Salanki leads this exciting session.`
-      //      },
-      //      knowledgearea: 'Arts and Literature',
-      //      fee: `$12`,
-      //      Instructor: 'Dr. Hedi Salanki-Rubardt',
-      //      When: `26-Sep | Thu 1:00 PM - 2:00 PM`,
-      //      Where: `UWF Building 82 (Fine & Perf. Arts) Music Hall`,
-      //      registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
-      //      }).then(() => {
-      //        console.log('course2 added.');
-      //      })
-      //      .catch((e) => {
-      //        console.log('course2 failed.',e);
-      //      });
+      //  database.ref('courses').push({
+      //    id: 1,
+      //    counter: 1,
+      //    titles: {
+      //      description: `An American Icon: Irving Berlin`,
+      //      longdescription: `He could not read or write music, he could only play the piano in the key of F Sharp Major. But, he gave us such hits as “Alexander’s Ragtime Band,” “White Christmas,” “God Bless America” and hundreds more! Composer Jerome Kern said ‘’He has no place in American music. He IS American music.’’ Join Judy DeBolt as she presents the life of Irving Berlin, who was the most successful and most representative songwriter for the first half of the 20th Century.`
+      //     },
+      //     knowledgearea: 'Arts and Literature',
+      //     fee: `$12`,
+      //     Instructor: 'Judy DeBolt',
+      //     When: `22-Nov | Fri 1:00 PM - 2:00 PM`,
+      //     Where: `UWF Building 86, Room 121`,
+      //     registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
+      //     }).then(() => {
+      //       console.log('course1 added.');
+      //     })
+      //     .catch((e) => {
+      //       console.log('course1 failed.',e);
+      //     });
+
+      //     database.ref('courses').push({
+      //      id: 2,
+      //      counter: 1,
+      //      titles: {
+      //        description: `Bach and Beyond: Intriguing World of 18th Century Harpsichord Music`,
+      //        longdescription: `Dr. Hedi Salanki-Rubardt earned her Doctorate in harpsichord from Julliard School of Music. She is one of today’s foremost performers of a repertoire of solo music for piano and harpsichord. UWF is fortunate to have this distinguished University Professor as Director of the Piano Program and Chamber Music. Dr. Salanki is also a friend of Leisure Learning and will share the history           of the harpsichord and harpsichord music in the 18th century. Enjoy the music and interesting information as Dr. Salanki leads this exciting session.`
+      //       },
+      //       knowledgearea: 'Arts and Literature',
+      //       fee: `$12`,
+      //       Instructor: 'Dr. Hedi Salanki-Rubardt',
+      //       When: `26-Sep | Thu 1:00 PM - 2:00 PM`,
+      //       Where: `UWF Building 82 (Fine & Perf. Arts) Music Hall`,
+      //       registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
+      //       }).then(() => {
+      //         console.log('course2 added.');
+      //       })
+      //       .catch((e) => {
+      //         console.log('course2 failed.',e);
+      //       });
   
-    //  database.ref('courserecommendation').push({
-    //    userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
-    //    counter: 1,
-    //    course: {
-    //      content: `Bon Voyage! Lessons in Foreign Travel`,
-    //      description: `Interested in foreign travel and cruises? Learn when to travel, how to plan, how to pack and many other lessons learned in more than 30 years of adventures. Eugene Ray has been on 28 cruises and at least 10 overseas land tours. He has traveled to China, Russia, Canada, most of the Carribean Islands to include Cuba, Cosa Rica, Mexico, Brazil, Argentina, Italy, France, Spain, Germany, Switzerland, Amsterdam, Belgium, Poland, Hungary, Austria, Turkey, Greece, Australia, Venezuela, United Kingdom, Ireland, UAE, India, Oman, Singapore, Thailand, Egypt and all 50 states. There's a lot of value in his experience. Join us for a great discussion.`,
-    //      knowledgearea: 'Culture, Travel and Tours'
-    //    },
-    //    disposition: 'completed',
-    //    learningobjectives: {
-    //     learningobjective: {
-    //       content: `Analyze how specific works of art reflect diverse cultural experiences and perspectives.`,
-    //       knowledgearea: 'Arts and Literature'
-    //     },
-    //     learningobjective: {
-    //       content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
-    //       knowledgearea: 'Arts and Literature'
-    //     }
-    //   },
-    //   registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
-    //   }).then(() => {
-    //     console.log('ucr2 added.');
-    //   })
-    //   .catch((e) => {
-    //     console.log('ucr2 failed.',e);
-    //   })
+      // database.ref('courserecommendation').push({
+      //   userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
+      //   counter: 1,
+      //   course: {
+      //     content: `Bon Voyage! Lessons in Foreign Travel`,
+      //     description: `Interested in foreign travel and cruises? Learn when to travel, how to plan, how to pack and many other lessons learned in more than 30 years of adventures. Eugene Ray has been on 28 cruises and at least 10 overseas land tours. He has traveled to China, Russia, Canada, most of the Carribean Islands to include Cuba, Cosa Rica, Mexico, Brazil, Argentina, Italy, France, Spain, Germany, Switzerland, Amsterdam, Belgium, Poland, Hungary, Austria, Turkey, Greece, Australia, Venezuela, United Kingdom, Ireland, UAE, India, Oman, Singapore, Thailand, Egypt and all 50 states. There's a lot of value in his experience. Join us for a great discussion.`,
+      //     knowledgearea: 'Culture, Travel and Tours'
+      //   },
+      //   disposition: 'completed',
+      //   learningobjectives: {
+      //    learningobjective: {
+      //      content: `Analyze how specific works of art reflect diverse cultural experiences and perspectives.`,
+      //      knowledgearea: 'Arts and Literature'
+      //    },
+      //    learningobjective: {
+      //      content: `Demonstrate an understanding of the impact of specific works of art on culture.`,
+      //      knowledgearea: 'Arts and Literature'
+      //    }
+      //  },
+      //  registrationurl: `https://uwf.augusoft.net//index.cfm?method=ClassListing.ClassListingDisplay&int_category_id=12&int_sub_category_id=18&bit_url=1`
+      //  }).then(() => {
+      //    console.log('ucr2 added.');
+      //  })
+      //  .catch((e) => {
+      //    console.log('ucr2 failed.',e);
+      //  })
 
     //  database.ref('courserecommendation').push({
     //    userid: 'PH4wUCr2freJP9ihfqp1kCcBaIe2',
@@ -776,27 +785,27 @@ export { firebase, googleAuthProvider, database as default };
 //   content: 'Science and Health'
 // });
 
-   database.ref('knowledgearea').on('value', (snapshot) => {
-     const knowledgeareas = [];
-     snapshot.forEach((childSnapshot) => {
-       knowledgeareas.push({
-         id: childSnapshot.key,
-         ...childSnapshot.val()
-       });
-     });
-     console.log(knowledgeareas);
-   });
+  //  database.ref('knowledgearea').on('value', (snapshot) => {
+  //    const knowledgeareas = [];
+  //    snapshot.forEach((childSnapshot) => {
+  //      knowledgeareas.push({
+  //        id: childSnapshot.key,
+  //        ...childSnapshot.val()
+  //      });
+  //    });
+  //    console.log(knowledgeareas);
+  //  });
 
-   database.ref('learningobjective').on('value', (snapshot) => {
-    const learningobjectives = [];
-    snapshot.forEach((childSnapshot) => {
-      learningobjectives.push({
-        id: childSnapshot.key,
-        ...childSnapshot.val()
-      });
-    });
-    console.log(learningobjectives);
-  });
+  //  database.ref('learningobjective').on('value', (snapshot) => {
+  //   const learningobjectives = [];
+  //   snapshot.forEach((childSnapshot) => {
+  //     learningobjectives.push({
+  //       id: childSnapshot.key,
+  //       ...childSnapshot.val()
+  //     });
+  //   });
+  //   console.log(learningobjectives);
+  // });
 
 // // child_removed
 // database.ref('expenses').on('child_removed', (snapshot) => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MenuList, MenuItem } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -13,13 +12,13 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { PowerOff } from '@material-ui/icons';
+import { Close  } from '@material-ui/icons';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import routes from '../routers/SidebarRouter';
 import Grid from '@material-ui/core/Grid';
-import { startLogout } from '../actions/auth';
 
 const drawerWidth = 240;
 
@@ -146,7 +145,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
                 onClick={handleLogout}
                 edge="end"
               >
-              <PowerOff/>
+              <Close />
               </IconButton>
             </Grid>
           </Grid>
