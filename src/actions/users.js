@@ -15,6 +15,8 @@ export const startAddUser = (userData = {}) => {
     } = userData;
     const user = { userid, informedConsent };
 
+    console.log(`inside startAddUser`);
+
     return database.ref(`user`).push(user).then((ref) => {
       dispatch(addUser({
         id: ref.key,
@@ -26,14 +28,15 @@ export const startAddUser = (userData = {}) => {
 
 // SELECT_USER
 export const selectUser = (user) => ({
-  type: 'SELECT_USERS',
+  type: 'SELECT_USER',
   user
 });
 
 export const startSelectUser = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database.ref(`user/${user}`).once('value').then((snapshot) => {
+    console.log(`inside startSelectUser uid ${uid}`);
+    return database.ref(`user`).once('value').then((snapshot) => {
         const users = [];
 
       snapshot.forEach((childSnapshot) => {
@@ -47,6 +50,8 @@ export const startSelectUser = () => {
       });
 
       dispatch(selectUser(users));
+      console.log(`users count: ${users.length}`);
+
     });
   };
 };
@@ -59,17 +64,17 @@ export const setUsers = (users) => ({
 
 export const startSetUsers = () => {
   return (dispatch, getState) => {
-    const uid = getState().auth.uid;
     return database.ref(`user`).once('value').then((snapshot) => {
         const users = [];
 
+      console.log("inside startSetUsers");
       snapshot.forEach((childSnapshot) => {
         users.push({
           id: childSnapshot.key,
           ...childSnapshot.val()
         });
       });
-
+      console.log(`users: ${users.length}`);
       dispatch(setUsers(users));
     });
   };

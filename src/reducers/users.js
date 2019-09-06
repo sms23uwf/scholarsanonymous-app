@@ -25,6 +25,8 @@ export default (state = usersReducerDefaultState, action) => {
       });
     case 'SET_USERS':
       return action.users;
+    case 'SELECT_USER':
+      return action.user;  
     default:
       return state;
   }
