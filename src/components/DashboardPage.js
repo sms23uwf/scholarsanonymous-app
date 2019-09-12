@@ -84,8 +84,28 @@ export class DashboardPage extends React.Component {
           customClass="custom_modal_class"
           >
             <React.Fragment>
-              <h2>Scholacity</h2>
-              <p>Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning. No Personally Identifying Information (PII) will be captured or stored about the logged-in user. The only data this application captures is related to the learning objectives and courses that you view and choose, tied simply to a user ID number. This data shall be used for educational research purposes only.</p>
+              <h2>Informed Consent</h2>
+              <br/>
+              <h3>Affording Self-Directed Educational Experiences in the Lifelong Learning Community: Using Domain Ontology-Generated Learning Objectives to Recommend Leisure Learning Courses.</h3>
+              <br/>
+              <p align="left">Thank you for your interest in this research project. Federal and university regulations require us to obtain signed consent for participation in research involving human participants. After reading the statements below, please indicate your consent by checking the box and clicking the 'Submit' button.
+              <br/>
+              <br/>
+              The purpose of this study is to investigate the useability and acceptability, by the lifelong learning community over the age of 65, of machine generated learning objectives from course descriptions in a program catalog such as the one from the Leisure Learning center here at the University of West Florida.
+              <br/>
+              <br/>
+              I understand that :
+              <br/>
+              1) There are no physical risks associated with this study.
+              <br/>
+              2) The Web Application will collect no information whatsoever about the participant. When you log in with Google we shall only store a unique user ID and the fact that you accepted this informed consent agreement.
+              <br/>
+              3) I may discontinue participation in this study at any time.
+              <br/>
+              <br/>
+
+
+              </p>
               
               <div className="list-item" width="1.0">
                 <Grid
@@ -94,7 +114,7 @@ export class DashboardPage extends React.Component {
                 spacing={0}
                 >
                   <Grid item>
-                    <Checkbox type="checkbox" label="I Agree" onCheckboxChange={this.onCheckChange}/>
+                    <Checkbox type="checkbox" label="I certify that I have read and fully understand the statements above and agree to participate in the research project." onCheckboxChange={this.onCheckChange}/>
                   </Grid>
                 </Grid>
               </div>
