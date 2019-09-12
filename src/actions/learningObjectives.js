@@ -89,7 +89,7 @@ export const startSetLearningObjectives = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     const knowledgearea = getState().knowledgeareas.content;
-    console.log("inside startSetLearningObjectives");
+    
     return database.ref(`learningobjective`).once('value').then((snapshot) => {
         const learningobjectives = [];
 

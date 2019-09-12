@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'uuid';
 import InformedConsentModal from './InformedConsentModal';
 import Checkbox from './Checkbox';
 import { cancelLogin } from '../actions/auth';
@@ -7,42 +6,42 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { history } from '../routers/AppRouter';
 import selectUsers from '../selectors/users';
-import { startSelectUser } from '../actions/users';
 import { startAddUser } from '../actions/users';
-import { setTextFilter } from '../actions/filters';
 import * as firebase from 'firebase';
-import database from '../firebase/firebase';
 import Grid from '@material-ui/core/Grid';
+import { setUUIDFilter } from '../actions/filters';
 
 require('bootstrap/dist/css/bootstrap.css');
 
 var userMustAgree = true;
 
-class DashboardPage extends React.Component {
+export class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
 
-    props.setTextFilter(firebase.auth().currentUser.uid);
-    
     console.log(`firebase.auth.uid ${firebase.auth().currentUser.uid}`);
 
-    if (props.users.length > 0 )
+    if (this.props.users.length > 0 )
     {
       userMustAgree = false;
     }
     else
       userMustAgree = true;
 
+
     console.log(`props.users.length: ${props.users.length}`);
     console.log(`userMustAgree ${userMustAgree}`);
+    console.log(`filter.userId: ${props.filters}`);
   }
   
   state = {
    showModal: userMustAgree,
-   agreeChecked: false
+   agreeChecked: false,
+   userid: firebase.auth().currentUser.uid
   }
 
   closeModal = () => {
+    userMustAgree = false
     this.setState({
       showModal: !this.state.showModal
     });
@@ -54,23 +53,11 @@ class DashboardPage extends React.Component {
     history.push('/cancel');
   }
 
-  callBackSetFilter = () => {
-    this.props.selectUsers().then(callBackSetMustAgree());
-  }
-
-  callBackSetMustAgree = () => {
-    if (this.props.users.length > 0 )
-    {
-      userMustAgree = false;
-    }
-    else
-      userMustAgree = true;
-  }
-
   toggleModal = () => {
     if (this.state.agreeChecked)
     {
       this.props.startAddUser();
+      userMustAgree = false
       console.log('just called startAddUser');
       this.setState({
         showModal: !this.state.showModal
@@ -83,16 +70,6 @@ class DashboardPage extends React.Component {
       agreeChecked: !this.state.agreeChecked
     });
   };
-
-   static contextTypes = {
-     router: PropTypes.shape({
-       history: PropTypes.shape({
-         push: PropTypes.func.isRequired,
-         replace: PropTypes.func.isRequired
-       }).isRequired,
-       staticContext: PropTypes.object
-     }).isRequired
-   };
 
   render() {
     return (
@@ -131,15 +108,15 @@ class DashboardPage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: selectUsers(state.users, state.filters)
+    users: selectUsers(state.users, firebase.auth().currentUser.uid),
+    filters: state.filters
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   startLogin: () => dispatch(startLogin()),
   startAddUser: () => dispatch(startAddUser()),
-  setTextFilter: (text) => dispatch(setTextFilter(text)),
-  selectUsers: () => dispatch(selectUsers())
+  setUUIDFilter: (userId) => dispatch(setUUIDFilter(userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
