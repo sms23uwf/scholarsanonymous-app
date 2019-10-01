@@ -58,7 +58,6 @@ export class DashboardPage extends React.Component {
     {
       this.props.startAddUser();
       userMustAgree = false
-      console.log('just called startAddUser');
       this.setState({
         showModal: !this.state.showModal
       });

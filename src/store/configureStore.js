@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import courseRecommendationsReducer from '../reducers/courserecommendations';
 import learningObjectivesReducer from '../reducers/learningobjectives';
+import learningObjectivesUserSelectReducer from '../reducers/learningobjective_userselect';
 import knowledgeAreasReducer from '../reducers/knowledgeareas.js';
 import usersReducer from '../reducers/users.js';
 import filtersReducer from '../reducers/filters';
@@ -14,6 +15,7 @@ export default () => {
     combineReducers({
       courserecommendations: courseRecommendationsReducer,
       learningobjectives: learningObjectivesReducer,
+      learningobjective_userselects: learningObjectivesUserSelectReducer,
       knowledgeareas: knowledgeAreasReducer,
       users: usersReducer,
       filters: filtersReducer,

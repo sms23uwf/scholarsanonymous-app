@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import { startSetCourseRecommendations } from './actions/courseRecommendations';
 import { startSetLearningObjectives } from './actions/learningObjectives';
 import { startSetKnowledgeAreas } from './actions/knowledgeAreas';
+import { startsetLOSelectionsByUser } from './actions/learningobjective_userselect';
 import { login, logout } from './actions/auth';
 import { startSetUsers } from './actions/users';
 import getVisibleCourseRecommendations from './selectors/courserecommendations';
@@ -30,7 +31,6 @@ const jsx = (
 let hasRendered = false;
 const renderApp = () => {
   if (firebase.auth().currentUser) {
-    console.log(`getting ready to set the UUID filter with ${firebase.auth().currentUser.uid}`);
     store.dispatch(setUUIDFilter(firebase.auth().currentUser.uid));
   }
   if (!hasRendered) {
@@ -58,6 +58,7 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(startSetCourseRecommendations());
     store.dispatch(startSetLearningObjectives());
     store.dispatch(startSetUsers());
+    store.dispatch(startsetLOSelectionsByUser());
     store.dispatch(startSetKnowledgeAreas()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {

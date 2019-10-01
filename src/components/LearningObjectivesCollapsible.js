@@ -5,11 +5,6 @@ import selectKnowledgeAreas from '../selectors/knowledgeareas';
 import selectLearningObjectives from '../selectors/learningobjectives';
 import LearningObjectiveList from './LearningObjectiveList';
 
-const handleChange = (e) => {
-    checkboxChecked = !checkboxChecked;
- };
-  
-
  export const LearningObjectivesCollapsible = (props) => (
     props.knowledgeareas.map((knowledgearea, key) => {
         return (

@@ -1,4 +1,3 @@
-// Course Recommendations Reducer
 
 const learningobjectivesReducerDefaultState = [];
 
