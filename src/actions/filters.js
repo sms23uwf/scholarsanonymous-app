@@ -16,6 +16,12 @@ export const setUUIDFilter = (userId = '') => ({
   userId
 });
 
+// SET_LO_FILTER
+export const setLOFilter = (learningobjectiveid = '') => ({
+  type: 'SET_LO_FILTER',
+  learningobjectiveid
+});
+
 // SORT_BY_DATE
 export const sortByDate = () => ({
   type: 'SORT_BY_DATE'

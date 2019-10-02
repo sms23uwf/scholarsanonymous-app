@@ -5,6 +5,8 @@ import moment from 'moment';
 const filtersReducerDefaultState = {
   text: '',
   disposition: '',
+  userId: '',
+  learningobjectiveid: '',
   sortBy: 'date',
   startDate: moment().startOf('month'),
   endDate: moment().endOf('month')
@@ -22,6 +24,16 @@ export default (state = filtersReducerDefaultState, action) => {
         ...state,
         disposition: action.disposition
       };
+    case 'SET_UUID_FILTER':
+      return {
+        ...state,
+        disposition: action.userId
+      };
+    case 'SET_LO_FILTER':
+      return {
+        ...state,
+        disposition: action.learningobjectiveid
+      };    
     case 'SORT_BY_AMOUNT':
       return {
         ...state,

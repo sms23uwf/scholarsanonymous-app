@@ -7,6 +7,18 @@ export const addLOSelectionToUser = (learningobjective_userselects) => ({
 });
 
 export const startAddLOSelectionToUser = (loData = {}) => {
+  return (dispatch, getState) => {
+
+    return database.ref(`learningobjective_userselect`).push({...loData}).then((ref) => {
+      dispatch(addLOSelectionToUser({
+        id: ref.key,
+        ...loData
+      }));
+    });
+  };
+};
+
+export const xstartAddLOSelectionToUserx = (loData = {}) => {
   database.ref(`learningobjective_userselect`).push({...loData}).then((ref) => {
     addLOSelectionToUser({
       id: ref.key,
