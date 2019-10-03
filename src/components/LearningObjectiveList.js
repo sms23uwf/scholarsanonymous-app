@@ -28,6 +28,11 @@ export class LearningObjectiveList extends React.Component {
     }
   };
 
+  getPairing(loId) {
+    const pairing = this.props.learningobjective_userselects.find(p => p.learningobjectiveid === loId) || {id:0};
+    return pairing.id;
+  }
+
   render() {
     return (
       <div className="content-container">
@@ -51,6 +56,13 @@ export class LearningObjectiveList extends React.Component {
                     //this.props.setLOFilter(learningobjective.id);
                     console.log(`selectLOSelectionsForUser count is ${this.props.learningobjective_userselects.length}`);
                     
+                    const pairing = this.props.learningobjective_userselects.find(p => p.learningobjectiveid === learningobjective.id) || "nada";
+                    const pairingId = this.getPairing(learningobjective.id);
+
+
+                    console.log(`pairing = ${pairing}`);
+                    console.log(`pairing = ${pairingId}`);
+
                     //this.props.learningobjective_userselects.map((selection) => {
                     //  console.log(`selectLOSelectionsForUser with ${selection.learningobjectiveid}`);
                     //})
@@ -68,7 +80,6 @@ export class LearningObjectiveList extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   startAddLOSelectionToUser: () => dispatch(startAddLOSelectionToUser()),
-  //selectLOSelectionsForUser: () => dispatch(selectLOSelectionsForUser()),
   addLOSelectionToUser: () => dispatch(addLOSelectionToUser()),
   setUUIDFilter: (userid) => dispatch(setUUIDFilter(userid)),
   setLOFilter: () => dispatch(setLOFilter())
