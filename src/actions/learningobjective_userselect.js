@@ -7,12 +7,21 @@ export const addLOSelectionToUser = (learningobjective_userselects) => ({
 });
 
 export const startAddLOSelectionToUser = (loData = {}) => {
-  return (dispatch, getState) => {
+  console.log(`inside startAddLOSelectionToUser loData learningobjectiveid = ${loData.learningobjectiveid}`);
+  console.log(`inside startAddLOSelectionToUser loData userid = ${loData.userid}`);
 
-    return database.ref(`learningobjective_userselect`).push({...loData}).then((ref) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    const {
+      learningobjectiveid = ``, 
+      userid = ``
+    } = loData;
+    const loUserPairing = { learningobjectiveid, userid };
+
+    return database.ref(`learningobjective_userselect`).push({...loUserPairing}).then((ref) => {
       dispatch(addLOSelectionToUser({
         id: ref.key,
-        ...loData
+        ...loUserPairing
       }));
     });
   };

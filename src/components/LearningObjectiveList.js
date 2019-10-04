@@ -19,11 +19,12 @@ export class LearningObjectiveList extends React.Component {
  
   handleChange = (id,e) => {
     console.log(`e.state = ${e.target.checked}`);
+    //console.log(`pairingId is ${pairingId}`);
 
     if(e.target.checked===true)
     {
-      const userId = firebase.auth().currentUser.uid;
-      const loData = {learningobjectiveid: id, userid: userId};
+      const userid = firebase.auth().currentUser.uid;
+      const loData = {learningobjectiveid: id, userid: userid};
       this.props.startAddLOSelectionToUser(loData);
     }
   };
@@ -56,16 +57,17 @@ export class LearningObjectiveList extends React.Component {
                     //this.props.setLOFilter(learningobjective.id);
                     console.log(`selectLOSelectionsForUser count is ${this.props.learningobjective_userselects.length}`);
                     
-                    const pairing = this.props.learningobjective_userselects.find(p => p.learningobjectiveid === learningobjective.id) || "nada";
+                    //const pairing = this.props.learningobjective_userselects.find(p => p.learningobjectiveid === learningobjective.id) || "nada";
                     const pairingId = this.getPairing(learningobjective.id);
 
+                    //console.log(`pairing = ${pairing}`);
+                    console.log(`pairingId = ${pairingId}`);
 
-                    console.log(`pairing = ${pairing}`);
-                    console.log(`pairing = ${pairingId}`);
+                    if(pairingId != 0)
+                      learningobjective.selected = true;
 
-                    //this.props.learningobjective_userselects.map((selection) => {
-                    //  console.log(`selectLOSelectionsForUser with ${selection.learningobjectiveid}`);
-                    //})
+                    console.log(`selected is ${learningobjective.selected}`);
+
                     return <LearningObjectiveListItem key={learningobjective.id} {...learningobjective} selectCallback={this.handleChange} />;
                   }
               })
@@ -79,8 +81,7 @@ export class LearningObjectiveList extends React.Component {
     
 
 const mapDispatchToProps = (dispatch) => ({
-  startAddLOSelectionToUser: () => dispatch(startAddLOSelectionToUser()),
-  addLOSelectionToUser: () => dispatch(addLOSelectionToUser()),
+  startAddLOSelectionToUser: (loData) => dispatch(startAddLOSelectionToUser(loData)),
   setUUIDFilter: (userid) => dispatch(setUUIDFilter(userid)),
   setLOFilter: () => dispatch(setLOFilter())
 });
