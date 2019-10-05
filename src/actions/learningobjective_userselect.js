@@ -7,9 +7,6 @@ export const addLOSelectionToUser = (learningobjective_userselects) => ({
 });
 
 export const startAddLOSelectionToUser = (loData = {}) => {
-  console.log(`inside startAddLOSelectionToUser loData learningobjectiveid = ${loData.learningobjectiveid}`);
-  console.log(`inside startAddLOSelectionToUser loData userid = ${loData.userid}`);
-
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     const {
@@ -27,24 +24,17 @@ export const startAddLOSelectionToUser = (loData = {}) => {
   };
 };
 
-export const xstartAddLOSelectionToUserx = (loData = {}) => {
-  database.ref(`learningobjective_userselect`).push({...loData}).then((ref) => {
-    addLOSelectionToUser({
-      id: ref.key,
-      ...loData
-    });
-  });
-};
-
 // REMOVE_LO_USER_PAIRING
 export const removeLOSelectionFromUser = ({ id } = {}) => ({
   type: 'REMOVE_LO_USER_PAIRING',
   id
 });
 
-export const startRemoveLOSelectionFromUser = ({ id } = {}) => {
+export const startRemoveLOSelectionFromUser = (loPairing = {}) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
+    const id = loPairing.id;
+
     return database.ref(`learningobjective_userselect/${id}`).remove().then(() => {
       dispatch(removeLOSelectionFromUser({ id }));
     });

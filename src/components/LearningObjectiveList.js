@@ -4,6 +4,7 @@ import LearningObjectiveListItem from './LearningObjectiveListItem';
 import selectLearningObjectives from '../selectors/learningobjectives';
 import selectLOSelectionsForUser from '../selectors/learningobjective_userselect';
 import { startAddLOSelectionToUser } from '../actions/learningobjective_userselect';
+import { startRemoveLOSelectionFromUser } from '../actions/learningobjective_userselect';
 import * as firebase from 'firebase';
 import { setUUIDFilter } from '../actions/filters';
 import { setLOFilter } from '../actions/filters';
@@ -17,9 +18,8 @@ export class LearningObjectiveList extends React.Component {
     userid: firebase.auth().currentUser.uid
    }
  
-  handleChange = (id,e) => {
+  handleChange = (id,pairingId,e) => {
     console.log(`e.state = ${e.target.checked}`);
-    //console.log(`pairingId is ${pairingId}`);
 
     if(e.target.checked===true)
     {
@@ -27,6 +27,15 @@ export class LearningObjectiveList extends React.Component {
       const loData = {learningobjectiveid: id, userid: userid};
       this.props.startAddLOSelectionToUser(loData);
     }
+    else
+    {
+      if(pairingId != 0)
+      {
+        const loPairing = {id: pairingId};
+        this.props.startRemoveLOSelectionFromUser(loPairing);
+      }
+    }
+    
   };
 
   getPairing(loId) {
@@ -54,21 +63,14 @@ export class LearningObjectiveList extends React.Component {
                 
                 if(this.props.content === learningobjective.knowledgearea)
                   {
-                    //this.props.setLOFilter(learningobjective.id);
-                    console.log(`selectLOSelectionsForUser count is ${this.props.learningobjective_userselects.length}`);
-                    
-                    //const pairing = this.props.learningobjective_userselects.find(p => p.learningobjectiveid === learningobjective.id) || "nada";
                     const pairingId = this.getPairing(learningobjective.id);
 
-                    //console.log(`pairing = ${pairing}`);
-                    console.log(`pairingId = ${pairingId}`);
+                    learningobjective.selected = false;
 
                     if(pairingId != 0)
                       learningobjective.selected = true;
 
-                    console.log(`selected is ${learningobjective.selected}`);
-
-                    return <LearningObjectiveListItem key={learningobjective.id} {...learningobjective} selectCallback={this.handleChange} />;
+                    return <LearningObjectiveListItem key={learningobjective.id} {...learningobjective} pairingId={pairingId} selectCallback={this.handleChange} />;
                   }
               })
             )
@@ -82,6 +84,7 @@ export class LearningObjectiveList extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   startAddLOSelectionToUser: (loData) => dispatch(startAddLOSelectionToUser(loData)),
+  startRemoveLOSelectionFromUser: (loPairing) => dispatch(startRemoveLOSelectionFromUser(loPairing)),
   setUUIDFilter: (userid) => dispatch(setUUIDFilter(userid)),
   setLOFilter: () => dispatch(setLOFilter())
 });
