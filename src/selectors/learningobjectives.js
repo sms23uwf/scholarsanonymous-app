@@ -1,6 +1,6 @@
 // Get visible learning objectives
 
-export default (learningobjectives, { text, sortBy, startDate, endDate }) => {
+export default (learningobjectives, { text, disposition, userId, learningobjectiveid, sortBy, startDate, endDate }) => {
   return learningobjectives.filter((learningobjective) => {
     const textMatch = learningobjective.knowledgearea.toLowerCase().includes(text.toLowerCase());
     return textMatch;

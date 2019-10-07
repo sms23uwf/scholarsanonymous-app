@@ -22,10 +22,10 @@ class CourseRecommendationListItem extends React.Component {
       <div>
         <button className="list-item" onClick={this.toggleModal}>
           <div>
-            <span className="list-item__sub-title">{this.props.course.knowledgearea}</span>
+            <span className="list-item__title">{this.props.knowledgearea}:  {this.props.coursename}</span>
           </div>
           <div>
-            <span className="list-item__sub-title">{this.props.course.content}</span>
+            <span className="list-item__sub-title">{this.props.coursedescription}</span>
           </div>
         </button>
         <Modal
@@ -42,16 +42,16 @@ class CourseRecommendationListItem extends React.Component {
               </div>
               <div className="content-container">
                 <span>
-                  <label>{this.props.course.knowledgearea}</label>
+                  <label>{this.props.knowledgearea}</label>
                 </span>
                 <span>
-                  <label>{this.props.course.content}</label>                
+                  <label>{this.props.coursename}</label>                
                 </span>
                 <span>
-                  <label>{this.props.course.description}</label>
+                  <label>{this.props.coursedescription}</label>
                 </span>
                 <span>
-                  <label>{this.props.course.disposition}</label>
+                  <label>{this.props.disposition}</label>
                 </span>
               </div>
             </div>

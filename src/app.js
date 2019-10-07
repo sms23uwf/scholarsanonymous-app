@@ -4,9 +4,11 @@ import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetCourseRecommendations } from './actions/courseRecommendations';
+import { startSetCourses } from './actions/courses';
 import { startSetLearningObjectives } from './actions/learningObjectives';
 import { startSetKnowledgeAreas } from './actions/knowledgeAreas';
 import { startsetLOSelectionsByUser } from './actions/learningobjective_userselect';
+import { startSetLOCourses } from './actions/learningobjective_course';
 import { login, logout } from './actions/auth';
 import { startSetUsers } from './actions/users';
 import getVisibleCourseRecommendations from './selectors/courserecommendations';
@@ -55,15 +57,18 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(setUUIDFilter(firebase.auth().currentUser.uid));
 
     store.dispatch(login(user.uid));
+    store.dispatch(startSetCourses());
     store.dispatch(startSetCourseRecommendations());
     store.dispatch(startSetLearningObjectives());
     store.dispatch(startSetUsers());
     store.dispatch(startsetLOSelectionsByUser());
+    store.dispatch(startSetLOCourses());
     store.dispatch(startSetKnowledgeAreas()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {
         history.push('/dashboard');
       }
+      
     });
   } else {
     store.dispatch(logout());

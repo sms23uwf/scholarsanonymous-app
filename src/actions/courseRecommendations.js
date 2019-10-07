@@ -1,25 +1,39 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
 
-export const addCourseRecommendation = (courseRecommendation) => ({
-  type: 'ADD_COURSERECOMMENDATION',
-  courseRecommendation
+export const addCourseRecommendation = (courserecommendations) => ({
+  type: 'ADD_COURSE_RECOMMENDATION',
+  courserecommendations
 });
 
 export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
+  console.log(`inside startAddCourseRecommendation with userid ${courseRecommendationData.userid}`)
+  console.log(`inside startAddCourseRecommendation with courseid ${courseRecommendationData.courseid}`)
+  console.log(`inside startAddCourseRecommendation with rating ${courseRecommendationData.rating}`)
+  console.log(`inside startAddCourseRecommendation with counter ${courseRecommendationData.counter}`)
+  console.log(`inside startAddCourseRecommendation with knowledgearea ${courseRecommendationData.knowledgearea}`)
+  console.log(`inside startAddCourseRecommendation with coursename ${courseRecommendationData.coursename}`)
+  console.log(`inside startAddCourseRecommendation with coursedescription ${courseRecommendationData.coursedescription}`)
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     const {
-      course = '',
-      createdAt = 0,
-      userId = uid
+      userid = ``,
+      courseid = ``,
+      learningobjectiveid = ``, 
+      rating = ``,
+      counter = ``,
+      disposition = ``,
+      knowledgearea = ``,
+      coursename = ``,
+      coursedescription = ``
     } = courseRecommendationData;
-    const learningObjective = { course, createdAt };
 
-    return database.ref(`courserecommendations`).push(courseRecommendation).then((ref) => {
+    const courseUserPairing = { userid, courseid, learningobjectiveid, rating, counter, disposition, knowledgearea, coursename, coursedescription };
+
+    return database.ref(`courserecommendation`).push({...courseUserPairing}).then((ref) => {
       dispatch(addCourseRecommendation({
         id: ref.key,
-        ...courseRecommendation
+        ...courseUserPairing
       }));
     });
   };
@@ -31,9 +45,11 @@ export const removeCourseRecommendation = ({ id } = {}) => ({
   id
 });
 
-export const startRemoveCourseRecommendation = ({ id } = {}) => {
+export const startRemoveCourseRecommendation = (recommendationPairing = {}) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
+    const id = recommendationPairing.id;
+    
     return database.ref(`courserecommendation/${id}`).remove().then(() => {
       dispatch(removeCourseRecommendation({ id }));
     });

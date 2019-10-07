@@ -6,7 +6,7 @@ const LearningObjectiveListItem = ({ id, knowledgearea, content, selected, pairi
     <span>
       <fieldset>
         <div className="list-item" width="1.0" key={id}>
-          <Checkbox type="checkbox" checked={selected} id={id} name={id} label={content} pairingId={pairingId} onCheckboxChange={(e) => selectCallback(id,pairingId,e)}/>
+          <Checkbox type="checkbox" checked={selected} id={id} name={id} label={content} pairingId={pairingId} onCheckboxChange={(e) => selectCallback(id,pairingId,knowledgearea,e)}/>
         </div>
       </fieldset>
     </span>

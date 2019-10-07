@@ -27,12 +27,12 @@ export default (state = filtersReducerDefaultState, action) => {
     case 'SET_UUID_FILTER':
       return {
         ...state,
-        disposition: action.userId
+        userId: action.userId
       };
     case 'SET_LO_FILTER':
       return {
         ...state,
-        disposition: action.learningobjectiveid
+        learningobjectiveid: action.learningobjectiveid
       };    
     case 'SORT_BY_AMOUNT':
       return {
