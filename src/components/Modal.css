@@ -39,11 +39,19 @@
     top: 10px;
     font-size: 28px;
     font-weight: 200;
-    margin: 20px 0 40px;
+    margin: 20px 0 20px;
   }
   
   .modal .modal_content .buttons_wrapper {
     padding: 20px;
+  }
+  
+  modal .content-container {
+    display:block;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 20px 0 0 4.25%;
+    margin-bottom:10px;
   }
   
   .modal .close_modal {

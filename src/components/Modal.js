@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Modal.css';
+import './RatingModal.css';
 
 const Modal = ({ children, customClass, show, closeCallback }) => (
   <div className={`modal ${customClass}`} style={{ display: show ? 'block' : 'none'}}>

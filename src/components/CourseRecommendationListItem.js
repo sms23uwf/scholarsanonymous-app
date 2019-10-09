@@ -17,6 +17,11 @@ class CourseRecommendationListItem extends React.Component {
     });
   }
 
+  recordRating = (id,rating,e) => {
+    console.log(`inside recordRating with id: ${id}`);
+    console.log(`inside recordRating with rating: ${rating}`);
+  }
+
   render() {
     return (
       <div>
@@ -51,10 +56,36 @@ class CourseRecommendationListItem extends React.Component {
                   <label>{this.props.coursedescription}</label>
                 </span>
                 <span>
-                  <label>{this.props.disposition}</label>
+                  <label>Disposition: {this.props.disposition}</label>
                 </span>
+                <span/>
               </div>
-            </div>
+                  <form action="">
+                    <label className="statement">How closely was this recommendation related to a selected Learning Outcome?</label>
+                    <ul className='likert'>
+                      <li>
+                        <input type="radio" name="likert" value="0" onSelectCapture={(e) => this.recordRating(this.props.courserecommendation.id,value,e)}/>
+                        <label>Not Related</label>
+                      </li>
+                      <li>
+                      <input type="radio" name="likert" value="1" onSelectCapture={(e) => recordRating(this.props.courserecommendation.id,value,e)}/>
+                      <label>Somewhat Related</label>
+                      </li>
+                      <li>
+                      <input type="radio" name="likert" value="2" onSelectCapture={(e) => recordRating(this.props.courserecommendation.id,value,e)}/>
+                      <label>Related</label>
+                      </li>
+                      <li>
+                      <input type="radio" name="likert" value="3" onSelectCapture={(e) => recordRating(this.props.courserecommendation.id,value,e)}/>
+                      <label>Closely Related</label>
+                      </li>
+                      <li>
+                      <input type="radio" name="likert" value="4" onSelectCapture={(e) => recordRating(this.props.courserecommendation.id,value,e)}/>
+                      <label>Spot On!</label>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
           </React.Fragment>
         </Modal>
       </div>
