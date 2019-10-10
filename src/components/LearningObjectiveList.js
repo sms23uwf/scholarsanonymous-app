@@ -48,7 +48,6 @@ export class LearningObjectiveList extends React.Component {
               if(!(coursesFound.includes(course.id)))
               {
                 coursesFound.push(course.id);
-                console.log(`this selection maps to courseid ${learningobjective_course.courseid}`);
                 const userCourse = {userid: userid, 
                   courseid: learningobjective_course.courseid, 
                   learningobjectiveid: learningobjective_course.learningobjectiveid,

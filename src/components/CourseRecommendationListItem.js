@@ -8,7 +8,8 @@ class CourseRecommendationListItem extends React.Component {
   constructor(props){
       super(props);
       this.state = {
-        showModal: false
+        showModal: false,
+        currentRating: props.rating
       }
   }
   toggleModal = () => {
@@ -18,8 +19,9 @@ class CourseRecommendationListItem extends React.Component {
   }
 
   recordRating = (id,rating,e) => {
-    console.log(`inside recordRating with id: ${id}`);
-    console.log(`inside recordRating with rating: ${rating}`);
+    this.setState({currentRating: rating});
+    const ratingData = {rating: rating};
+    this.props.startEditCourseRecommendation(id, ratingData);
   }
 
   render() {
@@ -64,23 +66,23 @@ class CourseRecommendationListItem extends React.Component {
                     <label className="statement">How closely was this recommendation related to a selected Learning Outcome?</label>
                     <ul className='likert'>
                       <li>
-                        <input type="radio" name="likert" value="0" onSelectCapture={(e) => this.recordRating(this.props.courserecommendation.id,value,e)}/>
+                        <input type="radio" name="likert" value="0" checked={this.state.currentRating === "0"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"0",e)}/>
                         <label>Not Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="1" onSelectCapture={(e) => recordRating(this.props.courserecommendation.id,value,e)}/>
+                      <input type="radio" name="likert" value="1" checked={this.state.currentRating === "1"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"1",e)}/>
                       <label>Somewhat Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="2" onSelectCapture={(e) => recordRating(this.props.courserecommendation.id,value,e)}/>
+                      <input type="radio" name="likert" value="2" checked={this.state.currentRating === "2"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"2",e)}/>
                       <label>Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="3" onSelectCapture={(e) => recordRating(this.props.courserecommendation.id,value,e)}/>
+                      <input type="radio" name="likert" value="3" checked={this.state.currentRating === "3"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"3",e)}/>
                       <label>Closely Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="4" onSelectCapture={(e) => recordRating(this.props.courserecommendation.id,value,e)}/>
+                      <input type="radio" name="likert" value="4" checked={this.state.currentRating === "4"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"4",e)}/>
                       <label>Spot On!</label>
                       </li>
                     </ul>
@@ -98,7 +100,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  startEditCourseRecommendation: (id, courserecommendation) => dispatch(startEditCourseRecommendation(id, courserecommendation))
+  startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CourseRecommendationListItem);
