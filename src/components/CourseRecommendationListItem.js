@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
-//import icon4 from "/images/veryhappy.png"
+//import icon2 from `${process.env.PUBLIC_URL}/images/justso.png`;
 //import icon4 from "/public/images/veryhappy.png";
 
 const styles = muiBaseTheme => ({
@@ -80,17 +80,17 @@ class CourseRecommendationListItem extends React.Component {
       {
         switch(rating) {
           case '0':
-            return `${process.env.PUBLIC_URL}/images/verysad.png`;
+            return '/images/verysad.png';
           case `1`:
-              return `${process.env.PUBLIC_URL}/images/sad.png`;
+              return `/images/sad.png`;
           case `2`:
-              return `${process.env.PUBLIC_URL}/images/justso.png`;
+              return `/images/justso.png`;
           case `3`:
-               return `${process.env.PUBLIC_URL}/images/happy.png`;
+               return `/images/happy.png`;
           case `4`:
-            return `veryhappy.png`;
+            return `/images/veryhappy.png`;
           default:
-              return `${process.env.PUBLIC_URL}/images/verysad.png`;
+              return `/images/verysad.png`;
         }
       }
   }
