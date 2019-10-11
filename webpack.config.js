@@ -42,7 +42,7 @@ module.exports = (env) => {
         {
           test: /\.(jpg|jpeg|gif|png|ico)$/,
           exclude: /node_modules/,
-          loader:'file-loader?name=img/[path][name].[ext]&context=./app/images'
+          loader:'file-loader'
        }        
       ]
     },

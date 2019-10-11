@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import CourseRecommendationForm from './CourseRecommendationForm';
 import { startEditCourseRecommendation } from '../actions/courseRecommendations';
 import Modal from './Modal';
+import Avatar from '@material-ui/core/Avatar';
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -11,6 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
+//import icon4 from "/images/veryhappy.png"
+//import icon4 from "/public/images/veryhappy.png";
 
 const styles = muiBaseTheme => ({
   card: {
@@ -21,6 +24,11 @@ const styles = muiBaseTheme => ({
     "&:hover": {
       boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)"
     }
+  },
+  avatar: {
+    margin: 10,
+    width: 60,
+    height: 60
   },
   media: {
     paddingTop: "56.25%"
@@ -52,7 +60,8 @@ class CourseRecommendationListItem extends React.Component {
       super(props);
       this.state = {
         showModal: false,
-        currentRating: props.rating
+        currentRating: props.rating,
+        currentTitle: props.knowledgearea + `: ` + props.coursename
       }
   }
   toggleModal = () => {
@@ -67,16 +76,32 @@ class CourseRecommendationListItem extends React.Component {
     this.props.startEditCourseRecommendation(id, ratingData);
   }
 
+  setAvatarURL = (rating) => {
+      {
+        switch(rating) {
+          case '0':
+            return `${process.env.PUBLIC_URL}/images/verysad.png`;
+          case `1`:
+              return `${process.env.PUBLIC_URL}/images/sad.png`;
+          case `2`:
+              return `${process.env.PUBLIC_URL}/images/justso.png`;
+          case `3`:
+               return `${process.env.PUBLIC_URL}/images/happy.png`;
+          case `4`:
+            return `veryhappy.png`;
+          default:
+              return `${process.env.PUBLIC_URL}/images/verysad.png`;
+        }
+      }
+  }
   render() {
     return (
       <div>
       <Divider/>
         <CardActionArea onClick={this.toggleModal}>
           <Card>
+            <CardHeader avatar={<Avatar src={this.setAvatarURL(this.props.rating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.state.currentTitle}/>
             <CardContent>
-              <Typography className={"MuiTypography--heading"} variant={"h4"} gutterBottom>
-                {this.props.knowledgearea}: {this.props.coursename}
-              </Typography>
               <Typography className={"MuiTypography--content"} variant={"h6"} gutterBottom>
                 {this.props.coursedescription}
               </Typography>
