@@ -12,8 +12,6 @@ import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
-//import icon2 from `${process.env.PUBLIC_URL}/images/justso.png`;
-//import icon4 from "/public/images/veryhappy.png";
 
 const styles = muiBaseTheme => ({
   card: {
@@ -61,7 +59,8 @@ class CourseRecommendationListItem extends React.Component {
       this.state = {
         showModal: false,
         currentRating: props.rating,
-        currentTitle: props.knowledgearea + `: ` + props.coursename
+        currentTitle: props.knowledgearea + `: ` + props.coursename,
+        currentAvatarUrl: this.setAvatarURL(props.rating)
       }
   }
   toggleModal = () => {
@@ -74,6 +73,7 @@ class CourseRecommendationListItem extends React.Component {
     this.setState({currentRating: rating});
     const ratingData = {rating: rating};
     this.props.startEditCourseRecommendation(id, ratingData);
+    this.setState({currentAvatarUrl: this.setAvatarURL(rating)});
   }
 
   setAvatarURL = (rating) => {
@@ -90,7 +90,7 @@ class CourseRecommendationListItem extends React.Component {
           case `4`:
             return `/images/veryhappy.png`;
           default:
-              return `/images/verysad.png`;
+              return ``;
         }
       }
   }
@@ -100,7 +100,7 @@ class CourseRecommendationListItem extends React.Component {
       <Divider/>
         <CardActionArea onClick={this.toggleModal}>
           <Card>
-            <CardHeader avatar={<Avatar src={this.setAvatarURL(this.props.rating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.state.currentTitle}/>
+            <CardHeader avatar={<Avatar src={this.state.currentAvatarUrl} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.state.currentTitle}/>
             <CardContent>
               <Typography className={"MuiTypography--content"} variant={"h6"} gutterBottom>
                 {this.props.coursedescription}

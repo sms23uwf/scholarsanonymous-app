@@ -51,7 +51,7 @@ export class LearningObjectiveList extends React.Component {
                 const userCourse = {userid: userid, 
                   courseid: learningobjective_course.courseid, 
                   learningobjectiveid: learningobjective_course.learningobjectiveid,
-                  rating: '0', 
+                  rating: '-1', 
                   counter: '1', 
                   disposition: 'recommended',
                   knowledgearea: course.knowledgearea, 

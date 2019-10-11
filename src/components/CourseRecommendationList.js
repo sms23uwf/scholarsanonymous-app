@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CourseRecommendationListItem from './CourseRecommendationListItem';
 import selectCourseRecommendations from '../selectors/courserecommendations';
+import * as firebase from 'firebase';
 
 export const CourseRecommendationsList = (props) => (
   <div className="content-container">
@@ -28,7 +29,7 @@ export const CourseRecommendationsList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    courserecommendations: selectCourseRecommendations(state.courserecommendations, state.filters)
+    courserecommendations: selectCourseRecommendations(state.courserecommendations, firebase.auth().currentUser.uid)
   };
 };
 
