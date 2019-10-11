@@ -1,10 +1,15 @@
-// Get visible course completions
+import * as firebase from 'firebase';
 
-export default (coursecompletions, { disposition, sortBy, startDate, endDate }) => {
-  return coursecompletions.filter((courserecommendation) => {
-    const textMatch = courserecommendation.disposition.toLowerCase().includes(disposition.toLowerCase());
+// Get visible course recommendations
+
+const accepted = ['2','3','4'];
+
+export default (courserecommendations, { userid }) => {
+  return courserecommendations.filter((courserecommendation) => {
+    const ratingMatch = accepted.includes(courserecommendations.rating);
+    const textMatch = courserecommendations.userid === firebase.auth.uid;
     return textMatch;
   }).sort((a, b) => {
-    return a.knowledgearea > b.knowledgearea ? 1 : -1;
+      return a.rating < b.rating ? 1 : -1;
   });
 };

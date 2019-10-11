@@ -4,6 +4,7 @@
   color: $dark-grey;
   display: flex;
   justify-content: space-between;
+  font-size: x-large;
   padding: $s-size $m-size;
   font-weight: 600;
   span {
@@ -16,6 +17,17 @@
   border: 1px solid darken($off-white, 7%);
   color: #000000;
   display: flex;
+  font-size: x-large;
+  justify-content: space-between;
+  padding: $s-size $m-size;
+}
+
+.list-subheader {
+  background: #dddddd;
+  border: 1px solid darken($off-white, 7%);
+  color: #000000;
+  display: flex;
+  font-size: x-large;
   justify-content: space-between;
   padding: $s-size $m-size;
 }

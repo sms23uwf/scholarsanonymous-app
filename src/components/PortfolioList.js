@@ -1,25 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CourseRecommendationListItem from './CourseRecommendationListItem';
+import PortfolioListItem from './PortfolioListItem';
 import selectCourseRecommendations from '../selectors/coursecompletions';
+import * as firebase from 'firebase';
 
 export const PortfolioList = (props) => (
-
   <div className="content-container">
     <div className="list-header">
-      <div className="show-for-mobile">Course Completions</div>
-      <div className="show-for-desktop">Knowledge Area</div>
-      <div className="show-for-desktop">Course</div>
+      <div className="show-for-mobile">Accepted Recommendations</div>
+      <div className="show-for-desktop">Accepted Recommendations</div>
     </div>
     <div className="list-body">
       {
         props.courserecommendations.length === 0 ? (
           <div className="list-item list-item--message">
-            <span>No Courses Completed</span>
+            <span>No Accepted Course Recommendations</span>
           </div>
         ) : (
             props.courserecommendations.map((courserecommendation) => {
-              return <CourseRecommendationListItem key={courserecommendation.id} id={courserecommendation.id} {...courserecommendation} />;
+              if(courserecommendation.rating == "4" || courserecommendation.rating == "3" || courserecommendation.rating == "2")
+                return <PortfolioListItem key={courserecommendation.id} id={courserecommendation.id} {...courserecommendation} />;
             })
           )
       }
@@ -29,7 +29,7 @@ export const PortfolioList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    courserecommendations: selectCourseRecommendations(state.courserecommendations, state.filters)
+    courserecommendations: selectCourseRecommendations(state.courserecommendations, firebase.auth().currentUser.uid)
   };
 };
 

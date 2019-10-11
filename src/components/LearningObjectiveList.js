@@ -104,7 +104,7 @@ export class LearningObjectiveList extends React.Component {
         <div className="show-for-mobile"></div>
         <div className="show-for-mobile">Learning Outcome</div>
         <div className="show-for-desktop"></div>
-        <div className="show-for-desktop">Knowledge Outcome</div>
+        <div className="show-for-desktop">Learning Outcome</div>
       </div>
       <div className="list-body">
         {

@@ -8,8 +8,7 @@ export const CourseRecommendationsList = (props) => (
   <div className="content-container">
     <div className="list-header">
       <div className="show-for-mobile">Course Recommendations</div>
-      <div className="show-for-desktop">Knowledge Area</div>
-      <div className="show-for-desktop">Course</div>
+      <div className="show-for-desktop">Course Recommendations</div>
     </div>
     <div className="list-body">
       {
