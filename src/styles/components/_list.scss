@@ -50,6 +50,33 @@
   }
 }
 
+.list-item-recommendation-0 {
+  background: #eeeeee;
+  background: url('/images/verysad.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10%;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  color: $dark-grey;
+  display: block;
+  white-space: pre-wrap;
+  width: 100%;
+  flex-direction: column;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background .3s ease;
+  &:hover {
+    background: $off-white;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+  }
+}
+
 .list-item--inline {
   background: #eeeeee;
   border: 1px solid darken($off-white, 7%);

@@ -3,6 +3,49 @@ import { connect } from 'react-redux';
 import CourseRecommendationForm from './CourseRecommendationForm';
 import { startEditCourseRecommendation } from '../actions/courseRecommendations';
 import Modal from './Modal';
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardActions from "@material-ui/core/CardActions";
+
+const styles = muiBaseTheme => ({
+  card: {
+    maxWidth: 300,
+    margin: "auto",
+    transition: "0.3s",
+    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
+    "&:hover": {
+      boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)"
+    }
+  },
+  media: {
+    paddingTop: "56.25%"
+  },
+  content: {
+    textAlign: "left",
+    padding: muiBaseTheme.spacing.unit * 3
+  },
+  divider: {
+    margin: `${muiBaseTheme.spacing.unit * 3}px 0`
+  },
+  heading: {
+    fontWeight: "bold"
+  },
+  subheading: {
+    lineHeight: 1.8
+  },
+  avatar: {
+    display: "inline-block",
+    border: "2px solid white",
+    "&:not(:first-of-type)": {
+      marginLeft: -muiBaseTheme.spacing.unit
+    }
+  }
+});
 
 class CourseRecommendationListItem extends React.Component {
   constructor(props){
@@ -27,14 +70,20 @@ class CourseRecommendationListItem extends React.Component {
   render() {
     return (
       <div>
-        <button className="list-item" onClick={this.toggleModal}>
-          <div>
-            <span className="list-item__title">{this.props.knowledgearea}:  {this.props.coursename}</span>
-          </div>
-          <div>
-            <span className="list-item__sub-title">{this.props.coursedescription}</span>
-          </div>
-        </button>
+      <Divider/>
+        <CardActionArea onClick={this.toggleModal}>
+          <Card>
+            <CardContent>
+              <Typography className={"MuiTypography--heading"} variant={"h4"} gutterBottom>
+                {this.props.knowledgearea}: {this.props.coursename}
+              </Typography>
+              <Typography className={"MuiTypography--content"} variant={"h6"} gutterBottom>
+                {this.props.coursedescription}
+              </Typography>
+            </CardContent>
+          </Card>
+        </CardActionArea>
+
         <Modal
           show={this.state.showModal}
           closeCallback={this.toggleModal}
