@@ -28,7 +28,7 @@ export const CourseRecommendationsList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    courserecommendations: selectCourseRecommendations(state.courserecommendations, firebase.auth().currentUser.uid)
+    courserecommendations: selectCourseRecommendations(state.courserecommendations, state.filters)
   };
 };
 
