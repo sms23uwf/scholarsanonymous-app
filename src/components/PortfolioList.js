@@ -4,6 +4,8 @@ import PortfolioListItem from './PortfolioListItem';
 import selectCourseRecommendations from '../selectors/coursecompletions';
 import * as firebase from 'firebase';
 
+const disposition = "accepted";
+
 export const PortfolioList = (props) => (
   <div className="content-container">
     <div className="list-header">
@@ -18,8 +20,7 @@ export const PortfolioList = (props) => (
           </div>
         ) : (
             props.courserecommendations.map((courserecommendation) => {
-              if(courserecommendation.rating == "4" || courserecommendation.rating == "3" || courserecommendation.rating == "2")
-                return <PortfolioListItem key={courserecommendation.id} id={courserecommendation.id} {...courserecommendation} />;
+              return <PortfolioListItem key={courserecommendation.id} id={courserecommendation.id} {...courserecommendation} />;
             })
           )
       }
@@ -29,7 +30,7 @@ export const PortfolioList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    courserecommendations: selectCourseRecommendations(state.courserecommendations, firebase.auth().currentUser.uid)
+    courserecommendations: selectCourseRecommendations(state.courserecommendations, state.filters)
   };
 };
 

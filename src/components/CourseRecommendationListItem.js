@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CourseRecommendationForm from './CourseRecommendationForm';
-import { startEditCourseRecommendation } from '../actions/courseRecommendations';
+import { startSetCourseRecommendations, startEditCourseRecommendation } from '../actions/courseRecommendations';
 import Modal from './Modal';
 import Avatar from '@material-ui/core/Avatar';
 import Card from "@material-ui/core/Card";
@@ -12,6 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
+import selectCourseRecommendations from '../selectors/courserecommendations';
+import * as firebase from 'firebase';
 
 const styles = muiBaseTheme => ({
   card: {
@@ -69,11 +71,29 @@ class CourseRecommendationListItem extends React.Component {
     });
   }
 
+  setDispositionBasedOnRating = (rating) => {
+    switch(rating) {
+      case '0':
+        return 'Rejected';
+      case `1`:
+        return `Undecided`;
+      case `2`:
+        return `Accepted`;
+      case `3`:
+        return `Accepted`;
+      case `4`:
+        return `Accepted`;
+      default:
+          return ``;
+    }
+  }
+
   recordRating = (id,rating,e) => {
     this.setState({currentRating: rating});
-    const ratingData = {rating: rating};
+    const ratingData = {rating: rating, disposition: this.setDispositionBasedOnRating(rating)};
     this.props.startEditCourseRecommendation(id, ratingData);
     this.setState({currentAvatarUrl: this.setAvatarURL(rating)});
+    this.props.startSetCourseRecommendations();
   }
 
   setAvatarURL = (rating) => {
@@ -170,11 +190,13 @@ class CourseRecommendationListItem extends React.Component {
 };
 
 const mapStateToProps = (state, props) => ({
+  courserecommendations: selectCourseRecommendations(state.courserecommendations, firebase.auth().currentUser.uid),
   courserecommendation: state.courserecommendations.find((courserecommendation) => courserecommendation.id === props.id)
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData))
+  startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData)),
+  startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CourseRecommendationListItem);
