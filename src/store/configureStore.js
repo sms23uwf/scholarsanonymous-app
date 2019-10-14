@@ -6,6 +6,7 @@ import learningObjectivesReducer from '../reducers/learningobjectives';
 import learningObjectivesUserSelectReducer from '../reducers/learningobjective_userselect';
 import learningObjectiveCourseReducer from '../reducers/learningobjective_course';
 import knowledgeAreasReducer from '../reducers/knowledgeareas.js';
+import recommendationLearningObjectiveReducer from '../reducers/recommendation_learningobjective';
 import usersReducer from '../reducers/users.js';
 import filtersReducer from '../reducers/filters';
 import authReducer from '../reducers/auth';
@@ -21,6 +22,7 @@ export default () => {
       learningobjective_userselects: learningObjectivesUserSelectReducer,
       knowledgeareas: knowledgeAreasReducer,
       learningobjective_courses: learningObjectiveCourseReducer,
+      recommendation_learningobjectives: recommendationLearningObjectiveReducer,
       users: usersReducer,
       filters: filtersReducer,
       auth: authReducer

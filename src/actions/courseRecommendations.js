@@ -14,28 +14,53 @@ export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
   console.log(`inside startAddCourseRecommendation with knowledgearea ${courseRecommendationData.knowledgearea}`)
   console.log(`inside startAddCourseRecommendation with coursename ${courseRecommendationData.coursename}`)
   console.log(`inside startAddCourseRecommendation with coursedescription ${courseRecommendationData.coursedescription}`)
+  //console.log(`inside startAddCourseRecommenation with learningobjective ${courseRecommendationData.learningobjectives[0].content}`)
+  console.log(`inside startAddCourseRecommendation with existingRecommendation ${courseRecommendationData.existingrecommendationid}`)
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     const {
       userid = ``,
       courseid = ``,
-      learningobjectiveid = ``, 
+      learningobjectiveid = ``,
+      learningobjectives = {}, 
       rating = ``,
       counter = ``,
       disposition = ``,
       knowledgearea = ``,
+      existingrecommendationid = ``,
       coursename = ``,
       coursedescription = ``
     } = courseRecommendationData;
 
-    const courseUserPairing = { userid, courseid, learningobjectiveid, rating, counter, disposition, knowledgearea, coursename, coursedescription };
 
-    return database.ref(`courserecommendation`).push({...courseUserPairing}).then((ref) => {
-      dispatch(addCourseRecommendation({
-        id: ref.key,
-        ...courseUserPairing
-      }));
-    });
+    const courseUserPairing = { userid, courseid, learningobjectiveid, learningobjectives, rating, counter, disposition, knowledgearea, existingrecommendationid, coursename, coursedescription };
+
+    if(existingrecommendationid === ``)
+    {
+      return database.ref(`courserecommendation`).push({...courseUserPairing}).then((ref) => {
+        database.ref(`courserecommendation/${ref.key}`).child(`learningobjectives`).remove();
+        var newLO = database.ref(`courserecommendation/${ref.key}`).child(`learningobjectives`).push();
+        newLO.set({
+          learningobjectiveid: learningobjectives[0].learningobjectiveid,
+          content: learningobjectives[0].content
+          })
+ 
+        dispatch(addCourseRecommendation({
+          id: ref.key,
+          ...courseUserPairing
+        }));
+        const recommendationLoPairing = {recommendationid: ref.key, learningobjectiveid: learningobjectiveid, userid: userid };
+        //database.ref(`recommendation_learningobjective`).push(recommendationLoPairing);
+      });
+    }
+    else
+    {
+      var newLO = database.ref(`courserecommendation/${existingrecommendationid}`).child(`learningobjectives`).push();
+      newLO.set({
+        learningobjectiveid: learningobjectives[0].learningobjectiveid,
+        content: learningobjectives[0].content
+      })
+    }
   };
 };
 
@@ -46,6 +71,7 @@ export const removeCourseRecommendation = ({ id } = {}) => ({
 });
 
 export const startRemoveCourseRecommendation = (recommendationPairing = {}) => {
+  console.log(`inside startRemoveCourseRecommendation with ${recommendationPairing}`)
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     const id = recommendationPairing.id;

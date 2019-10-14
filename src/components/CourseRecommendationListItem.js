@@ -93,7 +93,6 @@ class CourseRecommendationListItem extends React.Component {
     const ratingData = {rating: rating, disposition: this.setDispositionBasedOnRating(rating)};
     this.props.startEditCourseRecommendation(id, ratingData);
     this.setState({currentAvatarUrl: this.setAvatarURL(rating)});
-    this.props.startSetCourseRecommendations();
   }
 
   setAvatarURL = (rating) => {
@@ -115,6 +114,17 @@ class CourseRecommendationListItem extends React.Component {
       }
   }
   render() {
+
+    this.props.startSetCourseRecommendations();
+
+    var reasonData = {...this.props.learningobjectives};
+    const result = Object.keys(reasonData).map((key) => reasonData[key]);
+
+    var reasons = [];
+    result.forEach((reason) => (
+      reasons.push(<li key={reason.learningobjectiveid}>{reason.content}</li>)
+    ));
+
     return (
       <div>
       <Divider/>
@@ -124,6 +134,14 @@ class CourseRecommendationListItem extends React.Component {
             <CardContent>
               <Typography className={"MuiTypography--content"} variant={"h6"} gutterBottom>
                 {this.props.coursedescription}
+              </Typography>
+              <br/>
+              <Divider/>
+              <Typography className={"MuiTypography--content"} variant={"h6"} gutterBottom>
+              Based on your selection of:
+                <ul>
+                  {reasons}
+                </ul>
               </Typography>
             </CardContent>
           </Card>
@@ -191,7 +209,8 @@ class CourseRecommendationListItem extends React.Component {
 
 const mapStateToProps = (state, props) => ({
   courserecommendations: selectCourseRecommendations(state.courserecommendations, firebase.auth().currentUser.uid),
-  courserecommendation: state.courserecommendations.find((courserecommendation) => courserecommendation.id === props.id)
+  courserecommendation: state.courserecommendations.find((courserecommendation) => courserecommendation.id === props.id),
+  filters: state.filters
 });
 
 const mapDispatchToProps = (dispatch, props) => ({

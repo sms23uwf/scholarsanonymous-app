@@ -33,7 +33,12 @@ export default (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         learningobjectiveid: action.learningobjectiveid
-      };    
+      };   
+    case 'SET_COURSE_FILTER':
+      return {
+        ...state,
+        courseid: action.courseid
+      }
     case 'SORT_BY_AMOUNT':
       return {
         ...state,

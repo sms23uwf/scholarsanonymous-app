@@ -22,6 +22,12 @@ export const setLOFilter = (learningobjectiveid = '') => ({
   learningobjectiveid
 });
 
+// SET_COURSE_FILTER
+export const setCourseFilter = (courseid = '') => ({
+  type: 'SET_COURSE_FILTER',
+  courseid
+});
+
 // SORT_BY_DATE
 export const sortByDate = () => ({
   type: 'SORT_BY_DATE'

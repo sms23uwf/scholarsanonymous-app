@@ -13,3 +13,15 @@ export default (courserecommendations, { userid, disposition }) => {
       return a.rating < b.rating ? 1 : -1;
   });
 };
+
+export const findExistingCourseRecommendation = (courserecommendations, {userid, courseid}) => {
+  console.log(`inside findExistingCourseRecommendation with ${courseid}`);
+  return courserecommendations.filter((courserecommendation) => {
+    const courseMatch = courserecommendation.courseid === courseid;
+    const textMatch = courserecommendations.userid === firebase.auth.uid;
+    return textMatch && courseMatch;
+  }).sort((a, b) => {
+      return a.rating < b.rating ? 1 : -1;
+  });
+
+};

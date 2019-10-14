@@ -14,7 +14,7 @@ const LearningObjectiveListItem = ({ id, knowledgearea, content, selected, pairi
     <Card>
       <CardContent>
         <Typography className={"MuiTypography--content"} variant={"h6"} gutterBottom>
-          <Checkbox type="checkbox" checked={selected} id={id} name={id} label={content} pairingId={pairingId} onCheckboxChange={(e) => selectCallback(id,pairingId,knowledgearea,e)}/>
+          <Checkbox type="checkbox" checked={selected} id={id} name={id} label={content} pairingId={pairingId} onCheckboxChange={(e) => selectCallback(id,content,pairingId,knowledgearea,e)}/>
         </Typography>
       </CardContent>
     </Card>

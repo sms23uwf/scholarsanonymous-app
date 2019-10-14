@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CourseRecommendationForm from './CourseRecommendationForm';
-import { startEditCourseRecommendation } from '../actions/courseRecommendations';
+import { startSetCourseRecommendations, startEditCourseRecommendation } from '../actions/courseRecommendations';
 import Modal from './Modal';
 import Avatar from '@material-ui/core/Avatar';
 import Card from "@material-ui/core/Card";
@@ -95,6 +95,17 @@ class PortfolioListItem extends React.Component {
       }
   }
   render() {
+
+    this.props.startSetCourseRecommendations();
+
+    var reasonData = {...this.props.learningobjectives};
+    const result = Object.keys(reasonData).map((key) => reasonData[key]);
+
+    var reasons = [];
+    result.forEach((reason) => (
+     reasons.push(<li key={reason.learningobjectiveid}>{reason.content}</li>)
+    ));
+
     return (
       <div>
       <Divider/>
@@ -104,6 +115,14 @@ class PortfolioListItem extends React.Component {
             <CardContent>
               <Typography className={"MuiTypography--content"} variant={"h6"} gutterBottom>
                 {this.props.coursedescription}
+              </Typography>
+              <br/>
+              <Divider/>
+              <Typography className={"MuiTypography--content"} variant={"h6"} gutterBottom>
+              Based on your selection of:
+                <ul>
+                  {reasons}
+                </ul>
               </Typography>
             </CardContent>
           </Card>
@@ -174,7 +193,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData))
+  startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData)),
+  startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations())  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PortfolioListItem);

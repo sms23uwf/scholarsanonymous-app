@@ -7,9 +7,12 @@ import selectLOCourses from '../selectors/learningobjective_course';
 import selectCourses from '../selectors/courses';
 import { startAddLOSelectionToUser, startRemoveLOSelectionFromUser } from '../actions/learningobjective_userselect';
 import { startAddCourseRecommendation , startRemoveCourseRecommendation} from '../actions/courseRecommendations';
+import { startAddRecommendationLearningObjective , startRemoveRecommendationLearningObjective} from '../actions/recommendation_learningobjective';
 import * as firebase from 'firebase';
-import { setUUIDFilter, setLOFilter } from '../actions/filters';
-import selectCourseRecommendations from '../selectors/courserecommendations';
+import database from '../firebase/firebase';
+import { setUUIDFilter, setLOFilter, setCourseFilter } from '../actions/filters';
+import selectCourseRecommendations, {findExistingCourseRecommendation} from '../selectors/courserecommendations';
+import { startSetCourseRecommendations } from '../actions/courseRecommendations';
 
 export class LearningObjectiveList extends React.Component {
   constructor(props) {
@@ -21,7 +24,7 @@ export class LearningObjectiveList extends React.Component {
     learningobjectiveid: ''
    }
  
-  handleChange = (learningobjectiveid,pairingId,knowledgearea,e) => {
+  handleChange = (learningobjectiveid,learningobjective,pairingId,knowledgearea,e) => {
     console.log(`e.state = ${e.target.checked}`);
 
     this.setState(() => ({learningobjectiveid}));
@@ -48,13 +51,29 @@ export class LearningObjectiveList extends React.Component {
               if(!(coursesFound.includes(course.id)))
               {
                 coursesFound.push(course.id);
+
+                this.props.setCourseFilter(course.id);
+                console.log(`just set the course filter with ${course.id}`);
+                console.log(`course filter is ${this.props.filters.courseid}`);
+
+                var existingrecommendationid = '';
+                this.props.allcourserecommendations.map((courserecommendation) => {
+                  if(courserecommendation.courseid === course.id)
+                    existingrecommendationid = courserecommendation.id;
+                })
+
+              
+                console.log(`existingrecommendationid = ${existingrecommendationid}`);
+
                 const userCourse = {userid: userid, 
                   courseid: learningobjective_course.courseid, 
                   learningobjectiveid: learningobjective_course.learningobjectiveid,
+                  learningobjectives: [{learningobjectiveid: learningobjective_course.learningobjectiveid, content: learningobjective}],
                   rating: '-1', 
                   counter: '1', 
                   disposition: 'recommended',
                   knowledgearea: course.knowledgearea, 
+                  existingrecommendationid: existingrecommendationid,
                   coursename: course.name, 
                   coursedescription: course.description};
 
@@ -69,6 +88,7 @@ export class LearningObjectiveList extends React.Component {
     }
     else
     {
+      console.log(`pairingId is ${pairingId}`);
       if(pairingId != 0)
       {
         const loPairing = {id: pairingId};
@@ -76,19 +96,37 @@ export class LearningObjectiveList extends React.Component {
 
         this.props.courserecommendations.map((courserecommendation) => {
            
-          console.log(`courserecommendation.learningobjectiveid = ${courserecommendation.learningobjectiveid}`);
-          console.log(`learningobjectiveid = ${learningobjectiveid}`);
+          var loData = {...courserecommendation.learningobjectives};
+          const loKeys = Object.keys(loData).map((key) => loData[key]);
+          const numberOfLearningObjectives = loKeys.length;
 
-          if(courserecommendation.learningobjectiveid === learningobjectiveid)
-          {
-            const recommendationPairing = {id: courserecommendation.id};
+          console.log(`loKeys length is ${loKeys.length}`);
+          console.log(`numberOfLearningObjectives is ${numberOfLearningObjectives}`);
 
-            this.props.startRemoveCourseRecommendation(recommendationPairing);
-            console.log(`just called startRemoveCourseRecommendation with ${recommendationPairing.id}`);
-          }
+          Object.keys(loData).map((key) => {
+
+            var currentLO = loData[key];
+
+            if(currentLO.learningobjectiveid === learningobjectiveid)
+            {
+              if(numberOfLearningObjectives === 1)
+              {
+                const recommendationPairing = {id: courserecommendation.id};
+                this.props.startRemoveCourseRecommendation(recommendationPairing);
+                console.log(`just called startRemoveCourseRecommendation with ${recommendationPairing.id}`);
+              }
+              else
+              {
+                console.log(`attempting to remove lo from recommendation with ${key}`);
+
+                database.ref(`courserecommendation/${courserecommendation.id}`).child(`learningobjectives/${key}`).remove();
+              }
+            }
+          });
         })
       }
     }
+    this.props.startSetCourseRecommendations();
     
   };
 
@@ -139,8 +177,11 @@ const mapDispatchToProps = (dispatch) => ({
   startRemoveLOSelectionFromUser: (loPairing) => dispatch(startRemoveLOSelectionFromUser(loPairing)),
   startAddCourseRecommendation: (userCourse) => dispatch(startAddCourseRecommendation(userCourse)),
   startRemoveCourseRecommendation: (recommendationId) => dispatch(startRemoveCourseRecommendation(recommendationId)),
+  startAddRecommendationLearningObjective: (recommendationLoPairing) => dispatch(startAddRecommendationLearningObjective(recommendationLoPairing)),
   setUUIDFilter: (userid) => dispatch(setUUIDFilter(userid)),
-  setLOFilter: (learningobjectiveid) => dispatch(setLOFilter(learningobjectiveid))
+  setLOFilter: (learningobjectiveid) => dispatch(setLOFilter(learningobjectiveid)),
+  setCourseFilter: (courseid) => dispatch(setCourseFilter(courseid)),
+  startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations())
 });
 
 const mapStateToProps = (state) => {
@@ -148,6 +189,7 @@ const mapStateToProps = (state) => {
     learningobjectives: selectLearningObjectives(state.learningobjectives, state.filters),
     learningobjective_courses: selectLOCourses(state.learningobjective_courses,state.filters),
     learningobjective_userselects: selectLOSelectionsForUser(state.learningobjective_userselects, firebase.auth().currentUser.uid),
+    allcourserecommendations: state.courserecommendations,
     courserecommendations: selectCourseRecommendations(state.courserecommendations, state.filters),
     courses: selectCourses(state.courses, state.filters),
     filters: state.filters
