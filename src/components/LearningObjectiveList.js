@@ -78,6 +78,7 @@ export class LearningObjectiveList extends React.Component {
                   coursedescription: course.description};
 
                 this.props.startAddCourseRecommendation(userCourse);
+                this.props.startSetCourseRecommendations();
               }
             }
     
@@ -94,7 +95,7 @@ export class LearningObjectiveList extends React.Component {
         const loPairing = {id: pairingId};
         this.props.startRemoveLOSelectionFromUser(loPairing);
 
-        this.props.courserecommendations.map((courserecommendation) => {
+        this.props.allcourserecommendations.map((courserecommendation) => {
            
           var loData = {...courserecommendation.learningobjectives};
           const loKeys = Object.keys(loData).map((key) => loData[key]);
@@ -113,20 +114,21 @@ export class LearningObjectiveList extends React.Component {
               {
                 const recommendationPairing = {id: courserecommendation.id};
                 this.props.startRemoveCourseRecommendation(recommendationPairing);
-                console.log(`just called startRemoveCourseRecommendation with ${recommendationPairing.id}`);
+                this.props.startSetCourseRecommendations();
               }
               else
               {
                 console.log(`attempting to remove lo from recommendation with ${key}`);
-
-                database.ref(`courserecommendation/${courserecommendation.id}`).child(`learningobjectives/${key}`).remove();
+                database.ref(`courserecommendation/${courserecommendation.id}`).child(`learningobjectives/${key}`).remove().then(() => {
+                  this.props.startSetCourseRecommendations();
+                });
               }
             }
           });
         })
       }
     }
-    this.props.startSetCourseRecommendations();
+    
     
   };
 
