@@ -66,6 +66,10 @@ class CourseRecommendationListItem extends React.Component {
       }
   }
   toggleModal = () => {
+    if(this.state.showModal == true)
+    {
+      this.props.startSetCourseRecommendations();
+    }
     this.setState({
       showModal: !this.state.showModal
     });
@@ -114,8 +118,6 @@ class CourseRecommendationListItem extends React.Component {
       }
   }
   render() {
-
-    this.props.startSetCourseRecommendations();
 
     var reasonData = {...this.props.learningobjectives};
     const result = Object.keys(reasonData).map((key) => reasonData[key]);

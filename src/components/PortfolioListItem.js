@@ -64,14 +64,35 @@ class PortfolioListItem extends React.Component {
       }
   }
   toggleModal = () => {
+    if(this.state.showModal == true)
+    {
+      this.props.startSetCourseRecommendations();
+    }
     this.setState({
       showModal: !this.state.showModal
     });
   }
 
+  setDispositionBasedOnRating = (rating) => {
+    switch(rating) {
+      case '0':
+        return 'Rejected';
+      case `1`:
+        return `Undecided`;
+      case `2`:
+        return `Accepted`;
+      case `3`:
+        return `Accepted`;
+      case `4`:
+        return `Accepted`;
+      default:
+          return ``;
+    }
+  }
+
   recordRating = (id,rating,e) => {
     this.setState({currentRating: rating});
-    const ratingData = {rating: rating};
+    const ratingData = {rating: rating, disposition: this.setDispositionBasedOnRating(rating)};
     this.props.startEditCourseRecommendation(id, ratingData);
     this.setState({currentAvatarUrl: this.setAvatarURL(rating)});
   }
@@ -95,8 +116,6 @@ class PortfolioListItem extends React.Component {
       }
   }
   render() {
-
-    this.props.startSetCourseRecommendations();
 
     var reasonData = {...this.props.learningobjectives};
     const result = Object.keys(reasonData).map((key) => reasonData[key]);

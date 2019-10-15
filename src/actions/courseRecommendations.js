@@ -7,15 +7,6 @@ export const addCourseRecommendation = (courserecommendations) => ({
 });
 
 export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
-  console.log(`inside startAddCourseRecommendation with userid ${courseRecommendationData.userid}`)
-  console.log(`inside startAddCourseRecommendation with courseid ${courseRecommendationData.courseid}`)
-  console.log(`inside startAddCourseRecommendation with rating ${courseRecommendationData.rating}`)
-  console.log(`inside startAddCourseRecommendation with counter ${courseRecommendationData.counter}`)
-  console.log(`inside startAddCourseRecommendation with knowledgearea ${courseRecommendationData.knowledgearea}`)
-  console.log(`inside startAddCourseRecommendation with coursename ${courseRecommendationData.coursename}`)
-  console.log(`inside startAddCourseRecommendation with coursedescription ${courseRecommendationData.coursedescription}`)
-  //console.log(`inside startAddCourseRecommenation with learningobjective ${courseRecommendationData.learningobjectives[0].content}`)
-  console.log(`inside startAddCourseRecommendation with existingRecommendation ${courseRecommendationData.existingrecommendationid}`)
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     const {
