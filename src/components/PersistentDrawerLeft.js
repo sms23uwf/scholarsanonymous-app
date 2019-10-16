@@ -47,6 +47,9 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  ListItemText: {
+    fontSize: '1.2em',
+  },
   hide: {
     display: 'none',
   },
@@ -175,7 +178,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
                 <ListItemIcon>
                   <prop.icon />
                 </ListItemIcon>
-                <ListItemText primary={prop.sidebarName} />
+                <ListItemText disableTypography primary={<Typography type="body2" style={{ fontSize: '1.5em' }}>{prop.sidebarName}</Typography>}/>
               </MenuItem>
             </Link>
           );
