@@ -178,7 +178,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
                 <ListItemIcon>
                   <prop.icon />
                 </ListItemIcon>
-                <ListItemText disableTypography primary={<Typography type="body2" style={{ fontSize: '1.5em' }}>{prop.sidebarName}</Typography>}/>
+                <ListItemText disableTypography primary={<Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>{prop.sidebarName}</Typography>}/>
               </MenuItem>
             </Link>
           );

@@ -10,7 +10,7 @@ export default (courserecommendations, { userid, disposition }) => {
     const textMatch = courserecommendations.userid === firebase.auth.uid;
     return textMatch && (recommendedMatch || undecidedMatch || rejectedMatch);
   }).sort((a, b) => {
-      return a.rating < b.rating ? 1 : -1;
+      return a.rating > b.rating ? 1 : -1;
   });
 };
 
