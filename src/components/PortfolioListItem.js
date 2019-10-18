@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
+import database from '../firebase/firebase';
 
 const styles = muiBaseTheme => ({
   card: {
@@ -90,11 +91,30 @@ class PortfolioListItem extends React.Component {
     }
   }
 
-  recordRating = (id,rating,e) => {
+  recordRating = (id,rating,courseid,userid,learningobjectives,e) => {
     this.setState({currentRating: rating});
     const ratingData = {rating: rating, disposition: this.setDispositionBasedOnRating(rating)};
     this.props.startEditCourseRecommendation(id, ratingData);
     this.setState({currentAvatarUrl: this.setAvatarURL(rating)});
+
+    var loData = {...learningobjectives};
+
+    Object.keys(loData).map((key) => {
+
+      var currentLO = loData[key];
+
+      database.ref(`ratings_by_user_course_lo`).push({
+        courseid: courseid,
+        learningobjectiveid: currentLO.learningobjectiveid,
+        userid: userid,
+        rating: rating
+      }).then(() => {
+        console.log(`ratings_by_user_course_lo added`);
+      }).catch((e) => {
+        console.log(`ratings_by_user_course_lo failed`);
+      })
+    })
+
   }
 
   setAvatarURL = (rating) => {
@@ -156,46 +176,46 @@ class PortfolioListItem extends React.Component {
             <div>
               <div className="modal-header">
                 <div className="content-container">
-                  <h3 className="page-header__title">Course Details</h3>
+                  <h3 className="page-header__title">{this.props.knowledgearea}:{this.props.coursename}</h3>
                 </div>
               </div>
               <div className="content-container">
                 <span>
-                  <label>{this.props.knowledgearea}</label>
+                <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                  {this.props.coursedescription}
+                </Typography>
                 </span>
                 <span>
-                  <label>{this.props.coursename}</label>                
-                </span>
-                <span>
-                  <label>{this.props.coursedescription}</label>
-                </span>
-                <span>
-                  <label>Disposition: {this.props.disposition}</label>
+                <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `center` }} gutterBottom>
+                  Disposition: {this.props.disposition}
+                </Typography>
                 </span>
                 <span/>
-              </div>
+               </div>
                   <form action="">
-                    <label className="statement">How closely was this recommendation related to a selected Learning Outcome?</label>
+                    <Typography type="body2" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`, textAlign: `center` }} gutterBottom>
+                     How closely was this recommendation related to a selected Learning Outcome?
+                    </Typography>
                     <ul className='likert'>
                       <li>
-                        <input type="radio" name="likert" value="0" checked={this.state.currentRating === "0"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"0",e)}/>
-                        <label>Not Related</label>
+                        <input type="radio" name="likert" value="0" checked={this.state.currentRating === "0"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"0", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                        <label style={{fontWeight: `bold`}}>Not Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="1" checked={this.state.currentRating === "1"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"1",e)}/>
-                      <label>Somewhat Related</label>
+                      <input type="radio" name="likert" value="1" checked={this.state.currentRating === "1"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"1", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                      <label style={{fontWeight: `bold`}}>Somewhat Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="2" checked={this.state.currentRating === "2"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"2",e)}/>
-                      <label>Related</label>
+                      <input type="radio" name="likert" value="2" checked={this.state.currentRating === "2"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"2", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                      <label style={{fontWeight: `bold`}}>Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="3" checked={this.state.currentRating === "3"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"3",e)}/>
-                      <label>Closely Related</label>
+                      <input type="radio" name="likert" value="3" checked={this.state.currentRating === "3"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"3", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                      <label style={{fontWeight: `bold`}}>Closely Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="4" checked={this.state.currentRating === "4"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"4",e)}/>
-                      <label>Spot On!</label>
+                      <input type="radio" name="likert" value="4" checked={this.state.currentRating === "4"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"4", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                      <label style={{fontWeight: `bold`}}>Spot On!</label>
                       </li>
                     </ul>
                   </form>

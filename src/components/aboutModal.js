@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 
 import './Modal.css';
 import './RatingModal.css';
@@ -11,11 +10,6 @@ const Modal = ({ children, customClass, show, closeCallback }) => (
       <div className="modal_content">
         <span>
           {children}
-        </span>
-        <span>
-          <div>
-            <Button title="Close" className="close_modal" onClick={closeCallback}>OK</Button>
-          </div>
         </span>
       </div>
   </div>

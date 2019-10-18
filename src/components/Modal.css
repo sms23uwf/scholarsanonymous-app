@@ -57,10 +57,11 @@
   .modal .close_modal {
     position: absolute;
     left: 45%;
-    bottom: 5px;
+    font-weight: bold;
+    bottom: 4px;
     cursor: pointer;
-    font-size: 18px;
-    opacity: 0.5;
+    font-size: 14px;
+    opacity: 0.75;
     background: none;
     border: none;
     transition: opacity 0.2s ease;
