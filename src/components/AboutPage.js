@@ -156,11 +156,11 @@ class AboutPage extends React.Component {
             <CardActionArea onClick={this.toggleModal}>
               <CardHeader avatar={<Avatar src={this.setAvatarURL(this.state.avgRating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.setTitleBasedOnRating(this.state.avgRating)}/>
               <CardContent>
-                <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                  Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning. No Personally Identifying Information (PII) will be captured or stored.
+                <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                  Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning.
                 </Typography>
                 <Divider/>
-                <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
                   From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been subsequently provided vis-a-vis your selections. When you rate a recommendation as "related" or higher it will automatically go to the "Portfolio" page.
                 </Typography>
               </CardContent>
