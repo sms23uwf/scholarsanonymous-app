@@ -62,7 +62,7 @@ class AboutPage extends React.Component {
 
     this.state = {
       showModal: true,
-      avgRating: '3' //this.getAverageRating()
+      avgRating: '3' 
     }
   }
 
@@ -163,6 +163,7 @@ class AboutPage extends React.Component {
                 <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
                   Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning. No Personally Identifying Information (PII) will be captured or stored. The log in requirement is only for the purpose of separating your selections and recommendations from everyone else's.
                 </Typography>
+                <Divider/>
                 <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
                   From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been provided based on your learning outcome selections, in terms of how closely they are related to something that you selected in the Planner. When you rate a recommendation as "related" or higher it will automatically go to the "Portfolio" page.
                 </Typography>
