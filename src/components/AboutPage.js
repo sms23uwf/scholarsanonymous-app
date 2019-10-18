@@ -1,10 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Router, browserHistory } from 'react-router';
 import Modal from './Modal';
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
@@ -96,17 +93,17 @@ class AboutPage extends React.Component {
   setTitleBasedOnRating = (rating) => {
     switch(rating) {
       case '0':
-        return 'Your Average Recommendation Rating: Rejected';
+        return 'Average Rating: Rejected';
       case `1`:
-        return `Your Average Recommendation Rating: Undecided`;
+        return `Average Rating: Undecided`;
       case `2`:
-        return `Your Average Recommendation Rating: Accepted`;
+        return `Average Rating: Accepted`;
       case `3`:
-        return `Your Average Recommendation Rating: Happily Accepted`;
+        return `Average Rating: Accepted`;
       case `4`:
-        return `Your Average Recommendation Rating: Eagerly Accepted`;
+        return `Average Rating: Accepted`;
       default:
-          return `Your Average Recommendation Rating: ${rating}`;
+          return `Average Rating: ${rating}`;
     }
   }
 
@@ -158,14 +155,13 @@ class AboutPage extends React.Component {
           <Card>
             <CardActionArea onClick={this.toggleModal}>
               <CardHeader avatar={<Avatar src={this.setAvatarURL(this.state.avgRating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.setTitleBasedOnRating(this.state.avgRating)}/>
-
               <CardContent>
                 <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                  Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning. No Personally Identifying Information (PII) will be captured or stored. The log in requirement is only for the purpose of separating your selections and recommendations from everyone else's.
+                  Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning. No Personally Identifying Information (PII) will be captured or stored.
                 </Typography>
                 <Divider/>
                 <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                  From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been provided based on your learning outcome selections, in terms of how closely they are related to something that you selected in the Planner. When you rate a recommendation as "related" or higher it will automatically go to the "Portfolio" page.
+                  From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been subsequently provided vis-a-vis your selections. When you rate a recommendation as "related" or higher it will automatically go to the "Portfolio" page.
                 </Typography>
               </CardContent>
             </CardActionArea>  
