@@ -224,15 +224,9 @@ class CourseRecommendationListItem extends React.Component {
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
-                        value="2"
-                        control={<Radio color="primary"/>}
-                        label="Good"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
                         value="3"
                         control={<Radio color="primary"/>}
-                        label="Sweet"
+                        label="Good"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
