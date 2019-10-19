@@ -42,7 +42,7 @@ const styles = muiBaseTheme => ({
   },
   content: {
     textAlign: "left",
-    padding: muiBaseTheme.spacing.unit * 3
+    padding: muiBaseTheme.spacing.unit * 2
   },
   divider: {
     margin: `${muiBaseTheme.spacing.unit * 3}px 0`
@@ -53,13 +53,23 @@ const styles = muiBaseTheme => ({
   subheading: {
     lineHeight: 1.8
   },
+  labelPlacementBottom: {
+       justifyContent: 'space-between'
+  },
   avatar: {
     display: "inline-block",
     border: "2px solid white",
     "&:not(:first-of-type)": {
       marginLeft: -muiBaseTheme.spacing.unit
     }
-  }
+  },
+  group: {
+    width: 'auto',
+    height: 'auto',
+    display: 'flex',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+  }  
 });
 
 class CourseRecommendationListItem extends React.Component {
@@ -208,9 +218,9 @@ class CourseRecommendationListItem extends React.Component {
                 </span>
                 <span/>
               </div>
-                  <FormControl component="fieldset">
+                  <FormControl component="fieldset" fullwidth="true">
                     <FormLabel component="legend" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`}}>How does this recommendation relate to a selected Learning Outcome?</FormLabel>
-                    <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} row>
+                    <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} className={"group"} row>
                       <FormControlLabel
                         value="0"
                         control={<Radio color="primary"/>}
@@ -224,15 +234,21 @@ class CourseRecommendationListItem extends React.Component {
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
-                        value="3"
+                        value="2"
                         control={<Radio color="primary"/>}
                         label="Good"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
+                        value="3"
+                        control={<Radio color="primary"/>}
+                        label="Better"
+                        labelPlacement="bottom"
+                      />
+                      <FormControlLabel
                         value="4"
                         control={<Radio color="primary"/>}
-                        label="Perfect"
+                        label="Best"
                         labelPlacement="bottom"
                       />
                     </RadioGroup>

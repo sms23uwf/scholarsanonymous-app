@@ -59,7 +59,14 @@ const styles = muiBaseTheme => ({
     "&:not(:first-of-type)": {
       marginLeft: -muiBaseTheme.spacing.unit
     }
-  }
+  },
+  group: {
+    width: 'auto',
+    height: 'auto',
+    display: 'flex',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+  }  
 });
 
 class PortfolioListItem extends React.Component {
@@ -216,36 +223,42 @@ class PortfolioListItem extends React.Component {
                 </span>
                 <span/>
                </div>
-               <FormControl component="fieldset">
-                <FormLabel component="legend" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`}}>How does this recommendation relate to a selected Learning Outcome?</FormLabel>
-                <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} row>
-                  <FormControlLabel
-                    value="0"
-                    control={<Radio color="primary"/>}
-                    label="Nothing"
-                    labelPlacement="bottom"
-                  />
-                  <FormControlLabel
-                    value="1"
-                    control={<Radio color="primary"/>}
-                    label="Uncertain"
-                    labelPlacement="bottom"
-                  />
-                  <FormControlLabel
-                    value="3"
-                    control={<Radio color="primary"/>}
-                    label="Good"
-                    labelPlacement="bottom"
-                  />
-                  <FormControlLabel
-                    value="4"
-                    control={<Radio color="primary"/>}
-                    label="Perfect"
-                    labelPlacement="bottom"
-                  />
-                </RadioGroup>
-              </FormControl>
-           </div>
+               <FormControl component="fieldset" fullwidth="true">
+               <FormLabel component="legend" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`}}>How does this recommendation relate to a selected Learning Outcome?</FormLabel>
+               <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} className={"group"} row>
+                 <FormControlLabel
+                   value="0"
+                   control={<Radio color="primary"/>}
+                   label="Nothing"
+                   labelPlacement="bottom"
+                 />
+                 <FormControlLabel
+                   value="1"
+                   control={<Radio color="primary"/>}
+                   label="Uncertain"
+                   labelPlacement="bottom"
+                 />
+                 <FormControlLabel
+                   value="2"
+                   control={<Radio color="primary"/>}
+                   label="Good"
+                   labelPlacement="bottom"
+                 />
+                 <FormControlLabel
+                   value="3"
+                   control={<Radio color="primary"/>}
+                   label="Better"
+                   labelPlacement="bottom"
+                 />
+                 <FormControlLabel
+                   value="4"
+                   control={<Radio color="primary"/>}
+                   label="Best"
+                   labelPlacement="bottom"
+                 />
+               </RadioGroup>
+             </FormControl>
+            </div>
                 <br/>
                 <br/>
                 <span>
