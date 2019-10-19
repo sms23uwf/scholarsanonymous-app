@@ -16,6 +16,11 @@ import CardActions from "@material-ui/core/CardActions";
 import selectCourseRecommendations from '../selectors/courserecommendations';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const styles = muiBaseTheme => ({
   card: {
@@ -64,7 +69,8 @@ class CourseRecommendationListItem extends React.Component {
         showModal: false,
         currentRating: props.rating,
         currentTitle: props.knowledgearea + `: ` + props.coursename,
-        currentAvatarUrl: this.setAvatarURL(props.rating)
+        currentAvatarUrl: this.setAvatarURL(props.rating),
+        newRating: props.rating
       }
   }
   toggleModalWithSave = () => {
@@ -73,6 +79,10 @@ class CourseRecommendationListItem extends React.Component {
     {
       this.props.startSetCourseRecommendations();
     }
+
+    if(this.state.newRating != this.state.currentRating)
+      this.recordRating(this.props.courserecommendation.id, this.state.newRating, this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives);
+
     this.setState({
       showModal: !this.state.showModal
     });
@@ -81,7 +91,8 @@ class CourseRecommendationListItem extends React.Component {
   toggleModal = () => {
     console.log(`inside toggleModal`);
     this.setState({
-      showModal: !this.state.showModal
+      showModal: !this.state.showModal,
+      newRating: this.state.currentRating
     });
   }
 
@@ -102,7 +113,11 @@ class CourseRecommendationListItem extends React.Component {
     }
   }
 
-  recordRating = (id,rating,courseid,userid,learningobjectives,e) => {
+  handleRatingChange = event => {
+    this.setState({newRating: event.target.value});
+  }
+
+  recordRating = (id,rating,courseid,userid,learningobjectives) => {
     this.setState({currentRating: rating});
     const ratingData = {rating: rating, disposition: this.setDispositionBasedOnRating(rating)};
     this.props.startEditCourseRecommendation(id, ratingData);
@@ -197,28 +212,38 @@ class CourseRecommendationListItem extends React.Component {
                     <Typography type="body2" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`, textAlign: `center` }} gutterBottom>
                      How closely was this recommendation related to a selected Learning Outcome?
                     </Typography>
-                    <ul className='likert'>
-                      <li>
-                        <input type="radio" name="likert" value="0" checked={this.state.currentRating === "0"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"0", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                        <label style={{fontWeight: `bold`}}>Not Related</label>
-                      </li>
-                      <li>
-                        <input type="radio" name="likert" value="1" checked={this.state.currentRating === "1"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"1", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                        <label style={{fontWeight: `bold`}}>Somewhat Related</label>
-                      </li>
-                      <li>
-                        <input type="radio" name="likert" value="2" checked={this.state.currentRating === "2"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"2", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                        <label style={{fontWeight: `bold`}}>Related</label>
-                      </li>
-                      <li>
-                        <input type="radio" name="likert" value="3" checked={this.state.currentRating === "3"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"3", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                        <label style={{fontWeight: `bold`}}>Closely Related</label>
-                      </li>
-                      <li>
-                        <input type="radio" name="likert" value="4" checked={this.state.currentRating === "4"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"4", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                        <label style={{fontWeight: `bold`}}>Spot On!</label>
-                      </li>
-                    </ul>
+                    <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} row>
+                      <FormControlLabel
+                        value="0"
+                        control={<Radio color="primary"/>}
+                        label="Not Related"
+                        labelPlacement="bottom"
+                      />
+                      <FormControlLabel
+                        value="1"
+                        control={<Radio color="primary"/>}
+                        label="Somewhat Related"
+                        labelPlacement="bottom"
+                      />
+                      <FormControlLabel
+                        value="2"
+                        control={<Radio color="primary"/>}
+                        label="Related"
+                        labelPlacement="bottom"
+                      />
+                      <FormControlLabel
+                        value="3"
+                        control={<Radio color="primary"/>}
+                        label="Closely Related"
+                        labelPlacement="bottom"
+                      />
+                      <FormControlLabel
+                        value="4"
+                        control={<Radio color="primary"/>}
+                        label="Spot On"
+                        labelPlacement="bottom"
+                      />
+                    </RadioGroup>
                   </form>
                 </div>
                 <br/>
