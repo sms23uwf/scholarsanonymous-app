@@ -17,6 +17,8 @@ import { startSetCourseRecommendations } from '../actions/courseRecommendations'
 export class LearningObjectiveList extends React.Component {
   constructor(props) {
     super(props);
+    props.setUUIDFilter(firebase.auth().currentUser.uid);
+    console.log(`just set UUIDfilter with ${firebase.auth().currentUser.uid}`);
   }
 
   state = {
@@ -34,6 +36,7 @@ export class LearningObjectiveList extends React.Component {
 
     if(e.target.checked===true)
     {
+      console.log(`inside if(e.target.checked===true)`);
       const userid = firebase.auth().currentUser.uid;
       const loData = {learningobjectiveid: learningobjectiveid, userid: userid};
 
@@ -159,6 +162,8 @@ export class LearningObjectiveList extends React.Component {
                   {
                     const pairingId = this.getPairing(learningobjective.id);
 
+                    console.log(`learningobjective_userselects count is ${this.props.learningobjective_userselects.length}`);
+
                     learningobjective.selected = false;
 
                     if(pairingId != 0)
@@ -190,7 +195,7 @@ const mapStateToProps = (state) => {
   return {
     learningobjectives: selectLearningObjectives(state.learningobjectives, state.filters),
     learningobjective_courses: selectLOCourses(state.learningobjective_courses,state.filters),
-    learningobjective_userselects: selectLOSelectionsForUser(state.learningobjective_userselects, firebase.auth().currentUser.uid),
+    learningobjective_userselects: selectLOSelectionsForUser(state.learningobjective_userselects, state.filters),
     allcourserecommendations: state.courserecommendations,
     courserecommendations: selectCourseRecommendations(state.courserecommendations, state.filters),
     courses: selectCourses(state.courses, state.filters),

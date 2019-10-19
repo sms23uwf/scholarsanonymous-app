@@ -28,9 +28,9 @@ export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
 
     if(existingrecommendationid === ``)
     {
-      return database.ref(`courserecommendation`).push({...courseUserPairing}).then((ref) => {
-        database.ref(`courserecommendation/${ref.key}`).child(`learningobjectives`).remove();
-        var newLO = database.ref(`courserecommendation/${ref.key}`).child(`learningobjectives`).push();
+      return database.ref(`users_tables/${uid}/courserecommendation`).push({...courseUserPairing}).then((ref) => {
+        database.ref(`users_tables/${uid}/courserecommendation/${ref.key}`).child(`learningobjectives`).remove();
+        var newLO = database.ref(`users_tables/${uid}/courserecommendation/${ref.key}`).child(`learningobjectives`).push();
         newLO.set({
           learningobjectiveid: learningobjectives[0].learningobjectiveid,
           content: learningobjectives[0].content
@@ -41,12 +41,12 @@ export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
           ...courseUserPairing
         }));
         const recommendationLoPairing = {recommendationid: ref.key, learningobjectiveid: learningobjectiveid, userid: userid };
-        //database.ref(`recommendation_learningobjective`).push(recommendationLoPairing);
+        //database.ref(`users_tables/${uid}/recommendation_learningobjective`).push(recommendationLoPairing);
       });
     }
     else
     {
-      var newLO = database.ref(`courserecommendation/${existingrecommendationid}`).child(`learningobjectives`).push();
+      var newLO = database.ref(`users_tables/${uid}/courserecommendation/${existingrecommendationid}`).child(`learningobjectives`).push();
       newLO.set({
         learningobjectiveid: learningobjectives[0].learningobjectiveid,
         content: learningobjectives[0].content
@@ -67,7 +67,7 @@ export const startRemoveCourseRecommendation = (recommendationPairing = {}) => {
     const uid = getState().auth.uid;
     const id = recommendationPairing.id;
     
-    return database.ref(`courserecommendation/${id}`).remove().then(() => {
+    return database.ref(`users_tables/${uid}/courserecommendation/${id}`).remove().then(() => {
       dispatch(removeCourseRecommendation({ id }));
     });
   };
@@ -83,7 +83,7 @@ export const editCourseRecommendation = (id, updates) => ({
 export const startEditCourseRecommendation = (id, updates) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database.ref(`courserecommendation/${id}`).update(updates).then(() => {
+    return database.ref(`users_tables/${uid}/courserecommendation/${id}`).update(updates).then(() => {
       dispatch(editCourseRecommendation(id, updates));
     });
   };
@@ -98,7 +98,7 @@ export const setCourseRecommendations = (courserecommendations) => ({
 export const startSetCourseRecommendations = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database.ref(`courserecommendation`).once('value').then((snapshot) => {
+    return database.ref(`users_tables/${uid}/courserecommendation`).once('value').then((snapshot) => {
         const courserecommendations = [];
 
       snapshot.forEach((childSnapshot) => {

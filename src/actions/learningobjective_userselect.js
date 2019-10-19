@@ -15,7 +15,7 @@ export const startAddLOSelectionToUser = (loData = {}) => {
     } = loData;
     const loUserPairing = { learningobjectiveid, userid };
 
-    return database.ref(`learningobjective_userselect`).push({...loUserPairing}).then((ref) => {
+    return database.ref(`users_tables/${uid}/learningobjective_userselect`).push({...loUserPairing}).then((ref) => {
       dispatch(addLOSelectionToUser({
         id: ref.key,
         ...loUserPairing
@@ -35,7 +35,7 @@ export const startRemoveLOSelectionFromUser = (loPairing = {}) => {
     const uid = getState().auth.uid;
     const id = loPairing.id;
 
-    return database.ref(`learningobjective_userselect/${id}`).remove().then(() => {
+    return database.ref(`users_tables/${uid}/learningobjective_userselect/${id}`).remove().then(() => {
       dispatch(removeLOSelectionFromUser({ id }));
     });
   };
@@ -50,9 +50,10 @@ export const setLOSelectionsByUser = (learningobjective_userselects) => ({
 
 export const startsetLOSelectionsByUser = () => {
   console.log(`inside startsetLOSelectionsByUser`);
-  return (dispatch) => {
-    
-    return database.ref(`learningobjective_userselect`).once('value').then((snapshot) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    return database.ref(`users_tables/${uid}/learningobjective_userselect`).once('value').then((snapshot) => {
       const learningobjective_userselects = [];
 
       snapshot.forEach((childSnapshot) => {

@@ -13,6 +13,8 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import database from '../firebase/firebase';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const styles = muiBaseTheme => ({
   card: {
@@ -64,11 +66,17 @@ class PortfolioListItem extends React.Component {
         currentAvatarUrl: this.setAvatarURL(props.rating)
       }
   }
-  toggleModal = () => {
+  toggleModalWithSave = () => {
     if(this.state.showModal == true)
     {
       this.props.startSetCourseRecommendations();
     }
+    this.setState({
+      showModal: !this.state.showModal
+    });
+  }
+
+  toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal
     });
@@ -169,7 +177,7 @@ class PortfolioListItem extends React.Component {
 
         <Modal
           show={this.state.showModal}
-          closeCallback={this.toggleModal}
+          //closeCallback={this.toggleModal}
           customClass="custom_modal_class"
         >
           <React.Fragment>
@@ -220,6 +228,36 @@ class PortfolioListItem extends React.Component {
                     </ul>
                   </form>
                 </div>
+                <br/>
+                <br/>
+                <span>
+                  <div>
+                    <Grid
+                    justify="center" 
+                    container 
+                    spacing={2}
+                    >
+                      <Grid item>
+                        <Button
+                          color="inherit"
+                          aria-label="Accept"
+                          style={{fontWeight: "bold"}}
+                          title="Accept"
+                          onClick={this.toggleModalWithSave}
+                          edge="end">OK</Button>
+                      </Grid>
+                      <Grid item>
+                        <Button
+                          color="inherit"
+                          aria-label="Cancel"
+                          style={{fontWeight: "bold"}}
+                          title="Cancel"
+                          onClick={this.toggleModal}
+                          edge="start">Cancel</Button>
+                      </Grid>
+                    </Grid>
+                  </div>
+                </span>
           </React.Fragment>
         </Modal>
       </div>

@@ -10,6 +10,7 @@ import recommendationLearningObjectiveReducer from '../reducers/recommendation_l
 import usersReducer from '../reducers/users.js';
 import filtersReducer from '../reducers/filters';
 import authReducer from '../reducers/auth';
+import ratingsReducer from '../reducers/ratingsByUserCourseLO';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -25,7 +26,8 @@ export default () => {
       recommendation_learningobjectives: recommendationLearningObjectiveReducer,
       users: usersReducer,
       filters: filtersReducer,
-      auth: authReducer
+      auth: authReducer,
+      ratings_user_course_lo: ratingsReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CourseRecommendationForm from './CourseRecommendationForm';
 import { startSetCourseRecommendations, startEditCourseRecommendation } from '../actions/courseRecommendations';
+import { startAddRatingsByUserCourseLO } from '../actions/ratingsByUserCourseLO';
 import Modal from './Modal';
 import Avatar from '@material-ui/core/Avatar';
 import Card from "@material-ui/core/Card";
@@ -13,8 +14,8 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import selectCourseRecommendations from '../selectors/courserecommendations';
-import * as firebase from 'firebase';
-import database from '../firebase/firebase';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const styles = muiBaseTheme => ({
   card: {
@@ -66,11 +67,19 @@ class CourseRecommendationListItem extends React.Component {
         currentAvatarUrl: this.setAvatarURL(props.rating)
       }
   }
-  toggleModal = () => {
+  toggleModalWithSave = () => {
+    console.log(`inside toggleModalWithSave`);
     if(this.state.showModal == true)
     {
       this.props.startSetCourseRecommendations();
     }
+    this.setState({
+      showModal: !this.state.showModal
+    });
+  }
+
+  toggleModal = () => {
+    console.log(`inside toggleModal`);
     this.setState({
       showModal: !this.state.showModal
     });
@@ -102,19 +111,9 @@ class CourseRecommendationListItem extends React.Component {
     var loData = {...learningobjectives};
 
     Object.keys(loData).map((key) => {
-
       var currentLO = loData[key];
-
-      database.ref(`ratings_by_user_course_lo`).push({
-        courseid: courseid,
-        learningobjectiveid: currentLO.learningobjectiveid,
-        userid: userid,
-        rating: rating
-      }).then(() => {
-        console.log(`ratings_by_user_course_lo added`);
-      }).catch((e) => {
-        console.log(`ratings_by_user_course_lo failed`);
-      })
+      const ratingCapture = {courseid: courseid, learningobjectiveid: currentLO.learningobjectiveid, userid: userid, rating: rating};
+      this.props.startAddRatingsByUserCourseLO(ratingCapture);
     })
   }
 
@@ -150,7 +149,7 @@ class CourseRecommendationListItem extends React.Component {
     return (
       <div>
       <Divider/>
-        <CardActionArea onClick={this.toggleModal}>
+        <CardActionArea onClick={this.toggleModalWithSave}>
           <Card>
             <CardHeader avatar={<Avatar src={this.state.currentAvatarUrl} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.state.currentTitle}/>
             <CardContent>
@@ -171,7 +170,7 @@ class CourseRecommendationListItem extends React.Component {
 
         <Modal
           show={this.state.showModal}
-          closeCallback={this.toggleModal}
+          //closeCallback={this.toggleModal}
           customClass="custom_modal_class"
         >
           <React.Fragment>
@@ -204,24 +203,52 @@ class CourseRecommendationListItem extends React.Component {
                         <label style={{fontWeight: `bold`}}>Not Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="1" checked={this.state.currentRating === "1"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"1", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                      <label style={{fontWeight: `bold`}}>Somewhat Related</label>
+                        <input type="radio" name="likert" value="1" checked={this.state.currentRating === "1"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"1", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                        <label style={{fontWeight: `bold`}}>Somewhat Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="2" checked={this.state.currentRating === "2"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"2", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                      <label style={{fontWeight: `bold`}}>Related</label>
+                        <input type="radio" name="likert" value="2" checked={this.state.currentRating === "2"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"2", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                        <label style={{fontWeight: `bold`}}>Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="3" checked={this.state.currentRating === "3"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"3", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                      <label style={{fontWeight: `bold`}}>Closely Related</label>
+                        <input type="radio" name="likert" value="3" checked={this.state.currentRating === "3"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"3", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                        <label style={{fontWeight: `bold`}}>Closely Related</label>
                       </li>
                       <li>
-                      <input type="radio" name="likert" value="4" checked={this.state.currentRating === "4"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"4", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
-                      <label style={{fontWeight: `bold`}}>Spot On!</label>
+                        <input type="radio" name="likert" value="4" checked={this.state.currentRating === "4"} onChange={(e) => this.recordRating(this.props.courserecommendation.id,"4", this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives, e)}/>
+                        <label style={{fontWeight: `bold`}}>Spot On!</label>
                       </li>
                     </ul>
                   </form>
                 </div>
+                <br/>
+                <br/>
+                <span>
+                  <div>
+                    <Grid
+                    justify="center" 
+                    container 
+                    spacing={2}
+                    >
+                      <Grid item>
+                        <Button
+                          color="inherit"
+                          aria-label="Accept"
+                          style={{fontWeight: "bold"}}
+                          title="Accept"
+                          onClick={this.toggleModalWithSave}>OK</Button>
+                      </Grid>
+                      <Grid item>
+                        <Button
+                          color="inherit"
+                          aria-label="Cancel"
+                          style={{fontWeight: "bold"}}
+                          title="Cancel"
+                          onClick={this.toggleModal}>Cancel</Button>
+                      </Grid>
+                    </Grid>
+                  </div>
+                </span>
           </React.Fragment>
         </Modal>
       </div>
@@ -230,14 +257,15 @@ class CourseRecommendationListItem extends React.Component {
 };
 
 const mapStateToProps = (state, props) => ({
-  courserecommendations: selectCourseRecommendations(state.courserecommendations, firebase.auth().currentUser.uid),
+  courserecommendations: selectCourseRecommendations(state.courserecommendations, state.filters),
   courserecommendation: state.courserecommendations.find((courserecommendation) => courserecommendation.id === props.id),
   filters: state.filters
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
   startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData)),
-  startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations())
+  startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations()),
+  startAddRatingsByUserCourseLO: (ratingCapture) => dispatch(startAddRatingsByUserCourseLO(ratingCapture))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CourseRecommendationListItem);

@@ -16,7 +16,7 @@ export const addRecommendationLearningObjective = (recommendation_learningobject
         } = loData;
         const recommendationLoUserPairing = { recommendationid, learningobjectiveid, userid };
 
-        return database.ref(`recommendation_learningobjective`).push({...recommendationLoUserPairing}).then((ref) => {
+        return database.ref(`users_tables/${uid}/recommendation_learningobjective`).push({...recommendationLoUserPairing}).then((ref) => {
         dispatch(addRecommendationLearningObjective({
             id: ref.key,
             ...recommendationLoUserPairing
@@ -36,7 +36,7 @@ export const removeRecommendationLearningObjective = ({ id } = {}) => ({
       const uid = getState().auth.uid;
       const id = recommendationLoPairing.id;
   
-      return database.ref(`recommendation_learningobjective/${id}`).remove().then(() => {
+      return database.ref(`users_tables/${uid}/recommendation_learningobjective/${id}`).remove().then(() => {
         dispatch(removeRecommendationLearningObjective({ id }));
       });
     };
@@ -51,9 +51,10 @@ export const setRecommendationLearningObjectives = (recommendation_learningobjec
 
 export const startSetRecommendationLearningObjectives = () => {
   console.log(`inside startSetRecommendationLearningObjectives`);
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     
-    return database.ref(`recommendation_learningobjective`).once('value').then((snapshot) => {
+    return database.ref(`users_tables/${uid}/recommendation_learningobjective`).once('value').then((snapshot) => {
       const recommendation_learningobjectives = [];
 
       snapshot.forEach((childSnapshot) => {

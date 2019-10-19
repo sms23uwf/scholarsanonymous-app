@@ -8,8 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
-import database from '../firebase/firebase';
 import Avatar from '@material-ui/core/Avatar';
+import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 require('bootstrap/dist/css/bootstrap.css');
 
@@ -59,7 +60,7 @@ class AboutPage extends React.Component {
 
     this.state = {
       showModal: true,
-      avgRating: '3' 
+      avgRating: this.getAverageRating()
     }
   }
 
@@ -112,35 +113,15 @@ class AboutPage extends React.Component {
     var count = 0;
     var total = 0;
 
-    database.ref(`ratings_by_user_course_lo`).once('value').then((snapshot) => {
-
-      snapshot.forEach((childSnapshot) => {
-        count++;
-
-        console.log(`inside loop with rating of ${childSnapshot.val().rating}`);
-        console.log(`inside loop with parseInt rating of ${parseInt(childSnapshot.val().rating)} `);
-        total+= parseInt(childSnapshot.val().rating);
-      });
-      
-      console.log(`inside getAverageRating with count of ${count}`);
-      console.log(`inside getAverageRating with total of ${total}`);
-    })
-    console.log(`inside getAverageRating with ${total}`);
+    this.props.ratingsByUserCourseLO.map((ratingByUserCourselO) => {
+      total+= parseInt(ratingByUserCourselO.rating);
+      count++;
+    });
     return parseInt((total/count)).toString();
+
   }
 
-  static contextTypes = {
-    router: PropTypes.shape({
-      history: PropTypes.shape({
-        push: PropTypes.func.isRequired,
-        replace: PropTypes.func.isRequired
-      }).isRequired,
-      staticContext: PropTypes.object
-    }).isRequired
-  };
-
   render() {
-
     return (
       <div className="content-container-dashboard">
       <span id="image">
@@ -153,24 +134,32 @@ class AboutPage extends React.Component {
           customClass="custom_modal_class"
           >
           <Card>
-            <CardActionArea onClick={this.toggleModal}>
-              <CardHeader avatar={<Avatar src={this.setAvatarURL(this.state.avgRating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.setTitleBasedOnRating(this.state.avgRating)}/>
-              <CardContent>
-                <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                  Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning.
-                </Typography>
-                <Divider/>
-                <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                  From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been subsequently provided vis-a-vis your selections. When you rate a recommendation as "related" or higher it will automatically go to the "Portfolio" page.
-                </Typography>
-              </CardContent>
-            </CardActionArea>  
+            <CardHeader avatar={<Avatar src={this.setAvatarURL(this.state.avgRating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.setTitleBasedOnRating(this.state.avgRating)}/>
+            <CardContent>
+              <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning.
+              </Typography>
+              <br/>
+              <Divider/>
+              <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been subsequently provided vis-a-vis your selections. When you rate a recommendation as "related" or higher it will automatically go to the "Portfolio" page.
+              </Typography>
+            </CardContent>
           </Card>
-
-          </Modal>
+          <br/>
+          <br/>
+          <Button title="Close" className="close_modal" onClick={this.toggleModal}>OK</Button>
+        </Modal>
       </div>
     );
   }
 };
 
-export default AboutPage;
+const mapStateToProps = (state) => {
+  return {
+    ratingsByUserCourseLO: state.ratings_user_course_lo
+  };
+};
+
+export default connect(mapStateToProps)(AboutPage);
+
