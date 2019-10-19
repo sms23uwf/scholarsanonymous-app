@@ -225,31 +225,31 @@ class PortfolioListItem extends React.Component {
                       <FormControlLabel
                         value="0"
                         control={<Radio color="primary"/>}
-                        label="Not Related"
+                        label="Nothing"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
                         value="1"
                         control={<Radio color="primary"/>}
-                        label="Somewhat Related"
+                        label="Uncertain"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
                         value="2"
                         control={<Radio color="primary"/>}
-                        label="Related"
+                        label="Good"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
                         value="3"
                         control={<Radio color="primary"/>}
-                        label="Closely Related"
+                        label="Sweet"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
                         value="4"
                         control={<Radio color="primary"/>}
-                        label="Spot On"
+                        label="Perfect"
                         labelPlacement="bottom"
                       />
                     </RadioGroup>

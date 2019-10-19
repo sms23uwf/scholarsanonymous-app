@@ -210,37 +210,37 @@ class CourseRecommendationListItem extends React.Component {
               </div>
                   <form action="">
                     <Typography type="body2" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`, textAlign: `center` }} gutterBottom>
-                     How closely was this recommendation related to a selected Learning Outcome?
+                     How does this recommendation relate to a selected Learning Outcome?
                     </Typography>
                     <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} row>
                       <FormControlLabel
                         value="0"
                         control={<Radio color="primary"/>}
-                        label="Not Related"
+                        label="Nothing"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
                         value="1"
                         control={<Radio color="primary"/>}
-                        label="Somewhat Related"
+                        label="Uncertain"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
                         value="2"
                         control={<Radio color="primary"/>}
-                        label="Related"
+                        label="Good"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
                         value="3"
                         control={<Radio color="primary"/>}
-                        label="Closely Related"
+                        label="Sweet"
                         labelPlacement="bottom"
                       />
                       <FormControlLabel
                         value="4"
                         control={<Radio color="primary"/>}
-                        label="Spot On"
+                        label="Perfect"
                         labelPlacement="bottom"
                       />
                     </RadioGroup>
