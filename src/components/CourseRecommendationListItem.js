@@ -208,10 +208,8 @@ class CourseRecommendationListItem extends React.Component {
                 </span>
                 <span/>
               </div>
-                  <form action="">
-                    <Typography type="body2" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`, textAlign: `center` }} gutterBottom>
-                     How does this recommendation relate to a selected Learning Outcome?
-                    </Typography>
+                  <FormControl component="fieldset">
+                    <FormLabel component="legend" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`}}>How does this recommendation relate to a selected Learning Outcome?</FormLabel>
                     <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} row>
                       <FormControlLabel
                         value="0"
@@ -244,7 +242,7 @@ class CourseRecommendationListItem extends React.Component {
                         labelPlacement="bottom"
                       />
                     </RadioGroup>
-                  </form>
+                  </FormControl>
                 </div>
                 <br/>
                 <br/>

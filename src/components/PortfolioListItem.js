@@ -216,45 +216,42 @@ class PortfolioListItem extends React.Component {
                 </span>
                 <span/>
                </div>
-                  <form action="">
-                    <Typography type="body2" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`, textAlign: `center` }} gutterBottom>
-                     How closely was this recommendation related to a selected Learning Outcome?
-                    </Typography>
-
-                    <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} row>
-                      <FormControlLabel
-                        value="0"
-                        control={<Radio color="primary"/>}
-                        label="Nothing"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="1"
-                        control={<Radio color="primary"/>}
-                        label="Uncertain"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="2"
-                        control={<Radio color="primary"/>}
-                        label="Good"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="3"
-                        control={<Radio color="primary"/>}
-                        label="Sweet"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="4"
-                        control={<Radio color="primary"/>}
-                        label="Perfect"
-                        labelPlacement="bottom"
-                      />
-                    </RadioGroup>
-                  </form>
-                </div>
+               <FormControl component="fieldset">
+                <FormLabel component="legend" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`}}>How does this recommendation relate to a selected Learning Outcome?</FormLabel>
+                <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} row>
+                  <FormControlLabel
+                    value="0"
+                    control={<Radio color="primary"/>}
+                    label="Nothing"
+                    labelPlacement="bottom"
+                  />
+                  <FormControlLabel
+                    value="1"
+                    control={<Radio color="primary"/>}
+                    label="Uncertain"
+                    labelPlacement="bottom"
+                  />
+                  <FormControlLabel
+                    value="2"
+                    control={<Radio color="primary"/>}
+                    label="Good"
+                    labelPlacement="bottom"
+                  />
+                  <FormControlLabel
+                    value="3"
+                    control={<Radio color="primary"/>}
+                    label="Sweet"
+                    labelPlacement="bottom"
+                  />
+                  <FormControlLabel
+                    value="4"
+                    control={<Radio color="primary"/>}
+                    label="Perfect"
+                    labelPlacement="bottom"
+                  />
+                </RadioGroup>
+              </FormControl>
+           </div>
                 <br/>
                 <br/>
                 <span>
