@@ -160,7 +160,6 @@ class PortfolioListItem extends React.Component {
                   Disposition: {this.props.disposition}
                 </Typography>
                 </span>
-                <span/>
                </div>
                <div>
                   <form action="">

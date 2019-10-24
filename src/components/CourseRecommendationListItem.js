@@ -146,7 +146,6 @@ class CourseRecommendationListItem extends React.Component {
 
         <Modal
           show={this.state.showModal}
-          //closeCallback={this.toggleModal}
           customClass="custom_modal_class"
         >
           <React.Fragment>
@@ -158,7 +157,7 @@ class CourseRecommendationListItem extends React.Component {
               </div>
               <div className="content-container">
                 <span>
-                <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                <Typography style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
                   {this.props.coursedescription}
                 </Typography>
                 </span>
@@ -167,36 +166,35 @@ class CourseRecommendationListItem extends React.Component {
                   Disposition: {this.props.disposition}
                 </Typography>
                 </span>
-                <span/>
-              </div>
-                <div>
-                  <form action="">
-                  <label class="statement">This Recommendation Fits With a Desired Learning Outcome.</label>
-                  <ul class='likert'>
-                    <li>
-                      <input type="radio" name="likert" value="0" checked={this.state.newRating === "0"} onChange={(e) => this.recordLocalRating("0",e)}/>
-                      <label>Strongly Disagree</label>
-                    </li>
-                    <li>
-                      <input type="radio" name="likert" value="1" checked={this.state.newRating === "1"} onChange={(e) => this.recordLocalRating("1",e)}/>
-                      <label>Disagree</label>
-                    </li>
-                    <li>
-                      <input type="radio" name="likert" value="2" checked={this.state.newRating === "2"} onChange={(e) => this.recordLocalRating("2",e)}/>
-                      <label>Neutral</label>
-                    </li>
-                    <li>
-                      <input type="radio" name="likert" value="3" checked={this.state.newRating === "3"} onChange={(e) => this.recordLocalRating("3",e)}/>
-                      <label>Agree</label>
-                    </li>
-                    <li>
-                      <input type="radio" name="likert" value="4" checked={this.state.newRating === "4"} onChange={(e) => this.recordLocalRating("4",e)}/>
-                      <label>Strongly Agree</label>
-                    </li>
-                  </ul>
-                  </form>
-
                 </div>
+                  <div>
+                    <form action="">
+                    <label class="statement">This Recommendation Fits With a Desired Learning Outcome.</label>
+                    <ul class='likert'>
+                      <li>
+                        <input type="radio" name="likert" value="0" checked={this.state.newRating === "0"} onChange={(e) => this.recordLocalRating("0",e)}/>
+                        <label>Strongly Disagree</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="likert" value="1" checked={this.state.newRating === "1"} onChange={(e) => this.recordLocalRating("1",e)}/>
+                        <label>Disagree</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="likert" value="2" checked={this.state.newRating === "2"} onChange={(e) => this.recordLocalRating("2",e)}/>
+                        <label>Neutral</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="likert" value="3" checked={this.state.newRating === "3"} onChange={(e) => this.recordLocalRating("3",e)}/>
+                        <label>Agree</label>
+                      </li>
+                      <li>
+                        <input type="radio" name="likert" value="4" checked={this.state.newRating === "4"} onChange={(e) => this.recordLocalRating("4",e)}/>
+                        <label>Strongly Agree</label>
+                      </li>
+                    </ul>
+                    </form>
+
+                  </div>
                 </div>
                 <span>
                   <div>
