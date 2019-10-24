@@ -1,76 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CourseRecommendationForm from './CourseRecommendationForm';
 import { startSetCourseRecommendations, startEditCourseRecommendation } from '../actions/courseRecommendations';
 import { startAddRatingsByUserCourseLO } from '../actions/ratingsByUserCourseLO';
 import Modal from './Modal';
 import Avatar from '@material-ui/core/Avatar';
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardActions from "@material-ui/core/CardActions";
 import selectCourseRecommendations from '../selectors/courserecommendations';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-
-const styles = muiBaseTheme => ({
-  card: {
-    maxWidth: 300,
-    margin: "auto",
-    transition: "0.3s",
-    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
-    "&:hover": {
-      boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)"
-    }
-  },
-  avatar: {
-    margin: 10,
-    width: 60,
-    height: 60
-  },
-  media: {
-    paddingTop: "56.25%"
-  },
-  content: {
-    textAlign: "left",
-    padding: muiBaseTheme.spacing.unit * 2
-  },
-  divider: {
-    margin: `${muiBaseTheme.spacing.unit * 3}px 0`
-  },
-  heading: {
-    fontWeight: "bold"
-  },
-  subheading: {
-    lineHeight: 1.8
-  },
-  labelPlacementBottom: {
-       justifyContent: 'space-between'
-  },
-  avatar: {
-    display: "inline-block",
-    border: "2px solid white",
-    "&:not(:first-of-type)": {
-      marginLeft: -muiBaseTheme.spacing.unit
-    }
-  },
-  group: {
-    width: 'auto',
-    height: 'auto',
-    display: 'flex',
-    flexWrap: 'nowrap',
-    flexDirection: 'row',
-  }  
-});
 
 class CourseRecommendationListItem extends React.Component {
   constructor(props){
@@ -111,12 +53,12 @@ class CourseRecommendationListItem extends React.Component {
       case '0':
         return 'Rejected';
       case `1`:
-        return `Undecided`;
+        return `Rejected`;
       case `2`:
-        return `Accepted`;
+        return `Undecided`;
       case `3`:
         return `Accepted`;
-      case `4`:
+      case `3`:
         return `Accepted`;
       default:
           return ``;
@@ -124,7 +66,16 @@ class CourseRecommendationListItem extends React.Component {
   }
 
   handleRatingChange = event => {
+    console.log(`newRating is ${this.state.newRating}`);
+    console.log(`currentRating is ${this.state.currentRating}`);
     this.setState({newRating: event.target.value});
+    console.log(`newRating is ${this.state.newRating}`);
+    console.log(`currentRating is ${this.state.currentRating}`);
+    console.log(`event.target.value is ${event.target.value}`);
+  }
+
+  recordLocalRating = (rating,e) => {
+    this.setState({newRating: rating});
   }
 
   recordRating = (id,rating,courseid,userid,learningobjectives) => {
@@ -218,44 +169,35 @@ class CourseRecommendationListItem extends React.Component {
                 </span>
                 <span/>
               </div>
-                  <FormControl component="fieldset" fullwidth="true">
-                    <FormLabel component="legend" style={{ fontSize: '1.15em', fontWeight: `bold`, color: `#000000`}}>How does this recommendation relate to a selected Learning Outcome?</FormLabel>
-                    <RadioGroup aria-label="rating" name="rating" value={this.state.newRating} onChange={this.handleRatingChange} className={"group"} row>
-                      <FormControlLabel
-                        value="0"
-                        control={<Radio color="primary"/>}
-                        label="Nothing"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="1"
-                        control={<Radio color="primary"/>}
-                        label="Uncertain"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="2"
-                        control={<Radio color="primary"/>}
-                        label="Good"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="3"
-                        control={<Radio color="primary"/>}
-                        label="Better"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="4"
-                        control={<Radio color="primary"/>}
-                        label="Best"
-                        labelPlacement="bottom"
-                      />
-                    </RadioGroup>
-                  </FormControl>
+                <div>
+                  <form action="">
+                  <label class="statement">This Recommendation Fits With a Desired Learning Outcome.</label>
+                  <ul class='likert'>
+                    <li>
+                      <input type="radio" name="likert" value="0" checked={this.state.newRating === "0"} onChange={(e) => this.recordLocalRating("0",e)}/>
+                      <label>Strongly Disagree</label>
+                    </li>
+                    <li>
+                      <input type="radio" name="likert" value="1" checked={this.state.newRating === "1"} onChange={(e) => this.recordLocalRating("1",e)}/>
+                      <label>Disagree</label>
+                    </li>
+                    <li>
+                      <input type="radio" name="likert" value="2" checked={this.state.newRating === "2"} onChange={(e) => this.recordLocalRating("2",e)}/>
+                      <label>Neutral</label>
+                    </li>
+                    <li>
+                      <input type="radio" name="likert" value="3" checked={this.state.newRating === "3"} onChange={(e) => this.recordLocalRating("3",e)}/>
+                      <label>Agree</label>
+                    </li>
+                    <li>
+                      <input type="radio" name="likert" value="4" checked={this.state.newRating === "4"} onChange={(e) => this.recordLocalRating("4",e)}/>
+                      <label>Strongly Agree</label>
+                    </li>
+                  </ul>
+                  </form>
+
                 </div>
-                <br/>
-                <br/>
+                </div>
                 <span>
                   <div>
                     <Grid
