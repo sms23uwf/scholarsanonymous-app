@@ -13,6 +13,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import selectCourseRecommendations from '../selectors/courserecommendations';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { Checkbox, FormControlLabel }  from '@material-ui/core';
 
 class CourseRecommendationListItem extends React.Component {
   constructor(props){
@@ -20,20 +21,24 @@ class CourseRecommendationListItem extends React.Component {
       this.state = {
         showModal: false,
         currentRating: props.rating,
+        disposition: props.disposition,
+        newDisposition: props.disposition,
+        isPortFolio: props.disposition === `Portfolio` ? true : false,
         currentTitle: props.knowledgearea + `: ` + props.coursename,
         currentAvatarUrl: this.setAvatarURL(props.rating),
         newRating: props.rating
       }
   }
   toggleModalWithSave = () => {
-    console.log(`inside toggleModalWithSave`);
     if(this.state.showModal == true)
     {
       this.props.startSetCourseRecommendations();
     }
 
-    if(this.state.newRating != this.state.currentRating)
-      this.recordRating(this.props.courserecommendation.id, this.state.newRating, this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives);
+    this.setDisposition();
+
+    if((this.state.newRating != this.state.currentRating) || (this.state.newDisposition != this.state.disposition))
+      this.recordRating(this.props.courserecommendation.id, this.state.newRating, this.state.newDisposition, this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives);
 
     this.setState({
       showModal: !this.state.showModal
@@ -41,28 +46,46 @@ class CourseRecommendationListItem extends React.Component {
   }
 
   toggleModal = () => {
-    console.log(`inside toggleModal`);
     this.setState({
       showModal: !this.state.showModal,
       newRating: this.state.currentRating
     });
   }
 
-  setDispositionBasedOnRating = (rating) => {
-    switch(rating) {
-      case '0':
-        return 'Rejected';
-      case `1`:
-        return `Rejected`;
-      case `2`:
-        return `Undecided`;
-      case `3`:
-        return `Accepted`;
-      case `3`:
-        return `Accepted`;
-      default:
-          return ``;
+  onCheckSaveToPortfolio = (e) => {
+    console.log(`onCheckSaveToPortfolio`);
+
+    if(e.target.checked===true)
+    {
+      console.log(`onCheckSaveToPortfolio - target is checked`);
+      this.setState({newDisposition: `Portfolio`});
     }
+    else
+    {
+      console.log(`onCheckSaveToPortfolio - target is NOT checked`);
+      this.setState({newDisposition: `Undecided`});
+    }
+
+  };
+
+  setDispositionBasedOnRating = (rating) => {
+    console.log(`isPortolio is ${this.state.isPortFolio}`);
+    if(this.state.isPortFolio===true)
+      return `Portfolio`;
+    
+    return `Undecided`;
+  }
+
+  setDisposition = () => {
+    console.log(`isPortolio is ${this.state.isPortFolio}`);
+    if(this.state.isPortFolio===true)
+    {
+      this.setState({disposition: `Portfolio`});
+      return `Portfolio`;
+    }
+
+    this.setState({disposition: `Undecided`});
+    return `Undecided`;
   }
 
   handleRatingChange = event => {
@@ -78,9 +101,9 @@ class CourseRecommendationListItem extends React.Component {
     this.setState({newRating: rating});
   }
 
-  recordRating = (id,rating,courseid,userid,learningobjectives) => {
+  recordRating = (id,rating,disposition,courseid,userid,learningobjectives) => {
     this.setState({currentRating: rating});
-    const ratingData = {rating: rating, disposition: this.setDispositionBasedOnRating(rating)};
+    const ratingData = {rating: rating, disposition: disposition};
     this.props.startEditCourseRecommendation(id, ratingData);
     this.setState({currentAvatarUrl: this.setAvatarURL(rating)});
 
@@ -152,7 +175,7 @@ class CourseRecommendationListItem extends React.Component {
             <div>
               <div className="modal-header">
                 <div className="content-container">
-                  <h3 className="page-header__title">{this.props.knowledgearea}:{this.props.coursename}</h3>
+                  <h4 className="page-header__title">{this.props.knowledgearea}:{this.props.coursename}</h4>
                 </div>
               </div>
               <div className="content-container">
@@ -161,16 +184,11 @@ class CourseRecommendationListItem extends React.Component {
                   {this.props.coursedescription}
                 </Typography>
                 </span>
-                <span>
-                <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `center` }} gutterBottom>
-                  Disposition: {this.props.disposition}
-                </Typography>
-                </span>
                 </div>
                   <div>
                     <form action="">
-                    <label class="statement">This Recommendation Fits With a Desired Learning Outcome.</label>
-                    <ul class='likert'>
+                    <label className="statement">This Recommendation Fits With a Desired Learning Outcome.</label>
+                    <ul className='likert'>
                       <li>
                         <input type="radio" name="likert" value="0" checked={this.state.newRating === "0"} onChange={(e) => this.recordLocalRating("0",e)}/>
                         <label>Strongly Disagree</label>
@@ -201,15 +219,28 @@ class CourseRecommendationListItem extends React.Component {
                     <Grid
                     justify="center" 
                     container 
-                    spacing={2}
+                    spacing={3}
                     >
+                      <Grid item>
+                        <FormControlLabel
+                          control={
+                            <Checkbox type="checkbox"  onChange={(e) => this.onCheckSaveToPortfolio(e)}></Checkbox>
+                          }
+                          label={
+                            <Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>
+                              Maintain in Portfolio
+                            </Typography>
+                          }
+                        />
+                      </Grid>
+
                       <Grid item>
                         <Button
                           color="inherit"
                           aria-label="Accept"
                           style={{fontWeight: "bold"}}
                           title="Accept"
-                          onClick={this.toggleModalWithSave}>OK</Button>
+                          onClick={this.toggleModalWithSave}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Save</Typography></Button>
                       </Grid>
                       <Grid item>
                         <Button
@@ -217,7 +248,7 @@ class CourseRecommendationListItem extends React.Component {
                           aria-label="Cancel"
                           style={{fontWeight: "bold"}}
                           title="Cancel"
-                          onClick={this.toggleModal}>Cancel</Button>
+                          onClick={this.toggleModal}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Cancel</Typography></Button>
                       </Grid>
                     </Grid>
                   </div>

@@ -163,8 +163,8 @@ class PortfolioListItem extends React.Component {
                </div>
                <div>
                   <form action="">
-                    <label class="statement">This Recommendation Fits With a Desired Learning Outcome.</label>
-                    <ul class='likert'>
+                    <label className="statement">This Recommendation Fits With a Desired Learning Outcome.</label>
+                    <ul className='likert'>
                       <li>
                         <input type="radio" name="likert" value="0" checked={this.state.newRating === "0"} onChange={(e) => this.recordLocalRating("0",e)}/>
                         <label>Strongly Disagree</label>
