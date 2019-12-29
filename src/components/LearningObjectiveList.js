@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid';
 import { connect } from 'react-redux';
 import LearningObjectiveListItem from './LearningObjectiveListItem';
 import selectLearningObjectives from '../selectors/learningobjectives';
@@ -18,7 +19,6 @@ export class LearningObjectiveList extends React.Component {
   constructor(props) {
     super(props);
     props.setUUIDFilter(firebase.auth().currentUser.uid);
-    console.log(`just set UUIDfilter with ${firebase.auth().currentUser.uid}`);
   }
 
   state = {
@@ -72,6 +72,7 @@ export class LearningObjectiveList extends React.Component {
                   courseid: learningobjective_course.courseid, 
                   learningobjectiveid: learningobjective_course.learningobjectiveid,
                   learningobjectives: [{learningobjectiveid: learningobjective_course.learningobjectiveid, content: learningobjective}],
+                  portfolioobjectives: [{learningobjectiveid: learningobjective_course.learningobjectiveid, content: learningobjective}],
                   rating: '-1', 
                   counter: '1', 
                   disposition: 'recommended',
@@ -113,16 +114,33 @@ export class LearningObjectiveList extends React.Component {
 
             if(currentLO.learningobjectiveid === learningobjectiveid)
             {
-              if(numberOfLearningObjectives === 1)
+              if(numberOfLearningObjectives <= 1)
               {
                 const recommendationPairing = {id: courserecommendation.id};
-                this.props.startRemoveCourseRecommendation(recommendationPairing);
-                this.props.startSetCourseRecommendations();
+                console.log(`just about to branch based on disposition ${courserecommendation.disposition}`);
+                
+                if(numberOfLearningObjectives === 0)
+                {
+                  // nothing to do
+                }
+                else
+                {
+                  console.log(`ONLY ONE REMAINING LEARNING OBJECTIVE - attempting to remove lo from recommendation with ${key}`);
+                  database.ref(`users_tables/${this.state.userid}/courserecommendation/${courserecommendation.id}`).child(`learningobjectives/${key}`).remove().then(() => {
+                    this.props.startSetCourseRecommendations();
+                  });
+                }
+
+                if(courserecommendation.disposition != "Portfolio")
+                {
+                  this.props.startRemoveCourseRecommendation(recommendationPairing);
+                  this.props.startSetCourseRecommendations();
+                }
               }
               else
               {
                 console.log(`attempting to remove lo from recommendation with ${key}`);
-                database.ref(`courserecommendation/${courserecommendation.id}`).child(`learningobjectives/${key}`).remove().then(() => {
+                database.ref(`users_tables/${this.state.userid}/courserecommendation/${courserecommendation.id}`).child(`learningobjectives/${key}`).remove().then(() => {
                   this.props.startSetCourseRecommendations();
                 });
               }

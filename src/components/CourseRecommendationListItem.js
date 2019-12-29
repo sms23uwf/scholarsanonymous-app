@@ -35,8 +35,6 @@ class CourseRecommendationListItem extends React.Component {
       this.props.startSetCourseRecommendations();
     }
 
-    this.setDisposition();
-
     if((this.state.newRating != this.state.currentRating) || (this.state.newDisposition != this.state.disposition))
       this.recordRating(this.props.courserecommendation.id, this.state.newRating, this.state.newDisposition, this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives);
 
@@ -58,35 +56,18 @@ class CourseRecommendationListItem extends React.Component {
     if(e.target.checked===true)
     {
       console.log(`onCheckSaveToPortfolio - target is checked`);
+      this.setState({isPortFolio: true});
       this.setState({newDisposition: `Portfolio`});
     }
     else
     {
       console.log(`onCheckSaveToPortfolio - target is NOT checked`);
+      this.setState({isPortFolio: false});
       this.setState({newDisposition: `Undecided`});
     }
 
   };
 
-  setDispositionBasedOnRating = (rating) => {
-    console.log(`isPortolio is ${this.state.isPortFolio}`);
-    if(this.state.isPortFolio===true)
-      return `Portfolio`;
-    
-    return `Undecided`;
-  }
-
-  setDisposition = () => {
-    console.log(`isPortolio is ${this.state.isPortFolio}`);
-    if(this.state.isPortFolio===true)
-    {
-      this.setState({disposition: `Portfolio`});
-      return `Portfolio`;
-    }
-
-    this.setState({disposition: `Undecided`});
-    return `Undecided`;
-  }
 
   handleRatingChange = event => {
     console.log(`newRating is ${this.state.newRating}`);
@@ -224,7 +205,7 @@ class CourseRecommendationListItem extends React.Component {
                       <Grid item>
                         <FormControlLabel
                           control={
-                            <Checkbox type="checkbox"  onChange={(e) => this.onCheckSaveToPortfolio(e)}></Checkbox>
+                            <Checkbox type="checkbox" checked={this.state.isPortFolio} onChange={(e) => this.onCheckSaveToPortfolio(e)}></Checkbox>
                           }
                           label={
                             <Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>

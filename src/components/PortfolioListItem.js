@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startSetCourseRecommendations, startEditCourseRecommendation } from '../actions/courseRecommendations';
+import { startSetCourseRecommendations, startEditCourseRecommendation, startRemoveCourseRecommendation } from '../actions/courseRecommendations';
 import { startAddRatingsByUserCourseLO } from '../actions/ratingsByUserCourseLO';
 import Modal from './Modal';
 import Avatar from '@material-ui/core/Avatar';
@@ -14,12 +14,18 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
+import { Checkbox, FormControlLabel }  from '@material-ui/core';
+import selectCourseRecommendations, {findExistingCourseRecommendation} from '../selectors/courserecommendations';
 
 class PortfolioListItem extends React.Component {
   constructor(props){
       super(props);
+      console.log(`disposition is ${props.disposition}`);
       this.state = {
         showModal: false,
+        disposition: props.disposition,
+        newDisposition: props.disposition,
+        isPortFolio: props.disposition === `Portfolio` ? true : false,
         currentRating: props.rating,
         currentTitle: props.knowledgearea + `: ` + props.coursename,
         currentAvatarUrl: this.setAvatarURL(props.rating),
@@ -32,8 +38,8 @@ class PortfolioListItem extends React.Component {
       this.props.startSetCourseRecommendations();
     }
 
-    if(this.state.newRating != this.state.currentRating)
-      this.recordRating(this.props.courserecommendation.id, this.state.newRating, this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives);
+    if((this.state.newRating != this.state.currentRating) || (this.state.newDisposition != this.state.disposition))
+      this.recordRating(this.props.courserecommendation.id, this.state.newRating, this.state.newDisposition, this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives);
 
     this.setState({
       showModal: !this.state.showModal
@@ -47,22 +53,35 @@ class PortfolioListItem extends React.Component {
     });
   }
 
-  setDispositionBasedOnRating = (rating) => {
-    switch(rating) {
-      case '0':
-        return 'Rejected';
-      case `1`:
-        return `Rejected`;
-      case `2`:
-        return `Undecided`;
-      case `3`:
-        return `Accepted`;
-      case `4`:
-        return `Accepted`;
-      default:
-          return ``;
+  onCheckSaveToPortfolio = (recommendationPairing,keeperCount,e) => {
+    console.log(`onCheckSaveToPortfolio`);
+
+    if(e.target.checked===true)
+    {
+      console.log(`onCheckSaveToPortfolio - target is checked`);
+      this.setState({isPortFolio: true});
+      this.setState({newDisposition: `Portfolio`});
     }
-  }
+    else
+    {
+      console.log(`onCheckSaveToPortfolio - target is NOT checked`);
+
+      this.setState({isPortFolio: false});
+      this.setState({newDisposition: `Undecided`});
+
+      // put a check here to see if any remaining LO associated with this former portfolio item
+      // if not, startRemoveCourseRecommendation
+
+      console.log(`keeperCount is ${keeperCount}`);
+      
+      if(keeperCount < 1)
+      {
+        this.props.startRemoveCourseRecommendation(recommendationPairing);
+        this.props.startSetCourseRecommendations();
+      }
+    }
+
+  };
 
   handleRatingChange = event => {
     this.setState({newRating: event.target.value});
@@ -72,9 +91,9 @@ class PortfolioListItem extends React.Component {
     this.setState({newRating: rating});
   }
 
-  recordRating = (id,rating,courseid,userid,learningobjectives) => {
+  recordRating = (id,rating,disposition,courseid,userid,learningobjectives) => {
     this.setState({currentRating: rating});
-    const ratingData = {rating: rating, disposition: this.setDispositionBasedOnRating(rating)};
+    const ratingData = {rating: rating, disposition: disposition};
     this.props.startEditCourseRecommendation(id, ratingData);
     this.setState({currentAvatarUrl: this.setAvatarURL(rating)});
 
@@ -107,7 +126,18 @@ class PortfolioListItem extends React.Component {
   }
   render() {
 
-    var reasonData = {...this.props.learningobjectives};
+    const recommendationPairing = {id: this.props.id};
+
+    var keeperData = {...this.props.learningobjectives};
+    const keeperResult = Object.keys(keeperData).map((key) => keeperData[key]);
+    var keepers = [];
+    keeperResult.forEach((keeper) => (
+      keepers.push(<li key={keeper.learningobjectiveid}>{keeper.content}</li>)
+     ));
+
+    var keeperCount = keepers.length;
+
+    var reasonData = {...this.props.portfolioobjectives};
     const result = Object.keys(reasonData).map((key) => reasonData[key]);
 
     var reasons = [];
@@ -151,14 +181,9 @@ class PortfolioListItem extends React.Component {
               </div>
               <div className="content-container">
                 <span>
-                <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                  {this.props.coursedescription}
-                </Typography>
-                </span>
-                <span>
-                <Typography type="body2" style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000`, textAlign: `center` }} gutterBottom>
-                  Disposition: {this.props.disposition}
-                </Typography>
+                  <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                    {this.props.coursedescription}
+                  </Typography>
                 </span>
                </div>
                <div>
@@ -192,18 +217,30 @@ class PortfolioListItem extends React.Component {
             <span>
               <div>
                 <Grid
-                justify="center" 
-                container 
-                spacing={2}
+                  justify="center" 
+                  container 
+                  spacing={3}
                 >
+                  <Grid item>
+                    <FormControlLabel
+                      control={
+                        <Checkbox type="checkbox" checked={this.state.isPortFolio} onChange={(e) => { if (window.confirm('Are you sure you wish to remove this item from the Portfolio?')) this.onCheckSaveToPortfolio(recommendationPairing,keeperCount,e)}}></Checkbox>
+                      }
+                      label={
+                        <Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>
+                          Maintain in Portfolio
+                        </Typography>
+                      }
+                    />
+                  </Grid>
+
                   <Grid item>
                     <Button
                       color="inherit"
                       aria-label="Accept"
                       style={{fontWeight: "bold"}}
                       title="Accept"
-                      onClick={this.toggleModalWithSave}
-                      edge="end">OK</Button>
+                      onClick={this.toggleModalWithSave}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Save</Typography></Button>
                   </Grid>
                   <Grid item>
                     <Button
@@ -211,8 +248,7 @@ class PortfolioListItem extends React.Component {
                       aria-label="Cancel"
                       style={{fontWeight: "bold"}}
                       title="Cancel"
-                      onClick={this.toggleModal}
-                      edge="start">Cancel</Button>
+                      onClick={this.toggleModal}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Cancel</Typography></Button>
                   </Grid>
                 </Grid>
               </div>
@@ -231,6 +267,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData)),
   startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations()),
+  startRemoveCourseRecommendation: (recommendationId) => dispatch(startRemoveCourseRecommendation(recommendationId)),
   startAddRatingsByUserCourseLO: (ratingCapture) => dispatch(startAddRatingsByUserCourseLO(ratingCapture))
 });
 

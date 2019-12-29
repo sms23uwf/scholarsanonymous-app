@@ -14,6 +14,7 @@ export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
       courseid = ``,
       learningobjectiveid = ``,
       learningobjectives = {}, 
+      portfolioobjectives = {},
       rating = ``,
       counter = ``,
       disposition = ``,
@@ -24,7 +25,7 @@ export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
     } = courseRecommendationData;
 
 
-    const courseUserPairing = { userid, courseid, learningobjectiveid, learningobjectives, rating, counter, disposition, knowledgearea, existingrecommendationid, coursename, coursedescription };
+    const courseUserPairing = { userid, courseid, learningobjectiveid, learningobjectives, portfolioobjectives, rating, counter, disposition, knowledgearea, existingrecommendationid, coursename, coursedescription };
 
     if(existingrecommendationid === ``)
     {
@@ -51,6 +52,13 @@ export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
         learningobjectiveid: learningobjectives[0].learningobjectiveid,
         content: learningobjectives[0].content
       })
+
+      var newPO = database.ref(`users_tables/${uid}/courserecommendation/${existingrecommendationid}`).child(`portfolioobjectives`).push();
+      newPO.set({
+        learningobjectiveid: portfolioobjectives[0].learningobjectiveid,
+        content: portfolioobjectives[0].content
+      })
+
     }
   };
 };
