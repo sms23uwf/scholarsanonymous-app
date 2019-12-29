@@ -29,7 +29,9 @@ class PortfolioListItem extends React.Component {
         currentRating: props.rating,
         currentTitle: props.knowledgearea + `: ` + props.coursename,
         currentAvatarUrl: this.setAvatarURL(props.rating),
-        newRating: props.rating
+        newRating: props.rating,
+        itemIsKeeper: true,
+        recommendationPairing: 0
       }
   }
   toggleModalWithSave = () => {
@@ -40,6 +42,12 @@ class PortfolioListItem extends React.Component {
 
     if((this.state.newRating != this.state.currentRating) || (this.state.newDisposition != this.state.disposition))
       this.recordRating(this.props.courserecommendation.id, this.state.newRating, this.state.newDisposition, this.props.courserecommendation.courseid, this.props.courserecommendation.userid, this.props.courserecommendation.learningobjectives);
+
+      if(this.state.itemIsKeeper == false)
+      {
+        this.props.startRemoveCourseRecommendation(this.state.recommendationPairing);
+        this.props.startSetCourseRecommendations();
+      }
 
     this.setState({
       showModal: !this.state.showModal
@@ -73,11 +81,12 @@ class PortfolioListItem extends React.Component {
       // if not, startRemoveCourseRecommendation
 
       console.log(`keeperCount is ${keeperCount}`);
-      
+      this.setState({itemIsKeeper: true});
+      this.setState({recommendationPairing: recommendationPairing});
+
       if(keeperCount < 1)
       {
-        this.props.startRemoveCourseRecommendation(recommendationPairing);
-        this.props.startSetCourseRecommendations();
+        this.setState({itemIsKeeper: false});
       }
     }
 
