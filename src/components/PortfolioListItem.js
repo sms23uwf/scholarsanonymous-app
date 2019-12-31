@@ -14,8 +14,19 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
-import { Checkbox, FormControlLabel }  from '@material-ui/core';
 import selectCourseRecommendations, {findExistingCourseRecommendation} from '../selectors/courserecommendations';
+import { Checkbox, FormControlLabel }  from '@material-ui/core';
+
+const checkBoxStyles = theme => ({
+  root: {
+    '&$checked': {
+      color: '#3D70B2',
+    },
+  },
+  checked: {},
+ })
+
+const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
 class PortfolioListItem extends React.Component {
   constructor(props){
@@ -57,7 +68,15 @@ class PortfolioListItem extends React.Component {
   toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal,
-      newRating: this.state.currentRating
+      newRating: this.state.currentRating,
+    });
+  }
+
+  toggleModalWithCancel = () => {
+    this.setState({
+      showModal: !this.state.showModal,
+      newRating: this.state.currentRating,
+      isPortFolio: this.state.disposition === `Portfolio` ? true : false
     });
   }
 
@@ -178,7 +197,6 @@ class PortfolioListItem extends React.Component {
 
         <Modal
           show={this.state.showModal}
-          //closeCallback={this.toggleModal}
           customClass="custom_modal_class"
         >
           <React.Fragment>
@@ -233,7 +251,7 @@ class PortfolioListItem extends React.Component {
                   <Grid item>
                     <FormControlLabel
                       control={
-                        <Checkbox type="checkbox" checked={this.state.isPortFolio} onChange={(e) => { if (window.confirm('Are you sure you wish to remove this item from the Portfolio?')) this.onCheckSaveToPortfolio(recommendationPairing,keeperCount,e)}}></Checkbox>
+                        <CustomCheckbox type="checkbox" checked={this.state.isPortFolio} onChange={(e) => { if (window.confirm('Are you sure you wish to remove this item from the Portfolio?')) this.onCheckSaveToPortfolio(recommendationPairing,keeperCount,e)}}></CustomCheckbox>
                       }
                       label={
                         <Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>
@@ -257,7 +275,7 @@ class PortfolioListItem extends React.Component {
                       aria-label="Cancel"
                       style={{fontWeight: "bold"}}
                       title="Cancel"
-                      onClick={this.toggleModal}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Cancel</Typography></Button>
+                      onClick={this.toggleModalWithCancel}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Cancel</Typography></Button>
                   </Grid>
                 </Grid>
               </div>

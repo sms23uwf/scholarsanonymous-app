@@ -13,7 +13,19 @@ import CardHeader from "@material-ui/core/CardHeader";
 import selectCourseRecommendations from '../selectors/courserecommendations';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 import { Checkbox, FormControlLabel }  from '@material-ui/core';
+
+const checkBoxStyles = theme => ({
+  root: {
+    '&$checked': {
+      color: '#3D70B2',
+    },
+  },
+  checked: {},
+ })
+
+const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
 class CourseRecommendationListItem extends React.Component {
   constructor(props){
@@ -29,6 +41,7 @@ class CourseRecommendationListItem extends React.Component {
         newRating: props.rating
       }
   }
+  
   toggleModalWithSave = () => {
     if(this.state.showModal == true)
     {
@@ -47,6 +60,14 @@ class CourseRecommendationListItem extends React.Component {
     this.setState({
       showModal: !this.state.showModal,
       newRating: this.state.currentRating
+    });
+  }
+
+  toggleModalWithCancel = () => {
+    this.setState({
+      showModal: !this.state.showModal,
+      newRating: this.state.currentRating,
+      isPortFolio: false
     });
   }
 
@@ -205,7 +226,7 @@ class CourseRecommendationListItem extends React.Component {
                       <Grid item>
                         <FormControlLabel
                           control={
-                            <Checkbox type="checkbox" checked={this.state.isPortFolio} onChange={(e) => this.onCheckSaveToPortfolio(e)}></Checkbox>
+                            <CustomCheckbox id="saveToPortfolio" type="checkbox" checked={this.state.isPortFolio} onChange={(e) => this.onCheckSaveToPortfolio(e)}></CustomCheckbox>
                           }
                           label={
                             <Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>
@@ -229,7 +250,7 @@ class CourseRecommendationListItem extends React.Component {
                           aria-label="Cancel"
                           style={{fontWeight: "bold"}}
                           title="Cancel"
-                          onClick={this.toggleModal}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Cancel</Typography></Button>
+                          onClick={this.toggleModalWithCancel}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Cancel</Typography></Button>
                       </Grid>
                     </Grid>
                   </div>
