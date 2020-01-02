@@ -53,12 +53,20 @@ export const startAddCourseRecommendation = (courseRecommendationData = {}) => {
         content: learningobjectives[0].content
       })
 
-      var newPO = database.ref(`users_tables/${uid}/courserecommendation/${existingrecommendationid}`).child(`portfolioobjectives`).push();
-      newPO.set({
-        learningobjectiveid: portfolioobjectives[0].learningobjectiveid,
-        content: portfolioobjectives[0].content
-      })
+      database.ref(`users_tables/${uid}/courserecommendation/${existingrecommendationid}`).child(`portfolioobjectives`).orderByChild("learningobjectiveid").equalTo(portfolioobjectives[0].learningobjectiveid).once("value",snapshot => {
+        const poData = snapshot.val();
 
+        if(poData) {
+          // nothing to do
+        } else {
+          console.log(`getting ready to add portfolioobjective`);
+          var newPO = database.ref(`users_tables/${uid}/courserecommendation/${existingrecommendationid}`).child(`portfolioobjectives`).push();
+          newPO.set({
+            learningobjectiveid: portfolioobjectives[0].learningobjectiveid,
+            content: portfolioobjectives[0].content
+          })
+        }
+      })
     }
   };
 };
