@@ -45,13 +45,14 @@ button:disabled {
 #image {
   display: inline-block;
   width: 100%;
+  height: 100%;
   font-size: 0;
   line-height: 0;
-  vertical-align: middle;
+  vertical-align: bottom;
   background-size: 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-image: url('/images/Scholacity_Img.jpg'); 
+  background-image: url('/images/scholacity_logo_freelogodesign.png'); 
 }
 
 #image-inner {
