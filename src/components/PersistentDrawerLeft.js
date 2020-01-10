@@ -116,7 +116,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
-      >
+        >
         <Toolbar>
 
           <Grid
