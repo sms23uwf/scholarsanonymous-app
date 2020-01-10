@@ -46,10 +46,8 @@ button:disabled {
   display: inline-block;
   width: 100%;
   height: 100%;
-  font-size: 0;
-  line-height: 0;
   vertical-align: bottom;
-  background-size: 'cover';
+  background-size: 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-image: url('/images/scholacity_logo_freelogodesign.png'); 
@@ -58,5 +56,5 @@ button:disabled {
 #image-inner {
   display: block;
   height: 0;
-  padding-top: 63.3%;
+  padding-top: 83.3%;
 }
