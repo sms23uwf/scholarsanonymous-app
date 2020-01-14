@@ -246,7 +246,7 @@ class PortfolioListItem extends React.Component {
                 <Grid
                   justify="center" 
                   container 
-                  spacing={3}
+                  spacing={1}
                 >
                   <Grid item>
                     <FormControlLabel
@@ -261,23 +261,30 @@ class PortfolioListItem extends React.Component {
                     />
                   </Grid>
 
+                  <Grid
+                  justify="center" 
+                  container 
+                  spacing={2}
+                >
                   <Grid item>
-                    <Button
-                      color="inherit"
-                      aria-label="Accept"
-                      style={{fontWeight: "bold"}}
-                      title="Accept"
-                      onClick={this.toggleModalWithSave}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Save</Typography></Button>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      color="inherit"
-                      aria-label="Cancel"
-                      style={{fontWeight: "bold"}}
-                      title="Cancel"
-                      onClick={this.toggleModalWithCancel}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Cancel</Typography></Button>
+                      <Button
+                        color="inherit"
+                        aria-label="Accept"
+                        style={{fontWeight: "bold"}}
+                        title="Accept"
+                        onClick={this.toggleModalWithSave}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Save</Typography></Button>
+                    </Grid>
+                    <Grid item>
+                      <Button
+                        color="inherit"
+                        aria-label="Cancel"
+                        style={{fontWeight: "bold"}}
+                        title="Cancel"
+                        onClick={this.toggleModalWithCancel}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>Cancel</Typography></Button>
+                    </Grid>
                   </Grid>
                 </Grid>
+
               </div>
             </span>
           </React.Fragment>

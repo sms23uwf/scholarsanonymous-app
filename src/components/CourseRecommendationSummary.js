@@ -10,7 +10,7 @@ export const CourseRecommendationsSummary = ({ courseRecommendationCount, course
   return (
     <div className="page-header">
       <div className="content-container">
-        <h1 className="page-header__title">Course Recommendations</h1>
+        <h1 className="page-header__title"></h1>
       </div>
     </div>
   );
