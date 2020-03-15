@@ -96,17 +96,17 @@ export class DashboardPage extends React.Component {
             </Typography>
 
             
-            <Typography type="body2" style={{ fontSize: '1.00em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+            <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }} gutterBottom>
                 Thank you for your interest in this research project. Federal and university regulations require us to obtain signed consent for participation in research involving human participants. After reading the statements below, please indicate your consent by checking the box and clicking the 'Accept' button.
             </Typography>
-            <Typography type="body2" style={{ fontSize: '1.00em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+            <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }} gutterBottom>
                 The purpose of this study is to investigate the useability and acceptability of selecting desired Learning Outcomes that will result in a Course recommendation.
                 I understand that:
             </Typography>
             <ul>
-              <li align="left">There are no physical risks associated with this study.</li>
-              <li align="left">The Web Application will collect no information whatsoever about the participant.</li>
-              <li align="left">I may discontinue participation in this study at any time.</li>
+              <li style={{ fontSize: '1.25em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }}>There are no physical risks associated with this study.</li>
+              <li style={{ fontSize: '1.25em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }}>The Web Application will collect no information whatsoever about the participant.</li>
+              <li style={{ fontSize: '1.25em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }}>I may discontinue participation in this study at any time.</li>
             </ul>
         
               <div className="list-item__consent">

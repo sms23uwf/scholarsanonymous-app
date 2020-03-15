@@ -1,4 +1,5 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
 
 //require('bootstrap/dist/css/bootstrap.css');
 
@@ -13,7 +14,7 @@ const Checkbox = ({ id, checked, label, pairingId, onCheckboxChange }) => (
         onChange={onCheckboxChange}
         className="form-check-input"
       />
-      <p>{label}</p>
+      <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>{label}</Typography>
     </label>
   </div>
 );
