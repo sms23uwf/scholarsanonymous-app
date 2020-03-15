@@ -12,7 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 
-require('bootstrap/dist/css/bootstrap.css');
+//require('bootstrap/dist/css/bootstrap.css');
 
 const styles = muiBaseTheme => ({
   card: {
@@ -26,8 +26,8 @@ const styles = muiBaseTheme => ({
   },
   avatar: {
     margin: 10,
-    width: 60,
-    height: 60
+    width: 30,
+    height: 30
   },
   media: {
     paddingTop: "56.25%"
@@ -104,7 +104,7 @@ class AboutPage extends React.Component {
       case `4`:
         return `Average Rating: Accepted`;
       default:
-          return `Average Rating: ${rating}`;
+          return `No Ratings`;
     }
   }
 
@@ -137,18 +137,18 @@ class AboutPage extends React.Component {
             <CardHeader avatar={<Avatar src={this.setAvatarURL(this.state.avgRating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.setTitleBasedOnRating(this.state.avgRating)}/>
             <CardContent>
               <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                Scholacity is the combination of Scholarship and Tenacity. Scholacity is about the facilitation of Lifelong Learning.
+                Scholacity is about the facilitation of Lifelong Learning.
               </Typography>
-              <br/>
               <Divider/>
-              <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been subsequently provided vis-a-vis your selections. When you rate a recommendation as "related" or higher it will automatically go to the "Portfolio" page.
-              </Typography>
-            </CardContent>
-          </Card>
-          <br/>
-          <br/>
-          <Button title="Close" className="close_modal" onClick={this.toggleModal}>OK</Button>
+                <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                  From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been subsequently provided vis-a-vis your selections. You may select "Save to Portolio" if you want it to persist after de-selecting Learning Outcomes.
+                </Typography>
+              </CardContent>
+              <br/>
+              <CardActionArea>
+                <Button title="Close" className="close_modal" onClick={this.toggleModal}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>OK</Typography></Button>
+              </CardActionArea>
+            </Card>
         </Modal>
       </div>
     );

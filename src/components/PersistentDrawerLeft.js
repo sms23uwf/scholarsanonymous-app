@@ -132,8 +132,8 @@ export function PersistentDrawerLeft({ handleLogout }) {
                 edge="start"
                 className={clsx(classes.menuButton, open && classes.hide)}
               >
-                Menu 
                 <MenuIcon />
+                Menu
               </IconButton>
             </Grid>
       

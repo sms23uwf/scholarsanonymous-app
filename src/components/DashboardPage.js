@@ -10,10 +10,16 @@ import { startAddUser } from '../actions/users';
 import * as firebase from 'firebase';
 import Grid from '@material-ui/core/Grid';
 import { setUUIDFilter } from '../actions/filters';
+import Typography from "@material-ui/core/Typography";
 
-require('bootstrap/dist/css/bootstrap.css');
+// require('bootstrap/dist/css/bootstrap.css');
 
 var userMustAgree = true;
+
+const section = {
+  height: "100%",
+  paddingTop: 1
+};
 
 export class DashboardPage extends React.Component {
   constructor(props) {
@@ -83,39 +89,28 @@ export class DashboardPage extends React.Component {
           customClass="custom_modal_class"
           >
             <React.Fragment>
-              <h2>Informed Consent</h2>
-              <br/>
-              <h3>Affording Self-Directed Educational Experiences in the Lifelong Learning Community: Using Domain Ontology-Generated Learning Objectives to Recommend Leisure Learning Courses.</h3>
-              <br/>
-              <p align="left">Thank you for your interest in this research project. Federal and university regulations require us to obtain signed consent for participation in research involving human participants. After reading the statements below, please indicate your consent by checking the box and clicking the 'Submit' button.
-              <br/>
-              <br/>
-              The purpose of this study is to investigate the useability and acceptability, by the lifelong learning community over the age of 65, of machine generated learning objectives from course descriptions in a program catalog such as the one from the Leisure Learning center here at the University of West Florida.
-              <br/>
-              <br/>
-              I understand that :
-              <br/>
-              1) There are no physical risks associated with this study.
-              <br/>
-              2) The Web Application will collect no information whatsoever about the participant. When you log in with Google we shall only store a unique user ID and the fact that you accepted this informed consent agreement.
-              <br/>
-              3) I may discontinue participation in this study at any time.
-              <br/>
-              <br/>
+            <br/>
+            <h2>Informed Consent</h2>
+            <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+              Removing a Potential Barrier to Lifelong Learning by Reducing Extrinsic Cognitive Load in the Course Selection Process: A Feasibility Study
+            </Typography>
 
-
-              </p>
-              
-              <div className="list-item" width="1.0">
-                <Grid
-                justify="space-between" 
-                container 
-                spacing={0}
-                >
-                  <Grid item>
-                    <Checkbox type="checkbox" label="I certify that I have read and fully understand the statements above and agree to participate in the research project." onCheckboxChange={this.onCheckChange}/>
-                  </Grid>
-                </Grid>
+            
+            <Typography type="body2" style={{ fontSize: '1.00em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                Thank you for your interest in this research project. Federal and university regulations require us to obtain signed consent for participation in research involving human participants. After reading the statements below, please indicate your consent by checking the box and clicking the 'Accept' button.
+            </Typography>
+            <Typography type="body2" style={{ fontSize: '1.00em', fontWeight: `semibold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                The purpose of this study is to investigate the useability and acceptability of selecting desired Learning Outcomes that will result in a Course recommendation.
+                I understand that:
+            </Typography>
+            <ul>
+              <li align="left">There are no physical risks associated with this study.</li>
+              <li align="left">The Web Application will collect no information whatsoever about the participant.</li>
+              <li align="left">I may discontinue participation in this study at any time.</li>
+            </ul>
+        
+              <div className="list-item__consent">
+                <Checkbox style={section} type="checkbox" label="I have read and understand the statements above and agree to participate in the project." onCheckboxChange={this.onCheckChange}/>
               </div>
 
             </React.Fragment>
