@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import selectCourseRecommendations from '../selectors/courserecommendations';
 import selectCourseRecommendationsTotal from '../selectors/courserecommendations-total';
 
+
 export const PortfolioSummary = ({ courseRecommendationCount, courseRecommendationTotal }) => {
   const courseRecommendationWord = courseRecommendationCount === 1 ? 'course completion' : 'course completions';
   const formattedCourseRecommendationsTotal = 1;

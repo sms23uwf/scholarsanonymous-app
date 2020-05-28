@@ -49,7 +49,7 @@ export const startSetUserTimeInModal = () => {
           });
       });
 
-      dispatch(setRatingsByUserCourseLO(timeInModalData));
+      dispatch(setUserTimeInModal(timeInModalData));
     });
   };
 };

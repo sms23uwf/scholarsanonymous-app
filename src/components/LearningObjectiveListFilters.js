@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setTextFilter } from '../actions/filters';
 import selectKnowledgeAreas from '../selectors/knowledgeareas';
+import { startAddUserNavigationEvent } from '../actions/navigationEvents';
 
 let rows = [];
 
@@ -11,12 +12,16 @@ export class LearningObjectiveListFilters extends React.Component {
 
    state = {
      selectedOption: [{id: 1, label: "Arts and Literature"}]
-   };
+    };
       rows = this.props.knowledgeareas.map(item => {
         return item = {'value': item.id, 'label': item.content};
      });
 
-  handleChange = selectedOption => {
+    componentDidMount() {
+      this.recordNavigationEvent('PlannerDashboard');
+    }
+  
+   handleChange = selectedOption => {
       let selectedLabel = '';
       selectedOption.forEach(knowledearea => {
         selectedLabel = knowledearea.label;
@@ -27,6 +32,13 @@ export class LearningObjectiveListFilters extends React.Component {
       var first = selectedOption[0];
       this.props.setTextFilter(selectedLabel);
   };
+
+  recordNavigationEvent = (event) => {
+    let timeStamp = Date.now();
+
+    const navigationEventCapture = {timestamp: timeStamp, event: event};
+    this.props.startAddUserNavigationEvent(navigationEventCapture);
+  }
 
   onFocusChange = (calendarFocused) => {
     console.log(`inside LearningObjectiveListFilters onFocusChange`);
@@ -42,12 +54,6 @@ export class LearningObjectiveListFilters extends React.Component {
       <div className="content-container">
         <div className="input-group">
           <div className="input-group__item">
-            <Select
-              value={this.selectedOption}
-              options={this.rows}
-              onChange={(values) => this.handleChange(values)}
-              placeholder='Select Knowledge Area'
-            />
           </div>
         </div>
       </div>
@@ -61,7 +67,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setTextFilter: (text) => dispatch(setTextFilter(text))
+  setTextFilter: (text) => dispatch(setTextFilter(text)),
+  startAddUserNavigationEvent: (navigationEventCapture) => dispatch(startAddUserNavigationEvent(navigationEventCapture))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LearningObjectiveListFilters);

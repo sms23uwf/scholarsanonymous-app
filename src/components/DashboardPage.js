@@ -7,6 +7,7 @@ import { PropTypes } from 'prop-types';
 import { history } from '../routers/AppRouter';
 import selectUsers from '../selectors/users';
 import { startAddUser } from '../actions/users';
+import { startAddUserNavigationEvent } from '../actions/navigationEvents';
 import * as firebase from 'firebase';
 import Grid from '@material-ui/core/Grid';
 import { setUUIDFilter } from '../actions/filters';
@@ -25,7 +26,7 @@ export class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(`firebase.auth.uid ${firebase.auth().currentUser.uid}`);
+    //console.log(`firebase.auth.uid ${firebase.auth().currentUser.uid}`);
 
     if (this.props.users.length > 0 )
     {
@@ -34,10 +35,9 @@ export class DashboardPage extends React.Component {
     else
       userMustAgree = true;
 
-
-    console.log(`props.users.length: ${props.users.length}`);
-    console.log(`userMustAgree ${userMustAgree}`);
-    console.log(`filter.userId: ${props.filters}`);
+    //console.log(`props.users.length: ${props.users.length}`);
+    //console.log(`userMustAgree ${userMustAgree}`);
+    //console.log(`filter.userId: ${props.filters}`);
   }
   
   state = {
@@ -47,7 +47,8 @@ export class DashboardPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log(`user just entered the dashboard`);
+    this.recordNavigationEvent('Dashboard');
+    //console.log(`user just entered the dashboard`);
   }
 
   closeModal = () => {
@@ -61,6 +62,16 @@ export class DashboardPage extends React.Component {
     this.closeModal()
     {cancelLogin()}
     history.push('/cancel');
+  }
+
+  recordNavigationEvent = (event) => {
+    let timeStamp = Date.now();
+
+    console.log(`navigation event: ${event}`);
+    console.log(`timestamp: ${timeStamp}`);
+
+    const navigationEventCapture = {timestamp: timeStamp, event: event};
+    this.props.startAddUserNavigationEvent(navigationEventCapture);
   }
 
   toggleModal = () => {
@@ -134,7 +145,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   startLogin: () => dispatch(startLogin()),
   startAddUser: () => dispatch(startAddUser()),
-  setUUIDFilter: (userId) => dispatch(setUUIDFilter(userId))
+  setUUIDFilter: (userId) => dispatch(setUUIDFilter(userId)),
+  startAddUserNavigationEvent: (navigationEventCapture) => dispatch(startAddUserNavigationEvent(navigationEventCapture))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);

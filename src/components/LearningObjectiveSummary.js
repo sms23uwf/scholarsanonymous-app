@@ -7,8 +7,6 @@ export const LearningObjectivesSummary = ({ learningObjectivesCount, learningObj
   const learningObjectivesWord = learningObjectivesCount === 1 ? 'learning objective' : 'learning objectives';
   const formattedLearningObjectivesTotal = 1;
 
-  console.log(`user just entered the plannerdashboard`);
-  
   return (
     <div className="page-header">
       <div className="content-container">
