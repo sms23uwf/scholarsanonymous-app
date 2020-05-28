@@ -14,6 +14,7 @@ import AboutPage from '../components/AboutPage';
 export const history = createHistory();
 
 const AppRouter = () => (
+
   <Router history={history}>
     <div>
       <Switch>

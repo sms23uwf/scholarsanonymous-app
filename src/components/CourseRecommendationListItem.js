@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startSetCourseRecommendations, startEditCourseRecommendation } from '../actions/courseRecommendations';
 import { startAddRatingsByUserCourseLO } from '../actions/ratingsByUserCourseLO';
+import { startAddUserTimeInModal } from '../actions/timeInModal';
 import Modal from './Modal';
 import Avatar from '@material-ui/core/Avatar';
 import Card from "@material-ui/core/Card";
@@ -38,11 +39,13 @@ class CourseRecommendationListItem extends React.Component {
         isPortFolio: props.disposition === `Portfolio` ? true : false,
         currentTitle: props.knowledgearea + `: ` + props.coursename,
         currentAvatarUrl: this.setAvatarURL(props.rating),
-        newRating: props.rating
+        newRating: props.rating,
+        timeEnteredModal: Date.now()
       }
   }
   
   toggleModalWithSave = () => {
+
     if(this.state.showModal == true)
     {
       this.props.startSetCourseRecommendations();
@@ -54,21 +57,48 @@ class CourseRecommendationListItem extends React.Component {
     this.setState({
       showModal: !this.state.showModal
     });
+    this.recordTimeInModal('save', this.state.currentRating);
+  }
+
+
+  recordTimeInModal = (disposition, rating) => {
+    let timeStamp = Date.now();
+
+    let timeInModal = timeStamp - this.state.timeEnteredModal;
+
+    console.log(`this.state.timeEnteredModal: ${this.state.timeEnteredModal}`);
+    console.log(`timeInModal: ${timeInModal}`);
+
+    const timeInModalCapture = {timeInModal: timeInModal, userid: this.props.courserecommendation.userid, disposition: disposition, rating: rating};
+    this.props.startAddUserTimeInModal(timeInModalCapture);
   }
 
   toggleModal = () => {
+    let timeStamp = Date.now();
+    console.log(`inside toggleModal with showModal: ${this.state.showModal} and timestamp is ${timeStamp}`)
+    if(this.state.showModal == false)
+    {
+      this.setState({
+        timeEnteredModal: timeStamp
+      })
+    } else {
+      this.setState({
+        newRating: this.state.currentRating
+      })
+    }
     this.setState({
-      showModal: !this.state.showModal,
-      newRating: this.state.currentRating
+      showModal: !this.state.showModal
     });
   }
 
   toggleModalWithCancel = () => {
+
     this.setState({
       showModal: !this.state.showModal,
       newRating: this.state.currentRating,
       isPortFolio: false
     });
+    this.recordTimeInModal('cancel', this.state.currentRating);
   }
 
   onCheckSaveToPortfolio = (e) => {
@@ -150,7 +180,7 @@ class CourseRecommendationListItem extends React.Component {
     return (
       <div>
       <Divider/>
-        <CardActionArea onClick={this.toggleModalWithSave}>
+        <CardActionArea onClick={this.toggleModal}>
           <Card>
             <CardHeader avatar={<Avatar src={this.state.currentAvatarUrl} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.state.currentTitle}/>
             <CardContent>
@@ -277,7 +307,8 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData)),
   startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations()),
-  startAddRatingsByUserCourseLO: (ratingCapture) => dispatch(startAddRatingsByUserCourseLO(ratingCapture))
+  startAddRatingsByUserCourseLO: (ratingCapture) => dispatch(startAddRatingsByUserCourseLO(ratingCapture)),
+  startAddUserTimeInModal: (timeInModalCapture) => dispatch(startAddUserTimeInModal(timeInModalCapture))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CourseRecommendationListItem);

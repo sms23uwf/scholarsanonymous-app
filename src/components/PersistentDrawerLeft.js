@@ -20,7 +20,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import routes from '../routers/SidebarRouter';
 import Grid from '@material-ui/core/Grid';
 
-const drawerWidth = 240;
+const drawerWidth = 245;
 
 const showModal = false;
 
@@ -98,10 +98,20 @@ export function PersistentDrawerLeft({ handleLogout }) {
 
   function handleDrawerOpen() {
     setOpen(true);
+    // recordNavigationEvent('Open Menu');
   }
 
   function handleDrawerClose() {
     setOpen(false);
+    //recordNavigationEvent('Close Menu');
+  }
+
+  function handleItemSelection(path) {
+    //recordNavigationEvent(path);
+  }
+
+  function recordNavigationEvent(navTo) {
+    console.log(`the user just selected ${navTo}`);
   }
 
   function toggleModal() {
@@ -174,7 +184,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
         <MenuList>
         {routes.map((prop, key) => {
           return (
-            <Link to={prop.path} style={{ textDecoration: 'none' }} key={key}>
+            <Link to={prop.path} style={{ textDecoration: 'none' }} key={key} onClick={handleItemSelection(prop.path)}>
               <MenuItem>
                 <ListItemIcon>
                   <prop.icon />

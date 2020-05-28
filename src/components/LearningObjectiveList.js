@@ -27,16 +27,12 @@ export class LearningObjectiveList extends React.Component {
    }
  
   handleChange = (learningobjectiveid,learningobjective,pairingId,knowledgearea,e) => {
-    console.log(`e.state = ${e.target.checked}`);
 
     this.setState(() => ({learningobjectiveid}));
     this.props.setLOFilter(learningobjectiveid);
-    console.log(`just set the lofilter with ${learningobjectiveid}`);
-    console.log(`loFilter is ${this.props.filters.learningobjectiveid}`);
 
     if(e.target.checked===true)
     {
-      console.log(`inside if(e.target.checked===true)`);
       const userid = firebase.auth().currentUser.uid;
       const loData = {learningobjectiveid: learningobjectiveid, userid: userid};
 
@@ -56,17 +52,12 @@ export class LearningObjectiveList extends React.Component {
                 coursesFound.push(course.id);
 
                 this.props.setCourseFilter(course.id);
-                console.log(`just set the course filter with ${course.id}`);
-                console.log(`course filter is ${this.props.filters.courseid}`);
 
                 var existingrecommendationid = '';
                 this.props.allcourserecommendations.map((courserecommendation) => {
                   if(courserecommendation.courseid === course.id)
                     existingrecommendationid = courserecommendation.id;
                 })
-
-              
-                console.log(`existingrecommendationid = ${existingrecommendationid}`);
 
                 const userCourse = {userid: userid, 
                   courseid: learningobjective_course.courseid, 
@@ -93,7 +84,6 @@ export class LearningObjectiveList extends React.Component {
     }
     else
     {
-      console.log(`pairingId is ${pairingId}`);
       if(pairingId != 0)
       {
         const loPairing = {id: pairingId};
@@ -104,9 +94,6 @@ export class LearningObjectiveList extends React.Component {
           var loData = {...courserecommendation.learningobjectives};
           const loKeys = Object.keys(loData).map((key) => loData[key]);
           const numberOfLearningObjectives = loKeys.length;
-
-          console.log(`loKeys length is ${loKeys.length}`);
-          console.log(`numberOfLearningObjectives is ${numberOfLearningObjectives}`);
 
           Object.keys(loData).map((key) => {
 

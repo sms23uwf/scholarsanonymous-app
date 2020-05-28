@@ -46,6 +46,10 @@ export class DashboardPage extends React.Component {
    userid: firebase.auth().currentUser.uid
   }
 
+  componentDidMount() {
+    console.log(`user just entered the dashboard`);
+  }
+
   closeModal = () => {
     userMustAgree = false
     this.setState({

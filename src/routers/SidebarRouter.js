@@ -17,29 +17,29 @@ const SidebarRouter = [
   },
   {
     path: '/plannerDashboard',
-    sidebarName: 'Planner',
-    navbarName: 'Planner',
+    sidebarName: 'My Interests',
+    navbarName: 'My Interests',
     icon: PlaylistAddCheck,
     component: PlannerDashboard
   },
   {
     path: '/recommendationsDashboard',
-    sidebarName: 'Recommendations',
-    navbarName: 'Recommendations',
+    sidebarName: 'My Recommendations',
+    navbarName: 'My Recommendations',
     icon: ShoppingCart,
     component: RecommendationsDashboard
   },
   {
     path: '/portfolioDashboard',
-    sidebarName: 'Portfolio',
+    sidebarName: 'My Courses',
     navbarName: 'Portfolio',
     icon: Work,
     component: PortfolioDashboard
   },
   {
     path:'/aboutPage',
-    sidebarName: 'About Scholacity',
-    navbarName: 'About Scholacity',
+    sidebarName: 'How To Use',
+    navbarName: 'How To Use',
     icon: Info,
     component: AboutPage,
     showModal:true
