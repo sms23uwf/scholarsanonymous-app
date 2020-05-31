@@ -1,6 +1,6 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
-
+import { firebase } from '../firebase/firebase';
 
 // ADD_USER_TIME_IN_MODAL
 export const addUserNavigationEvent = (user_navigation_event) => ({
@@ -10,19 +10,20 @@ export const addUserNavigationEvent = (user_navigation_event) => ({
   
  export const startAddUserNavigationEvent = (eventData = {}) => {
     return (dispatch, getState) => {
-        const uid = getState().auth.uid;
-
-        console.log(`inside startAddUserNavigationEvent with ${eventData.timestamp}, ${uid}, ${eventData.event}`);
-
+        //const uid = getState().auth.uid;
+        const uid = firebase.auth().currentUser.uid;
         const {
             timestamp = ``,
             userid = uid,
             event = ``
         } = eventData;
-        const navigationEventData = { timestamp, userid, event };
-    
-        console.log(`inside startAddUserNavigationEvent with ${timestamp}, ${userid}, ${event}`);
+        if (timestamp === '')
+        {
+          timestamp = Date.now();
+        }
 
+        const navigationEventData = { timestamp, userid, event };
+        console.log(`inside startSetUserNavigationEvent with ${event}`)
         return database.ref(`users_tables/${uid}/navigation_event`).push({...navigationEventData}).then((ref) => {
         dispatch(addUserNavigationEvent({
             id: ref.key,

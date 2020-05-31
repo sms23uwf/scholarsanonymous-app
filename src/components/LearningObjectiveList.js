@@ -14,6 +14,7 @@ import database from '../firebase/firebase';
 import { setUUIDFilter, setLOFilter, setCourseFilter } from '../actions/filters';
 import selectCourseRecommendations, {findExistingCourseRecommendation} from '../selectors/courserecommendations';
 import { startSetCourseRecommendations } from '../actions/courseRecommendations';
+import { startAddUserSelectionEvent } from '../actions/selectionEvent';
 
 export class LearningObjectiveList extends React.Component {
   constructor(props) {
@@ -26,6 +27,13 @@ export class LearningObjectiveList extends React.Component {
     learningobjectiveid: ''
    }
  
+   recordSelectionEvent = (loId, eventDisposition) => {
+    let timeStamp = Date.now();
+
+    const selectionEventCapture = {timestamp: timeStamp, learningobjectiveid: loId, disposition: eventDisposition};
+    this.props.startAddUserSelectionEvent(selectionEventCapture);
+  }
+
   handleChange = (learningobjectiveid,learningobjective,pairingId,knowledgearea,e) => {
 
     this.setState(() => ({learningobjectiveid}));
@@ -35,6 +43,8 @@ export class LearningObjectiveList extends React.Component {
     {
       const userid = firebase.auth().currentUser.uid;
       const loData = {learningobjectiveid: learningobjectiveid, userid: userid};
+
+      this.recordSelectionEvent(learningobjectiveid, 'checked');
 
       this.props.startAddLOSelectionToUser(loData);
 
@@ -88,6 +98,8 @@ export class LearningObjectiveList extends React.Component {
       {
         const loPairing = {id: pairingId};
         this.props.startRemoveLOSelectionFromUser(loPairing);
+
+        this.recordSelectionEvent(learningobjectiveid, 'unchecked');
 
         this.props.allcourserecommendations.map((courserecommendation) => {
            
@@ -193,7 +205,8 @@ const mapDispatchToProps = (dispatch) => ({
   setUUIDFilter: (userid) => dispatch(setUUIDFilter(userid)),
   setLOFilter: (learningobjectiveid) => dispatch(setLOFilter(learningobjectiveid)),
   setCourseFilter: (courseid) => dispatch(setCourseFilter(courseid)),
-  startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations())
+  startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations()),
+  startAddUserSelectionEvent: (selectionEventCapture) => dispatch(startAddUserSelectionEvent(selectionEventCapture))
 });
 
 const mapStateToProps = (state) => {

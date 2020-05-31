@@ -24,6 +24,8 @@ import LoadingPage from './components/LoadingPage';
 import { setUUIDFilter } from './actions/filters';
 import { startSetRatingsByUserCourseLO } from './actions/ratingsByUserCourseLO';
 import getVisibleRatingsByUserCourseLO from './selectors/ratingsByUserCourseLO';
+import { startAddUserNavigationEvent } from './actions/navigationEvents';
+import { connect } from 'react-redux';
 
 require ('../public/images/favicon.ico');
 
@@ -58,7 +60,9 @@ firebase.auth().onIdTokenChanged(() => {
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log(`log in`);
+
     store.dispatch(setUUIDFilter(firebase.auth().currentUser.uid));
+    store.dispatch(startAddUserNavigationEvent({timestamp: Date.now(), event: 'login'}));
 
     store.dispatch(login(user.uid));
     store.dispatch(startSetCourses());

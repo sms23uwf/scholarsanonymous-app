@@ -5,12 +5,12 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import Avatar from '@material-ui/core/Avatar';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router';
 
 //require('bootstrap/dist/css/bootstrap.css');
 
@@ -64,6 +64,10 @@ class AboutPage extends React.Component {
     }
   }
 
+  closeModal = () => {
+    this.toggleModal();
+    this.props.history.push('/');
+  }
 
   toggleModal = () => {
     this.setState({
@@ -133,22 +137,27 @@ class AboutPage extends React.Component {
           closeCallback={this.toggleModal}
           customClass="custom_modal_class"
           >
-          <Card>
-            <CardHeader avatar={<Avatar src={this.setAvatarURL(this.state.avgRating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.setTitleBasedOnRating(this.state.avgRating)}/>
-            <CardContent>
-              <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                Scholacity is about the facilitation of Lifelong Learning.
-              </Typography>
-              <Divider/>
+          <div>
+            <Card>
+              <CardHeader avatar={<Avatar src={this.setAvatarURL(this.state.avgRating)} className={"avatar"}/>} titleTypographyProps={{variant:'h4'}} title={this.setTitleBasedOnRating(this.state.avgRating)}/>
+              <CardContent>
                 <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
-                  From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been subsequently provided vis-a-vis your selections. You may select "Save to Portolio" if you want it to persist after de-selecting Learning Outcomes.
+                  Scholacity is about the facilitation of Lifelong Learning.
                 </Typography>
-              </CardContent>
-              <br/>
-              <CardActionArea>
-                <Button title="Close" className="close_modal" onClick={this.toggleModal}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>OK</Typography></Button>
-              </CardActionArea>
+                <Divider/>
+                  <Typography type="body2" style={{ fontSize: '1.25em', fontWeight: `bold`, color: `#000000`, textAlign: `left` }} gutterBottom>
+                    From the "Planner" menu option - select one or more Learning Outcomes that are of interest. Then, Navigate to the "Recommendations" menu option and rate the recommendations that will have been subsequently provided vis-a-vis your selections. You may select "Save to Portolio" if you want it to persist after de-selecting Learning Outcomes.
+                  </Typography>
+                </CardContent>
+                <br/>
             </Card>
+            <br/>
+            <br/>
+            <br/>
+            <div>
+              <Button title="Close" className="close_modal" onClick={this.closeModal}><Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>OK</Typography></Button>
+            </div>
+          </div>
         </Modal>
       </div>
     );

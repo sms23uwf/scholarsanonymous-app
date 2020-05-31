@@ -3,19 +3,17 @@ import InformedConsentModal from './InformedConsentModal';
 import Checkbox from './Checkbox';
 import { cancelLogin } from '../actions/auth';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
 import { history } from '../routers/AppRouter';
 import selectUsers from '../selectors/users';
 import { startAddUser } from '../actions/users';
 import { startAddUserNavigationEvent } from '../actions/navigationEvents';
 import * as firebase from 'firebase';
-import Grid from '@material-ui/core/Grid';
 import { setUUIDFilter } from '../actions/filters';
 import Typography from "@material-ui/core/Typography";
 
 // require('bootstrap/dist/css/bootstrap.css');
 
-var userMustAgree = true;
+var userMustAgree = false;
 
 const section = {
   height: "100%",
@@ -25,19 +23,6 @@ const section = {
 export class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
-
-    //console.log(`firebase.auth.uid ${firebase.auth().currentUser.uid}`);
-
-    if (this.props.users.length > 0 )
-    {
-      userMustAgree = false;
-    }
-    else
-      userMustAgree = true;
-
-    //console.log(`props.users.length: ${props.users.length}`);
-    //console.log(`userMustAgree ${userMustAgree}`);
-    //console.log(`filter.userId: ${props.filters}`);
   }
   
   state = {
@@ -59,6 +44,8 @@ export class DashboardPage extends React.Component {
   }
 
   handleCancel = () => {
+    console.log(`inside handleCancel`);
+    this.recordNavigationEvent('logout');
     this.closeModal()
     {cancelLogin()}
     history.push('/cancel');

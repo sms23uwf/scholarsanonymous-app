@@ -69,7 +69,7 @@ class CourseRecommendationListItem extends React.Component {
     console.log(`this.state.timeEnteredModal: ${this.state.timeEnteredModal}`);
     console.log(`timeInModal: ${timeInModal}`);
 
-    const timeInModalCapture = {timeInModal: timeInModal, userid: this.props.courserecommendation.userid, disposition: disposition, rating: rating};
+    const timeInModalCapture = {timeInModal: timeInModal, userid: this.props.courserecommendation.userid, disposition: disposition, rating: rating, timeEnteredModal: this.state.timeEnteredModal, timeClosedModal: timeStamp};
     this.props.startAddUserTimeInModal(timeInModalCapture);
   }
 

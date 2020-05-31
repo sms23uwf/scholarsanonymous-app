@@ -98,20 +98,10 @@ export function PersistentDrawerLeft({ handleLogout }) {
 
   function handleDrawerOpen() {
     setOpen(true);
-    // recordNavigationEvent('Open Menu');
   }
 
   function handleDrawerClose() {
     setOpen(false);
-    //recordNavigationEvent('Close Menu');
-  }
-
-  function handleItemSelection(path) {
-    //recordNavigationEvent(path);
-  }
-
-  function recordNavigationEvent(navTo) {
-    console.log(`the user just selected ${navTo}`);
   }
 
   function toggleModal() {
@@ -184,7 +174,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
         <MenuList>
         {routes.map((prop, key) => {
           return (
-            <Link to={prop.path} style={{ textDecoration: 'none' }} key={key} onClick={handleItemSelection(prop.path)}>
+            <Link to={prop.path} style={{ textDecoration: 'none' }} key={key}>
               <MenuItem>
                 <ListItemIcon>
                   <prop.icon />

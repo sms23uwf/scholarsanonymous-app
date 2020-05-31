@@ -15,9 +15,11 @@ export const addUserTimeInModal = (user_time_in_modal) => ({
             timeInModal = ``,
             userid = ``,
             disposition = ``,
-            rating = ``
+            rating = ``,
+            timeEnteredModal = ``,
+            timeClosedModal = ``
         } = timeData;
-        const timeInModalData = { timeInModal, userid, disposition, rating };
+        const timeInModalData = { timeInModal, userid, disposition, rating, timeEnteredModal, timeClosedModal };
     
         return database.ref(`users_tables/${uid}/time_in_modal`).push({...timeInModalData}).then((ref) => {
         dispatch(addUserTimeInModal({
