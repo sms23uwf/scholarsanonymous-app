@@ -2,7 +2,7 @@ import uuid from 'uuid';
 import database from '../firebase/firebase';
 import { firebase } from '../firebase/firebase';
 
-// ADD_USER_TIME_IN_MODAL
+// ADD_USER_NAVIGATION_EVENT
 export const addUserNavigationEvent = (user_navigation_event) => ({
     type: 'ADD_USER_NAVIGATION_EVENT',
     user_navigation_event
@@ -33,7 +33,7 @@ export const addUserNavigationEvent = (user_navigation_event) => ({
     };
  };
 
-// SET_USER_TIME_IN_MODAL
+// SET_USER_NAVIGATION_EVENT
 export const setUserNavigationEvent = (user_navigation_events) => ({
   type: 'SET_USER_NAVIGATION_EVENT',
   user_navigation_events

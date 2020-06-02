@@ -11,6 +11,9 @@ import usersReducer from '../reducers/users.js';
 import filtersReducer from '../reducers/filters';
 import authReducer from '../reducers/auth';
 import ratingsReducer from '../reducers/ratingsByUserCourseLO';
+import navigationEventsReducer from '../reducers/navigationEvents';
+import selectionEventsReducer from '../reducers/selectionEvents';
+import timeInModalReducer from '../reducers/timeInModal';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -27,7 +30,10 @@ export default () => {
       users: usersReducer,
       filters: filtersReducer,
       auth: authReducer,
-      ratings_user_course_lo: ratingsReducer
+      ratings_user_course_lo: ratingsReducer,
+      user_navigation_events: navigationEventsReducer,
+      user_selection_events: selectionEventsReducer,
+      user_times_in_modals: timeInModalReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

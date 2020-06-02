@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startSetCourseRecommendations, startEditCourseRecommendation, startRemoveCourseRecommendation } from '../actions/courseRecommendations';
 import { startAddRatingsByUserCourseLO } from '../actions/ratingsByUserCourseLO';
+import { startAddUserTimeInModal } from '../actions/timeInModal';
 import Modal from './Modal';
 import Avatar from '@material-ui/core/Avatar';
 import Card from "@material-ui/core/Card";
@@ -42,7 +43,8 @@ class PortfolioListItem extends React.Component {
         currentAvatarUrl: this.setAvatarURL(props.rating),
         newRating: props.rating,
         itemIsKeeper: true,
-        recommendationPairing: 0
+        recommendationPairing: 0,
+        timeEnteredModal: Date.now()
       }
   }
   toggleModalWithSave = () => {
@@ -63,6 +65,19 @@ class PortfolioListItem extends React.Component {
     this.setState({
       showModal: !this.state.showModal
     });
+    this.recordTimeInModal('save', this.state.currentRating);
+  }
+
+  recordTimeInModal = (disposition, rating) => {
+    let timeStamp = Date.now();
+
+    let timeInModal = timeStamp - this.state.timeEnteredModal;
+
+    console.log(`this.state.timeEnteredModal: ${this.state.timeEnteredModal}`);
+    console.log(`timeInModal: ${timeInModal}`);
+
+    const timeInModalCapture = {timeInModal: timeInModal, userid: this.props.courserecommendation.userid, disposition: disposition, rating: rating, timeEnteredModal: this.state.timeEnteredModal, timeClosedModal: timeStamp};
+    this.props.startAddUserTimeInModal(timeInModalCapture);
   }
 
   toggleModal = () => {
@@ -78,6 +93,7 @@ class PortfolioListItem extends React.Component {
       newRating: this.state.currentRating,
       isPortFolio: this.state.disposition === `Portfolio` ? true : false
     });
+    this.recordTimeInModal('cancel', this.state.currentRating);
   }
 
   onCheckSaveToPortfolio = (recommendationPairing,keeperCount,e) => {
@@ -255,7 +271,7 @@ class PortfolioListItem extends React.Component {
                       }
                       label={
                         <Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>
-                          Maintain in Portfolio
+                          Maintain in Saved Courses
                         </Typography>
                       }
                     />
@@ -302,7 +318,8 @@ const mapDispatchToProps = (dispatch, props) => ({
   startEditCourseRecommendation: (id, ratingData) => dispatch(startEditCourseRecommendation(id, ratingData)),
   startSetCourseRecommendations: () => dispatch(startSetCourseRecommendations()),
   startRemoveCourseRecommendation: (recommendationId) => dispatch(startRemoveCourseRecommendation(recommendationId)),
-  startAddRatingsByUserCourseLO: (ratingCapture) => dispatch(startAddRatingsByUserCourseLO(ratingCapture))
+  startAddRatingsByUserCourseLO: (ratingCapture) => dispatch(startAddRatingsByUserCourseLO(ratingCapture)),
+  startAddUserTimeInModal: (timeInModalCapture) => dispatch(startAddUserTimeInModal(timeInModalCapture))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PortfolioListItem);

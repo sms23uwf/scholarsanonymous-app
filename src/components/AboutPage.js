@@ -60,7 +60,8 @@ class AboutPage extends React.Component {
 
     this.state = {
       showModal: true,
-      avgRating: this.getAverageRating()
+      avgRating: this.getAverageRating(),
+      usabilityScore: this.getUseabilityScore()
     }
   }
 
@@ -125,6 +126,23 @@ class AboutPage extends React.Component {
 
   }
 
+  getUseabilityScore() {
+    var count = 0;
+    var total = 0;
+
+    this.props.userNavigationEvents.map((userNavigationEvent) => {
+      if(userNavigationEvent.event == 'login' || userNavigationEvent.event == 'logout')
+      {
+        // nothing to do
+      }
+      else
+      {
+        count++;
+      }
+    });
+    return (100 - count);
+  }
+
   render() {
     return (
       <div className="content-container-dashboard">
@@ -166,7 +184,10 @@ class AboutPage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    ratingsByUserCourseLO: state.ratings_user_course_lo
+    ratingsByUserCourseLO: state.ratings_user_course_lo,
+    userNavigationEvents: state.user_navigation_events,
+    userSelectionEvents: state.user_selection_events,
+    userTimesInModals: state.user_times_in_modals
   };
 };
 

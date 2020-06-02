@@ -260,7 +260,7 @@ class CourseRecommendationListItem extends React.Component {
                           }
                           label={
                             <Typography style={{ fontSize: '1.5em', fontWeight: `bold`, color: `#000000` }}>
-                              Maintain in Portfolio
+                              Maintain in Saved Courses
                             </Typography>
                           }
                         />

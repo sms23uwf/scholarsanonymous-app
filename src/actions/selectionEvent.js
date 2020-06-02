@@ -3,9 +3,9 @@ import database from '../firebase/firebase';
 
 
 // ADD_USER_TIME_IN_MODAL
-export const addUserSelectionEvent = (selection_event) => ({
+export const addUserSelectionEvent = (user_selection_event) => ({
     type: 'ADD_USER_SELECTION_EVENT',
-    selection_event
+    user_selection_event
   });
   
  export const startAddUserSelectionEvent = (timeData = {}) => {
